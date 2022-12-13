@@ -13,9 +13,9 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/SeniorDeveloper-Guroba/GDVVMLibrary", branch: "master"),
+        .package(url: "https://github.com/it-senior-developer/VVMLibrary", branch: "master"),
         .package(url: "https://github.com/hmlongco/Resolver.git", branch: "master"),
-        .package(url: "https://github.com/it-senior-developer/AdvertisingFirebase", branch: "development"),
+        .package(url: "https://github.com/it-senior-developer/AdvertisingFirebase", branch: "master"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -24,7 +24,7 @@ let package = Package(
             name: "BannerAdvertising",
             dependencies: [
                 .product(name: "Resolver", package: "Resolver"),
-                .product(name: "GDVVMLibrary", package: "GDVVMLibrary"),
+                .product(name: "VVMLibrary", package: "VVMLibrary"),
                 .product(name: "AdvertisingFirebase", package: "AdvertisingFirebase"),
             ]),
     ]

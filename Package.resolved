@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "advertisingfirebase",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/it-senior-developer/AdvertisingFirebase",
+      "state" : {
+        "branch" : "master",
+        "revision" : "3c0e8f376a426c27dde62021b75e2c58f0e8a80f"
+      }
+    },
+    {
       "identity" : "boringssl-swiftpm",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/boringssl-SwiftPM.git",
@@ -19,30 +28,12 @@
       }
     },
     {
-      "identity" : "firebase",
-      "kind" : "remoteSourceControl",
-      "location" : "https://git.olimp-casino.dev/gamesite/mobile-app/firebase",
-      "state" : {
-        "branch" : "development",
-        "revision" : "accf911f4db46400ada604b80570ee1bb8951295"
-      }
-    },
-    {
       "identity" : "firebase-ios-sdk",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk.git",
       "state" : {
         "branch" : "master",
         "revision" : "67ae9555da3f5ff9f432485c1fc09e2dcd0b58da"
-      }
-    },
-    {
-      "identity" : "gdvvmlibrary",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SeniorDeveloper-Guroba/GDVVMLibrary",
-      "state" : {
-        "branch" : "master",
-        "revision" : "4f3b4c4f00fc315cf480a76db113133214d914f0"
       }
     },
     {
@@ -122,8 +113,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/hmlongco/Resolver.git",
       "state" : {
-        "branch" : "master",
-        "revision" : "c8cbb6b15bc9c4b7253e58387c35d6c18af4aa40"
+        "revision" : "97de0b0320036607564af4a60025b48f8d041221",
+        "version" : "1.5.0"
       }
     },
     {
@@ -133,6 +124,15 @@
       "state" : {
         "revision" : "ab3a58b7209a17d781c0d1dbb3e1ff3da306bae8",
         "version" : "1.20.3"
+      }
+    },
+    {
+      "identity" : "vvmlibrary",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/it-senior-developer/VVMLibrary",
+      "state" : {
+        "branch" : "master",
+        "revision" : "e3d970253ca899ee0f12b85b18043b6f11b91f00"
       }
     }
   ],

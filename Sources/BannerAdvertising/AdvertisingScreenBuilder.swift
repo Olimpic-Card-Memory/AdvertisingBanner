@@ -6,7 +6,7 @@
 //
 import Resolver
 import UIKit
-import GDVVMLibrary
+import VVMLibrary
 
 final public class AdvertisingScreenViewControllerBuilder: BuilderProtocol {
     

@@ -6,7 +6,7 @@
 //
 import UIKit
 import WebKit
-import GDVVMLibrary
+import VVMLibrary
 
 final public class AdvertisingScreenViewController: UIViewController, ViewProtocol {
     

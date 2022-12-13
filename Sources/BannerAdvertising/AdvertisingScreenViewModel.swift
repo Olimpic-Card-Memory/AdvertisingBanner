@@ -5,7 +5,7 @@
 //  Copyright © 2022 Developer. All rights reserved.
 //
 import Foundation
-import GDVVMLibrary
+import VVMLibrary
 
 final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewController> {
     
