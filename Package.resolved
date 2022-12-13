@@ -15,7 +15,7 @@
       "location" : "https://github.com/it-senior-developer/AdvertisingFirebase",
       "state" : {
         "branch" : "master",
-        "revision" : "3c0e8f376a426c27dde62021b75e2c58f0e8a80f"
+        "revision" : "e960c3aaf4620bec50deb8cc90c27b4f4e144567"
       }
     },
     {
@@ -33,7 +33,7 @@
       "location" : "https://github.com/firebase/firebase-ios-sdk.git",
       "state" : {
         "branch" : "master",
-        "revision" : "67ae9555da3f5ff9f432485c1fc09e2dcd0b58da"
+        "revision" : "deda10709308822b5a41a92f7dbaf3b4ac581511"
       }
     },
     {
@@ -106,15 +106,6 @@
       "state" : {
         "revision" : "3e4e743631e86c8c70dbc6efdc7beaa6e90fd3bb",
         "version" : "2.1.1"
-      }
-    },
-    {
-      "identity" : "resolver",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/hmlongco/Resolver.git",
-      "state" : {
-        "revision" : "97de0b0320036607564af4a60025b48f8d041221",
-        "version" : "1.5.0"
       }
     },
     {

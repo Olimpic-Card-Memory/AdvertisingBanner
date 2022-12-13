@@ -4,7 +4,6 @@
 //
 //  Copyright © 2022 Developer. All rights reserved.
 //
-import Resolver
 import UIKit
 import VVMLibrary
 
@@ -19,7 +18,7 @@ final public class AdvertisingScreenViewControllerBuilder: BuilderProtocol {
     public static func create() -> AdvertisingScreenViewControllerBuilder {
         let viewController = AdvertisingScreenViewController()
         let viewModel      = AdvertisingScreenViewModel(
-            advertisingWebViewDelegate: Resolver.resolve()
+            advertisingWebViewDelegate: AdvertisingWebViewDelegate()
         )
         viewController.loadViewIfNeeded()
         viewModel.bind(with: viewController)
