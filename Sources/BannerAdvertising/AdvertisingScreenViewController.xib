@@ -21,13 +21,13 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PE4-8y-yLw" userLabel="MainView">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RvC-Yh-2Xl" userLabel="MainStackView">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="814"/>
                             <subviews>
                                 <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AL5-9U-Hfm">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="814"/>
                                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <wkWebViewConfiguration key="configuration">
                                         <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -47,17 +47,20 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Pmi-a7-4oC"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" systemColor="labelColor"/>
             <constraints>
+                <constraint firstItem="Pmi-a7-4oC" firstAttribute="bottom" secondItem="PE4-8y-yLw" secondAttribute="bottom" id="6x2-l3-sT9"/>
+                <constraint firstItem="PE4-8y-yLw" firstAttribute="top" secondItem="Pmi-a7-4oC" secondAttribute="top" id="DIq-EN-0sb"/>
                 <constraint firstItem="PE4-8y-yLw" firstAttribute="leading" secondItem="Pmi-a7-4oC" secondAttribute="leading" id="KIa-ig-V7D"/>
-                <constraint firstAttribute="bottom" secondItem="PE4-8y-yLw" secondAttribute="bottom" id="P6M-Ea-RFa"/>
                 <constraint firstAttribute="trailing" secondItem="PE4-8y-yLw" secondAttribute="trailing" id="W8I-Yf-lNW"/>
-                <constraint firstItem="PE4-8y-yLw" firstAttribute="top" secondItem="kns-3F-tW8" secondAttribute="top" id="dFu-gZ-8fL"/>
             </constraints>
-            <point key="canvasLocation" x="-730" y="27"/>
+            <point key="canvasLocation" x="-730.43478260869574" y="26.785714285714285"/>
         </view>
     </objects>
     <resources>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

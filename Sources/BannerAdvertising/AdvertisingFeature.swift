@@ -39,7 +39,6 @@ final public class AdvertisingFeature {
                     }
             }
         }
-        
     }
     
     public init() {}
