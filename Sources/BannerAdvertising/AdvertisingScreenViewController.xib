@@ -28,10 +28,16 @@
                             <subviews>
                                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrE-9A-Tv2">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <textAttributes key="titleTextAttributes">
+                                        <color key="textColor" systemColor="linkColor"/>
+                                    </textAttributes>
+                                    <textAttributes key="largeTitleTextAttributes">
+                                        <color key="textColor" systemColor="tintColor"/>
+                                    </textAttributes>
                                     <items>
                                         <navigationItem title="Advertising" id="bf5-rt-sxe">
-                                            <barButtonItem key="leftBarButtonItem" title="Item" id="gPl-Db-OLw"/>
-                                            <barButtonItem key="rightBarButtonItem" title="Item" id="KZx-lO-aqj"/>
+                                            <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward" catalog="system" id="gPl-Db-OLw"/>
+                                            <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.arrow.up" catalog="system" id="KZx-lO-aqj"/>
                                         </navigationItem>
                                     </items>
                                 </navigationBar>
@@ -56,7 +62,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Pmi-a7-4oC"/>
-            <color key="backgroundColor" systemColor="labelColor"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="Pmi-a7-4oC" firstAttribute="bottom" secondItem="PE4-8y-yLw" secondAttribute="bottom" id="6x2-l3-sT9"/>
                 <constraint firstItem="PE4-8y-yLw" firstAttribute="top" secondItem="kns-3F-tW8" secondAttribute="top" constant="48" id="DIq-EN-0sb"/>
@@ -67,11 +73,16 @@
         </view>
     </objects>
     <resources>
-        <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
