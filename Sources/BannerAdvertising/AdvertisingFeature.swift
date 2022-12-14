@@ -25,14 +25,18 @@ final public class AdvertisingFeature {
             guard let self = self else { return }
             switch result {
                 case .object(let object):
-                    let urlAdvertising = object.urlAdvertising
-                    let advertisingBuilder = AdvertisingScreenViewControllerBuilder.create()
-                    self.advertisingViewModel = advertisingBuilder.viewModel
-                    self.advertisingViewModel?.state = .createViewProperties(urlAdvertising)
-                    completion(.advertising(advertisingBuilder.view))
+                    DispatchQueue.main.async {
+                        let urlAdvertising = object.urlAdvertising
+                        let advertisingBuilder = AdvertisingScreenViewControllerBuilder.create()
+                        self.advertisingViewModel = advertisingBuilder.viewModel
+                        self.advertisingViewModel?.state = .createViewProperties(urlAdvertising)
+                        completion(.advertising(advertisingBuilder.view))
+                    }
                 case .error(let error):
-                    print(error?.localizedDescription ?? "")
-                    completion(.game)
+                    DispatchQueue.main.async {
+                        print(error?.localizedDescription ?? "")
+                        completion(.game)
+                    }
             }
         }
         
