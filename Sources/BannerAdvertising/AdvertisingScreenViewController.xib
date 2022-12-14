@@ -26,8 +26,14 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RvC-Yh-2Xl" userLabel="MainStackView">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="814"/>
                             <subviews>
+                                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrE-9A-Tv2">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <items>
+                                        <navigationItem title="Advertising" id="bf5-rt-sxe"/>
+                                    </items>
+                                </navigationBar>
                                 <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AL5-9U-Hfm">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="814"/>
+                                    <rect key="frame" x="0.0" y="44" width="414" height="770"/>
                                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <wkWebViewConfiguration key="configuration">
                                         <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
