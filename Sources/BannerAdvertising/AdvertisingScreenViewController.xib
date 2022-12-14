@@ -21,19 +21,19 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PE4-8y-yLw" userLabel="MainView">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                    <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RvC-Yh-2Xl" userLabel="MainStackView">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="814"/>
                             <subviews>
                                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrE-9A-Tv2">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <items>
                                         <navigationItem title="Advertising" id="bf5-rt-sxe"/>
                                     </items>
                                 </navigationBar>
                                 <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AL5-9U-Hfm">
-                                    <rect key="frame" x="0.0" y="92" width="414" height="770"/>
+                                    <rect key="frame" x="0.0" y="44" width="414" height="770"/>
                                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <wkWebViewConfiguration key="configuration">
                                         <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -56,7 +56,7 @@
             <color key="backgroundColor" systemColor="labelColor"/>
             <constraints>
                 <constraint firstItem="Pmi-a7-4oC" firstAttribute="bottom" secondItem="PE4-8y-yLw" secondAttribute="bottom" id="6x2-l3-sT9"/>
-                <constraint firstItem="PE4-8y-yLw" firstAttribute="top" secondItem="kns-3F-tW8" secondAttribute="top" id="DIq-EN-0sb"/>
+                <constraint firstItem="PE4-8y-yLw" firstAttribute="top" secondItem="kns-3F-tW8" secondAttribute="top" constant="48" id="DIq-EN-0sb"/>
                 <constraint firstItem="PE4-8y-yLw" firstAttribute="leading" secondItem="Pmi-a7-4oC" secondAttribute="leading" id="KIa-ig-V7D"/>
                 <constraint firstAttribute="trailing" secondItem="PE4-8y-yLw" secondAttribute="trailing" id="W8I-Yf-lNW"/>
             </constraints>
