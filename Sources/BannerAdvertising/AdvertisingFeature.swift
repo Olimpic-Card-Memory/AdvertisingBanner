@@ -10,12 +10,12 @@ import Foundation
 final public class AdvertisingFeature {
     
     private let firestoreService = FirestoreService()
-    private let firebaseService = FirebaseService()
-    
+  
     // MARK: - ViewModel
     public var advertisingViewModel: AdvertisingScreenViewModel?
     
-    public func setup() {
+    static public func setup() {
+        let firebaseService = FirebaseService()
         firebaseService.setup()
     }
     
