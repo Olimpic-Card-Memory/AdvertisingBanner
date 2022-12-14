@@ -14,6 +14,8 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     public struct ViewProperties {
         let delegate : AdvertisingWebViewDelegate
         let urlString: String
+        let tapForward: ClosureEmpty
+        let tapBack: ClosureEmpty
     }
     public var viewProperties: ViewProperties?
     
@@ -46,6 +48,15 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         guard let url = URL(string: urlString) else { return }
         let request = URLRequest(url: url)
         webView.load(request)
+    }
+    
+    //MARK: - Buttons
+    @IBAction func tapForwardButton(button: UIButton){
+        self.viewProperties?.tapForward()
+    }
+    
+    @IBAction func tapBackButton(button: UIButton){
+        self.viewProperties?.tapBack()
     }
     
     public init() {

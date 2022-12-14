@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AdvertisingScreenViewController" customModule="GDAdvertising">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AdvertisingScreenViewController" customModule="BannerAdvertising">
             <connections>
                 <outlet property="view" destination="kns-3F-tW8" id="vD6-1t-ccu"/>
                 <outlet property="webView" destination="AL5-9U-Hfm" id="9NY-yK-EVQ"/>
@@ -52,11 +52,19 @@
                                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cbx-WT-adX">
                                     <rect key="frame" x="0.0" y="770" width="414" height="44"/>
                                     <items>
-                                        <barButtonItem title="Item" image="backward.fill" catalog="system" id="7Jy-cv-mxH"/>
+                                        <barButtonItem title="Item" image="backward.fill" catalog="system" id="7Jy-cv-mxH">
+                                            <connections>
+                                                <action selector="tapBackButtonWithButton:" destination="-1" id="bNJ-ty-bWL"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem style="plain" systemItem="flexibleSpace" id="uA0-dw-Nkh"/>
                                         <barButtonItem id="rj9-42-0aZ"/>
                                         <barButtonItem style="plain" systemItem="flexibleSpace" id="VtC-Uw-9CT"/>
-                                        <barButtonItem title="Item" image="forward.fill" catalog="system" id="Em9-Us-j9e"/>
+                                        <barButtonItem title="Item" image="forward.fill" catalog="system" id="Em9-Us-j9e">
+                                            <connections>
+                                                <action selector="tapForwardButtonWithButton:" destination="-1" id="Ufl-2N-r9m"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </items>
                                 </toolbar>
                             </subviews>

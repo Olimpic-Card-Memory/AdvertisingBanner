@@ -32,12 +32,24 @@ final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewCo
         guard let state = self.state else { return }
         switch state {
             case .createViewProperties(let urlString):
-               
+                let tapForward: ClosureEmpty = {
+                    self.advertisingWebViewDelegate.webView?.goForward()
+                }
+                let tapBack: ClosureEmpty = {
+                    self.advertisingWebViewDelegate.webView?.goBack()
+                }
                 viewProperties = AdvertisingScreenViewController.ViewProperties(
                     delegate: advertisingWebViewDelegate,
-                    urlString: urlString
+                    urlString: urlString,
+                    tapForward: tapForward,
+                    tapBack: tapBack
                 )
                 create?(viewProperties)
         }
+    }
+    
+    private func action() {
+        
+       
     }
 }

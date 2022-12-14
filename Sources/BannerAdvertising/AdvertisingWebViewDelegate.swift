@@ -11,12 +11,15 @@ final public class AdvertisingWebViewDelegate: NSObject, WKNavigationDelegate, W
     
     public var didFinish: ClosureEmpty?
     public var didCommit: ClosureEmpty?
+    public var webView: WKWebView?
     
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        self.webView = webView
         didFinish?()
     }
     
     public func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        self.webView = webView
         didCommit?()
     }
     
