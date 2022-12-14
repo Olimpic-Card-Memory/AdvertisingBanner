@@ -37,19 +37,27 @@ final public class AdvertisingFeature {
         }
         
     }
+    
+    public init() {}
 }
 
-final class RequestDataAdvertising: RequestData {
+final public class RequestDataAdvertising: RequestData {
     
-    typealias ReturnDecodable = RequestDataModel
+    public typealias ReturnDecodable = RequestDataModel
     
-    var collectionID: String = "olimpicSlots"
-    var documentID  : String = "Zx8Fl8nussho5xBjXaHv"
+    public var collectionID: String = "olimpicSlots"
+    public var documentID  : String = "Zx8Fl8nussho5xBjXaHv"
+    
+    public init() {}
 }
 
-struct RequestDataModel: Decodable {
+public struct RequestDataModel: Decodable {
     
-    let urlAdvertising: String
+    public let urlAdvertising: String
+    
+    public init(urlAdvertising: String) {
+        self.urlAdvertising = urlAdvertising
+    }
 }
 
 public enum PresentScreen {
