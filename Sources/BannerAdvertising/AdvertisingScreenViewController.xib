@@ -29,7 +29,10 @@
                                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrE-9A-Tv2">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <items>
-                                        <navigationItem title="Advertising" id="bf5-rt-sxe"/>
+                                        <navigationItem title="Advertising" id="bf5-rt-sxe">
+                                            <barButtonItem key="leftBarButtonItem" title="Item" id="gPl-Db-OLw"/>
+                                            <barButtonItem key="rightBarButtonItem" title="Item" id="KZx-lO-aqj"/>
+                                        </navigationItem>
                                     </items>
                                 </navigationBar>
                                 <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AL5-9U-Hfm">
