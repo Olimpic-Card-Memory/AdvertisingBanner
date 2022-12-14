@@ -42,13 +42,23 @@
                                     </items>
                                 </navigationBar>
                                 <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AL5-9U-Hfm">
-                                    <rect key="frame" x="0.0" y="44" width="414" height="770"/>
+                                    <rect key="frame" x="0.0" y="44" width="414" height="726"/>
                                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <wkWebViewConfiguration key="configuration">
                                         <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                         <wkPreferences key="preferences"/>
                                     </wkWebViewConfiguration>
                                 </wkWebView>
+                                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cbx-WT-adX">
+                                    <rect key="frame" x="0.0" y="770" width="414" height="44"/>
+                                    <items>
+                                        <barButtonItem title="Item" image="backward.fill" catalog="system" id="7Jy-cv-mxH"/>
+                                        <barButtonItem style="plain" systemItem="flexibleSpace" id="uA0-dw-Nkh"/>
+                                        <barButtonItem id="rj9-42-0aZ"/>
+                                        <barButtonItem style="plain" systemItem="flexibleSpace" id="VtC-Uw-9CT"/>
+                                        <barButtonItem title="Item" image="forward.fill" catalog="system" id="Em9-Us-j9e"/>
+                                    </items>
+                                </toolbar>
                             </subviews>
                         </stackView>
                     </subviews>
@@ -73,7 +83,9 @@
         </view>
     </objects>
     <resources>
+        <image name="backward.fill" catalog="system" width="128" height="77"/>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <image name="forward.fill" catalog="system" width="128" height="77"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
