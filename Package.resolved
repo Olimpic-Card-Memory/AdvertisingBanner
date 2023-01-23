@@ -10,12 +10,30 @@
       }
     },
     {
+      "identity" : "advertisingappsflyer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/it-senior-developer/AdvertisingAppsFlyer",
+      "state" : {
+        "branch" : "master",
+        "revision" : "b50979a75bf16c618afd5cc66b62d5fcc65c7490"
+      }
+    },
+    {
       "identity" : "advertisingfirebase",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/it-senior-developer/AdvertisingFirebase",
       "state" : {
         "branch" : "master",
         "revision" : "e960c3aaf4620bec50deb8cc90c27b4f4e144567"
+      }
+    },
+    {
+      "identity" : "appsflyerframework",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AppsFlyerSDK/AppsFlyerFramework.git",
+      "state" : {
+        "revision" : "7a3cd712a77b30e487e53102b101c5e9ff96a95e",
+        "version" : "6.9.1"
       }
     },
     {
