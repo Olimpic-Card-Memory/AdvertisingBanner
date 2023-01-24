@@ -70,10 +70,6 @@ final public class AdvertisingFeature {
             }
         }
     }
-    
-    static func create() -> AdvertisingFeature {
-        
-    }
 }
 
 final public class RequestDataAdvertising: RequestData {
