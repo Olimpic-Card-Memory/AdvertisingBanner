@@ -4,19 +4,31 @@
 //
 //  Created by Senior Developer on 07.12.2022.
 //
+import AdvertisingAppsFlyer
+import AppsFlyerLib
 import AdvertisingFirebase
 import Foundation
 
 final public class AdvertisingFeature {
     
     private let firestoreService = FirestoreService()
+    static let appsFlyerService = AppsFlyerService()
+    static let firebaseService = FirebaseService()
   
     // MARK: - ViewModel
     public var advertisingViewModel: AdvertisingScreenViewModel?
     
-    static public func setup() {
-        let firebaseService = FirebaseService()
+    static public func setupFirebase() {
         firebaseService.setup()
+    }
+    
+    static public func setupAppsFlyer() {
+        appsFlyerService.setup()
+        appsFlyerService.start()
+    }
+    
+    static public func startAppsFlyer() {
+        appsFlyerService.start()
     }
     
     public func createAdvertisingScreen(completion: @escaping Closure<PresentScreen>) {
