@@ -11,27 +11,26 @@ import Foundation
 
 final public class AdvertisingFeature {
     
-    static private let firestoreService = FirestoreService()
-    static let appsFlyerService = AppsFlyerService()
-    static let firebaseService = FirebaseService()
-  
-    // MARK: - ViewModel
-    public static var advertisingViewModel: AdvertisingScreenViewModel?
+    private let firestoreService = FirestoreService()
+    private let appsFlyerService = AppsFlyerService()
     
-    static public func setupFirebase() {
+    // MARK: - ViewModel
+    public var advertisingViewModel: AdvertisingScreenViewModel?
+    
+    public func setupFirebase() {
+        let firebaseService = FirebaseService()
         firebaseService.setup()
     }
     
-    static public func setupAppsFlyer() {
+    public func setupAppsFlyer() {
         appsFlyerService.setup()
+    }
+    
+    public func startAppsFlyer() {
         appsFlyerService.start()
     }
     
-    static public func startAppsFlyer() {
-        appsFlyerService.start()
-    }
-    
-    static public func startFirebase(completion: @escaping Closure<PresentScreen>) {
+    public func startFirebase(completion: @escaping Closure<PresentScreen>) {
         let requestData = RequestDataAdvertising()
         firestoreService.get(requestData: requestData) { result in
             switch result {
@@ -52,7 +51,7 @@ final public class AdvertisingFeature {
         }
     }
     
-    static public func startAppsFlyer(completion: @escaping Closure<PresentScreen>) {
+     public func startAppsFlyer(completion: @escaping Closure<PresentScreen>) {
         appsFlyerService.installCompletion = { install in
             switch install {
                 case .organic:
@@ -72,7 +71,9 @@ final public class AdvertisingFeature {
         }
     }
     
-    public init() {}
+    static func create() -> AdvertisingFeature {
+        
+    }
 }
 
 final public class RequestDataAdvertising: RequestData {
