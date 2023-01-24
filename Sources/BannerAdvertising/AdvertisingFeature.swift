@@ -70,6 +70,8 @@ final public class AdvertisingFeature {
             }
         }
     }
+    
+    public init() {} 
 }
 
 final public class RequestDataAdvertising: RequestData {
