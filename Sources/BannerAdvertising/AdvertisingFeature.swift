@@ -11,12 +11,12 @@ import Foundation
 
 final public class AdvertisingFeature {
     
-    private let firestoreService = FirestoreService()
+    static private let firestoreService = FirestoreService()
     static let appsFlyerService = AppsFlyerService()
     static let firebaseService = FirebaseService()
   
     // MARK: - ViewModel
-    public var advertisingViewModel: AdvertisingScreenViewModel?
+    public static var advertisingViewModel: AdvertisingScreenViewModel?
     
     static public func setupFirebase() {
         firebaseService.setup()
@@ -31,10 +31,9 @@ final public class AdvertisingFeature {
         appsFlyerService.start()
     }
     
-    public func createAdvertisingScreen(completion: @escaping Closure<PresentScreen>) {
+    static public func startFirebase(completion: @escaping Closure<PresentScreen>) {
         let requestData = RequestDataAdvertising()
-        firestoreService.get(requestData: requestData) { [weak self] result in
-            guard let self = self else { return }
+        firestoreService.get(requestData: requestData) { result in
             switch result {
                 case .object(let object):
                     DispatchQueue.main.async {
@@ -49,6 +48,26 @@ final public class AdvertisingFeature {
                         print(error?.localizedDescription ?? "")
                         completion(.game)
                     }
+            }
+        }
+    }
+    
+    static public func startAppsFlyer(completion: @escaping Closure<PresentScreen>) {
+        appsFlyerService.installCompletion = { install in
+            switch install {
+                case .organic:
+                    DispatchQueue.main.async {
+                        completion(.game)
+                    }
+                case .nonOrganic:
+                    DispatchQueue.main.async {
+                        let advertisingBuilder = AdvertisingScreenViewControllerBuilder.create()
+                        self.advertisingViewModel = advertisingBuilder.viewModel
+                        self.advertisingViewModel?.state = .createViewProperties("https://www.sports.ru/")
+                        completion(.advertising(advertisingBuilder.view))
+                    }
+                default:
+                    break
             }
         }
     }
