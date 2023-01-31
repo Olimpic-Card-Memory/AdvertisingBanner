@@ -30,7 +30,7 @@ final public class AdvertisingFeature {
         appsFlyerService.start()
     }
     
-    public func startFirebase(completion: @escaping Closure<PresentScreen>) {
+    public func executeFirebase(completion: @escaping Closure<PresentScreen>) {
         let requestData = RequestDataAdvertising()
         firestoreService.get(requestData: requestData) { result in
             switch result {
@@ -51,7 +51,7 @@ final public class AdvertisingFeature {
         }
     }
     
-     public func startAppsFlyer(completion: @escaping Closure<PresentScreen>) {
+     public func executeAppsFlyer(completion: @escaping Closure<PresentScreen>) {
         appsFlyerService.installCompletion = { install in
             switch install {
                 case .organic:
