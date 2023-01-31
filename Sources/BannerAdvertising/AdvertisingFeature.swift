@@ -11,8 +11,8 @@ import Foundation
 
 final public class AdvertisingFeature {
     
-    private let firestoreService = FirestoreService()
-    private let appsFlyerService = AppsFlyerService()
+    private lazy var firestoreService = FirestoreService()
+    private lazy var appsFlyerService = AppsFlyerService()
     
     // MARK: - ViewModel
     public var advertisingViewModel: AdvertisingScreenViewModel?
