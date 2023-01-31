@@ -7,7 +7,7 @@
 import AdvertisingAppsFlyer
 import AppsFlyerLib
 import AdvertisingFirebase
-import Foundation
+import UIKit
 
 final public class AdvertisingFeature {
     
@@ -94,6 +94,6 @@ public struct RequestDataModel: Decodable {
 }
 
 public enum PresentScreen {
-    case advertising(AdvertisingScreenViewController)
+    case advertising(UIViewController)
     case game
 }
