@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -21,13 +20,13 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PE4-8y-yLw" userLabel="MainView">
-                    <rect key="frame" x="0.0" y="48" width="414" height="814"/>
+                    <rect key="frame" x="0.0" y="48" width="414" height="848"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RvC-Yh-2Xl" userLabel="MainStackView">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="814"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="848"/>
                             <subviews>
                                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrE-9A-Tv2">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
                                     <textAttributes key="titleTextAttributes">
                                         <color key="textColor" systemColor="linkColor"/>
                                     </textAttributes>
@@ -42,7 +41,7 @@
                                     </items>
                                 </navigationBar>
                                 <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AL5-9U-Hfm">
-                                    <rect key="frame" x="0.0" y="44" width="414" height="726"/>
+                                    <rect key="frame" x="0.0" y="78" width="414" height="726"/>
                                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <wkWebViewConfiguration key="configuration">
                                         <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -50,7 +49,7 @@
                                     </wkWebViewConfiguration>
                                 </wkWebView>
                                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cbx-WT-adX">
-                                    <rect key="frame" x="0.0" y="770" width="414" height="44"/>
+                                    <rect key="frame" x="0.0" y="804" width="414" height="44"/>
                                     <items>
                                         <barButtonItem title="Item" image="backward.fill" catalog="system" id="7Jy-cv-mxH">
                                             <connections>
@@ -82,9 +81,9 @@
             <viewLayoutGuide key="safeArea" id="Pmi-a7-4oC"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="Pmi-a7-4oC" firstAttribute="bottom" secondItem="PE4-8y-yLw" secondAttribute="bottom" id="6x2-l3-sT9"/>
+                <constraint firstAttribute="bottom" secondItem="PE4-8y-yLw" secondAttribute="bottom" id="6x2-l3-sT9"/>
                 <constraint firstItem="PE4-8y-yLw" firstAttribute="top" secondItem="kns-3F-tW8" secondAttribute="top" constant="48" id="DIq-EN-0sb"/>
-                <constraint firstItem="PE4-8y-yLw" firstAttribute="leading" secondItem="Pmi-a7-4oC" secondAttribute="leading" id="KIa-ig-V7D"/>
+                <constraint firstItem="PE4-8y-yLw" firstAttribute="leading" secondItem="kns-3F-tW8" secondAttribute="leading" id="KIa-ig-V7D"/>
                 <constraint firstAttribute="trailing" secondItem="PE4-8y-yLw" secondAttribute="trailing" id="W8I-Yf-lNW"/>
             </constraints>
             <point key="canvasLocation" x="-730.43478260869574" y="26.785714285714285"/>
