@@ -20,13 +20,13 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PE4-8y-yLw" userLabel="MainView">
-                    <rect key="frame" x="0.0" y="8" width="414" height="888"/>
+                    <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RvC-Yh-2Xl" userLabel="MainStackView">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="888"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="814"/>
                             <subviews>
                                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrE-9A-Tv2">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="113"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="39"/>
                                     <textAttributes key="titleTextAttributes">
                                         <color key="textColor" systemColor="linkColor"/>
                                     </textAttributes>
@@ -41,7 +41,7 @@
                                     </items>
                                 </navigationBar>
                                 <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AL5-9U-Hfm">
-                                    <rect key="frame" x="0.0" y="113" width="414" height="726"/>
+                                    <rect key="frame" x="0.0" y="39" width="414" height="726"/>
                                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <wkWebViewConfiguration key="configuration">
                                         <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -49,7 +49,7 @@
                                     </wkWebViewConfiguration>
                                 </wkWebView>
                                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cbx-WT-adX">
-                                    <rect key="frame" x="0.0" y="839" width="414" height="49"/>
+                                    <rect key="frame" x="0.0" y="765" width="414" height="49"/>
                                     <items>
                                         <barButtonItem title="Item" image="backward.fill" catalog="system" id="7Jy-cv-mxH">
                                             <connections>
@@ -79,12 +79,12 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Pmi-a7-4oC"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" systemColor="labelColor"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="PE4-8y-yLw" secondAttribute="bottom" id="6x2-l3-sT9"/>
-                <constraint firstItem="PE4-8y-yLw" firstAttribute="top" secondItem="kns-3F-tW8" secondAttribute="top" constant="8" id="DIq-EN-0sb"/>
+                <constraint firstItem="Pmi-a7-4oC" firstAttribute="bottom" secondItem="PE4-8y-yLw" secondAttribute="bottom" id="6x2-l3-sT9"/>
                 <constraint firstItem="PE4-8y-yLw" firstAttribute="leading" secondItem="kns-3F-tW8" secondAttribute="leading" id="KIa-ig-V7D"/>
                 <constraint firstAttribute="trailing" secondItem="PE4-8y-yLw" secondAttribute="trailing" id="W8I-Yf-lNW"/>
+                <constraint firstItem="PE4-8y-yLw" firstAttribute="top" secondItem="Pmi-a7-4oC" secondAttribute="top" id="WbB-78-zgO"/>
             </constraints>
             <point key="canvasLocation" x="-730.43478260869574" y="26.785714285714285"/>
         </view>
@@ -94,6 +94,9 @@
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="forward.fill" catalog="system" width="128" height="77"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
