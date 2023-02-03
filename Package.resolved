@@ -24,7 +24,7 @@
       "location" : "https://github.com/it-senior-developer/AdvertisingFirebase",
       "state" : {
         "branch" : "master",
-        "revision" : "e960c3aaf4620bec50deb8cc90c27b4f4e144567"
+        "revision" : "07bb7c59a5fc6e9f8f9cf32e50e8a5a34f993eaf"
       }
     },
     {
@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AppsFlyerSDK/AppsFlyerFramework.git",
       "state" : {
-        "revision" : "7a3cd712a77b30e487e53102b101c5e9ff96a95e",
-        "version" : "6.9.1"
+        "revision" : "aabfaf81d95e21f711850e87c60b9ef70b2bc6c4",
+        "version" : "6.9.2"
       }
     },
     {
@@ -51,7 +51,7 @@
       "location" : "https://github.com/firebase/firebase-ios-sdk.git",
       "state" : {
         "branch" : "master",
-        "revision" : "d40bedde684ac5a1f6bca542dae4f6152a640282"
+        "revision" : "bca6418461811ca502c7823f0e436c6047eb21ca"
       }
     },
     {
@@ -68,8 +68,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleDataTransport.git",
       "state" : {
-        "revision" : "5056b15c5acbb90cd214fe4d6138bdf5a740e5a8",
-        "version" : "9.2.0"
+        "revision" : "f6b558e3f801f2cac336b04f615ce111fa9ddaa0",
+        "version" : "9.2.1"
       }
     },
     {
