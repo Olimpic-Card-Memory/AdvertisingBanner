@@ -4,6 +4,7 @@
 //
 //  Copyright © 2022 Developer. All rights reserved.
 //
+import Combine
 import UIKit
 import WebKit
 import VVMLibrary
@@ -16,6 +17,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         let urlString: String
         let tapForward: ClosureEmpty
         let tapBack: ClosureEmpty
+        let close: CurrentValueSubject<Bool, Never>
     }
     public var viewProperties: ViewProperties?
     
@@ -57,6 +59,10 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     
     @IBAction func tapBackButton(button: UIButton){
         self.viewProperties?.tapBack()
+    }
+    
+    @IBAction func closeButton(button: UIButton){
+        self.viewProperties?.close.send(true)
     }
     
     public init() {

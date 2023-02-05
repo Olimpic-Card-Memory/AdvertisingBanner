@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -36,7 +37,11 @@
                                     </textAttributes>
                                     <items>
                                         <navigationItem title="Advertising" id="bf5-rt-sxe">
-                                            <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward" catalog="system" id="gPl-Db-OLw"/>
+                                            <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward" catalog="system" id="gPl-Db-OLw">
+                                                <connections>
+                                                    <action selector="closeButtonWithButton:" destination="-1" id="M9Q-a5-USk"/>
+                                                </connections>
+                                            </barButtonItem>
                                             <barButtonItem key="rightBarButtonItem" id="KZx-lO-aqj"/>
                                         </navigationItem>
                                     </items>
