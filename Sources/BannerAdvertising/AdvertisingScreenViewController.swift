@@ -56,9 +56,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     }
     
     @IBAction func closeButton(button: UIButton){
-        self.dismiss(animated: true){
-            self.viewProperties?.closeAction.send(true)
-        }
+        self.viewProperties?.closeAction.send(true)
     }
     
     public init() {
