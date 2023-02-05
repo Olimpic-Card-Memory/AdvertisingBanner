@@ -33,7 +33,6 @@ final public class AdvertisingFeature {
     }
     
     public func executeFirebase(completion: @escaping Closure<PresentScreen>) {
-        subscribeClose()
         let requestData = RequestDataAdvertising()
         firestoreService.get(requestData: requestData) { result in
             switch result {
@@ -44,6 +43,7 @@ final public class AdvertisingFeature {
                         self.advertisingViewModel = advertisingBuilder.viewModel
                         self.advertisingViewModel?.state = .createViewProperties(urlAdvertising)
                         completion(.advertising(advertisingBuilder.view))
+                        self.subscribeClose()
                     }
                 case .error(let error):
                     DispatchQueue.main.async {
@@ -55,7 +55,6 @@ final public class AdvertisingFeature {
     }
     
     public func executeAppsFlyer(completion: @escaping Closure<PresentScreen>) {
-        subscribeClose()
         appsFlyerService.installCompletion = { install in
             switch install {
                 case .organic:
@@ -68,6 +67,7 @@ final public class AdvertisingFeature {
                         self.advertisingViewModel = advertisingBuilder.viewModel
                         self.advertisingViewModel?.state = .createViewProperties("https://www.sports.ru/")
                         completion(.advertising(advertisingBuilder.view))
+                        self.subscribeClose()
                     }
                 default:
                     break
