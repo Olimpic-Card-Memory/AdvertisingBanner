@@ -21,17 +21,8 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     }
     public var viewProperties: ViewProperties?
     
-    // MARK: - private properties -
-    private var anyCancel: Set<AnyCancellable> = []
-    
     //MARK: - Outlets
     @IBOutlet weak private var webView: WKWebView!
-    
-    //MARK: - LifeCycle
-    override public func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
     
     public func update(with viewProperties: ViewProperties?) {
         self.viewProperties = viewProperties
@@ -65,12 +56,9 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     }
     
     @IBAction func closeButton(button: UIButton){
-        self.viewProperties?.closeAction.send(true)
-        self.viewProperties?.closeAction.sink(receiveValue: { isClose in
-            guard isClose else { return }
-            self.dismiss(animated: true)
-        })
-        .store(in: &anyCancel)
+        self.dismiss(animated: true){
+            self.viewProperties?.closeAction.send(true)
+        }
     }
     
     public init() {

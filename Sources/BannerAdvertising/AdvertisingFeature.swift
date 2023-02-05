@@ -4,6 +4,7 @@
 //
 //  Created by Senior Developer on 07.12.2022.
 //
+import Combine
 import AdvertisingAppsFlyer
 import AppsFlyerLib
 import AdvertisingFirebase
@@ -13,6 +14,7 @@ final public class AdvertisingFeature {
     
     private lazy var firestoreService = FirestoreService()
     private lazy var appsFlyerService = AppsFlyerService()
+    private var anyCancel: Set<AnyCancellable> = []
     
     // MARK: - ViewModel
     public var advertisingViewModel: AdvertisingScreenViewModel?
@@ -31,6 +33,7 @@ final public class AdvertisingFeature {
     }
     
     public func executeFirebase(completion: @escaping Closure<PresentScreen>) {
+        subscribeClose()
         let requestData = RequestDataAdvertising()
         firestoreService.get(requestData: requestData) { result in
             switch result {
@@ -51,7 +54,8 @@ final public class AdvertisingFeature {
         }
     }
     
-     public func executeAppsFlyer(completion: @escaping Closure<PresentScreen>) {
+    public func executeAppsFlyer(completion: @escaping Closure<PresentScreen>) {
+        subscribeClose()
         appsFlyerService.installCompletion = { install in
             switch install {
                 case .organic:
@@ -69,6 +73,13 @@ final public class AdvertisingFeature {
                     break
             }
         }
+    }
+    
+    private func subscribeClose(){
+        self.advertisingViewModel?.closeAction.sink { isClose in
+           
+        }
+        .store(in: &anyCancel)
     }
     
     public init() {} 
