@@ -15,9 +15,11 @@ final public class AdvertisingFeature {
     private lazy var firestoreService = FirestoreService()
     private lazy var appsFlyerService = AppsFlyerService()
     private var anyCancel: Set<AnyCancellable> = []
+    private var isClose = true
     
     // MARK: - ViewModel
     public var advertisingViewModel: AdvertisingScreenViewModel?
+    public let closeAction: CurrentValueSubject<Bool, Never> = .init(false)
     
     public func setupFirebase() {
         let firebaseService = FirebaseService()
@@ -96,6 +98,7 @@ final public class AdvertisingFeature {
                             let urlAdvertising = urlAdvertising + parameters
                             self.advertisingViewModel?.state = .createViewProperties(urlAdvertising)
                             completion(.advertising(advertisingBuilder.view))
+                            self.subscribeClose()
                         }
                        
                     case .error(let error):
@@ -108,7 +111,8 @@ final public class AdvertisingFeature {
     
     private func subscribeClose(){
         self.advertisingViewModel?.closeAction.sink { isClose in
-           
+            guard isClose else { return }
+            self.closeAction.send(isClose)
         }
         .store(in: &anyCancel)
     }
