@@ -54,6 +54,19 @@ final public class AdvertisingFeature {
         }
     }
     
+    public func getURLAdvertising(completion: @escaping Closure<AdvertisingURL>) {
+        let requestData = RequestDataAdvertising()
+        firestoreService.get(requestData: requestData) { result in
+            switch result {
+                case .object(let object):
+                    let urlAdvertising = object.urlAdvertising
+                    completion(.advertising(urlAdvertising))
+                case .error(let error):
+                    completion(.error(error?.localizedDescription ?? ""))
+            }
+        }
+    }
+    
     public func executeAppsFlyer(completion: @escaping Closure<PresentScreen>) {
         appsFlyerService.installCompletion = { install in
             switch install {
@@ -107,4 +120,9 @@ public struct RequestDataModel: Decodable {
 public enum PresentScreen {
     case advertising(UIViewController)
     case game
+}
+
+public enum AdvertisingURL {
+    case advertising(String)
+    case error(String)
 }
