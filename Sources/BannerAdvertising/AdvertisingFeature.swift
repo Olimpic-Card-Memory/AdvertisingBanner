@@ -32,7 +32,7 @@ final public class AdvertisingFeature {
         appsFlyerService.start()
     }
     
-    public func executeFirebase(completion: @escaping Closure<PresentScreen>) {
+    private func executeFirebase(completion: @escaping Closure<PresentScreen>) {
         let requestData = RequestDataAdvertising()
         firestoreService.get(requestData: requestData) { result in
             switch result {
@@ -54,7 +54,7 @@ final public class AdvertisingFeature {
         }
     }
     
-    public func getURLAdvertising(completion: @escaping Closure<AdvertisingURL>) {
+    private func getURLAdvertising(completion: @escaping Closure<AdvertisingURL>) {
         let requestData = RequestDataAdvertising()
         firestoreService.get(requestData: requestData) { result in
             switch result {
@@ -67,23 +67,41 @@ final public class AdvertisingFeature {
         }
     }
     
-    public func executeAppsFlyer(completion: @escaping Closure<PresentScreen>) {
+    private func executeAppsFlyer(completion: @escaping Closure<String?>) {
         appsFlyerService.installCompletion = { install in
             switch install {
                 case .organic:
-                    DispatchQueue.main.async {
-                        completion(.game)
-                    }
-                case .nonOrganic:
-                    DispatchQueue.main.async {
-                        let advertisingBuilder = AdvertisingScreenViewControllerBuilder.create()
-                        self.advertisingViewModel = advertisingBuilder.viewModel
-                        self.advertisingViewModel?.state = .createViewProperties("https://www.sports.ru/")
-                        completion(.advertising(advertisingBuilder.view))
-                        self.subscribeClose()
-                    }
+                    completion(nil)
+                case .nonOrganic(let parameters):
+                    completion(parameters)
                 default:
-                    break
+                    completion(nil)
+            }
+        }
+    }
+    
+    public func presentAdvertising(completion: @escaping Closure<PresentScreen>){
+        self.executeAppsFlyer { [weak self] parameters in
+            guard let self = self else { return }
+            guard let parameters = parameters else {
+                completion(.game)
+                return
+            }
+            self.getURLAdvertising { advertisingURL in
+                switch advertisingURL {
+                    case .advertising(let urlAdvertising):
+                        DispatchQueue.main.async {
+                            let advertisingBuilder = AdvertisingScreenViewControllerBuilder.create()
+                            self.advertisingViewModel = advertisingBuilder.viewModel
+                            let urlAdvertising = urlAdvertising + parameters
+                            self.advertisingViewModel?.state = .createViewProperties(urlAdvertising)
+                            completion(.advertising(advertisingBuilder.view))
+                        }
+                       
+                    case .error(let error):
+                        print(error)
+                        completion(.game)
+                }
             }
         }
     }
@@ -126,3 +144,4 @@ public enum AdvertisingURL {
     case advertising(String)
     case error(String)
 }
+
