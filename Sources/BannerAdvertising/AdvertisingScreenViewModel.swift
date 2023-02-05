@@ -12,9 +12,12 @@ final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewCo
     
     var viewProperties: AdvertisingScreenViewController.ViewProperties?
     
+    // MARK: - public properties -
+    public let closeAction: CurrentValueSubject<Bool, Never> = .init(false)
+    
     // MARK: - private properties -
     private let advertisingWebViewDelegate: AdvertisingWebViewDelegate
-    private let closeAction: CurrentValueSubject<Bool, Never> = .init(false)
+   
     
     init(
         advertisingWebViewDelegate: AdvertisingWebViewDelegate
@@ -47,7 +50,7 @@ final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewCo
                     urlString: urlString,
                     tapForward: tapForward,
                     tapBack: tapBack,
-                    close: closeAction
+                    closeAction: closeAction
                 )
                 create?(viewProperties)
             case .close(let isClose):

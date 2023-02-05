@@ -17,7 +17,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         let urlString: String
         let tapForward: ClosureEmpty
         let tapBack: ClosureEmpty
-        let close: CurrentValueSubject<Bool, Never>
+        let closeAction: CurrentValueSubject<Bool, Never>
     }
     public var viewProperties: ViewProperties?
     
@@ -65,8 +65,8 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     }
     
     @IBAction func closeButton(button: UIButton){
-        self.viewProperties?.close.send(true)
-        self.viewProperties?.close.sink(receiveValue: { isClose in
+        self.viewProperties?.closeAction.send(true)
+        self.viewProperties?.closeAction.sink(receiveValue: { isClose in
             guard isClose else { return }
             self.dismiss(animated: true)
         })
