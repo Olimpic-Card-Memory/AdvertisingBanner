@@ -34,6 +34,41 @@ final public class AdvertisingFeature {
         appsFlyerService.start()
     }
     
+    public func createAdvertisingScreenVC(urlAdvertising: String, parameters: String = "") -> AdvertisingScreenViewController {
+        let advertisingBuilder = AdvertisingScreenViewControllerBuilder.create()
+        self.advertisingViewModel = advertisingBuilder.viewModel
+        let urlAdvertising = urlAdvertising + parameters
+        self.advertisingViewModel?.state = .createViewProperties(urlAdvertising)
+        return advertisingBuilder.view
+    }
+    
+    public func presentAdvertising(completion: @escaping Closure<PresentScreen>){
+        self.executeAppsFlyer { [weak self] parameters in
+            guard let self = self else { return }
+            guard let parameters = parameters else {
+                completion(.game)
+                return
+            }
+            self.getURLAdvertising { advertisingURL in
+                switch advertisingURL {
+                    case .advertising(let urlAdvertising):
+                        DispatchQueue.main.async {
+                            let createAdvertisingScreenVC = self.createAdvertisingScreenVC(
+                                urlAdvertising:  urlAdvertising,
+                                parameters: parameters
+                            )
+                            completion(.advertising(createAdvertisingScreenVC))
+                            self.subscribeClose()
+                        }
+                        
+                    case .error(let error):
+                        print(error)
+                        completion(.game)
+                }
+            }
+        }
+    }
+    
     private func executeFirebase(completion: @escaping Closure<PresentScreen>) {
         let requestData = RequestDataAdvertising()
         firestoreService.get(requestData: requestData) { result in
@@ -41,10 +76,10 @@ final public class AdvertisingFeature {
                 case .object(let object):
                     DispatchQueue.main.async {
                         let urlAdvertising = object.urlAdvertising
-                        let advertisingBuilder = AdvertisingScreenViewControllerBuilder.create()
-                        self.advertisingViewModel = advertisingBuilder.viewModel
-                        self.advertisingViewModel?.state = .createViewProperties(urlAdvertising)
-                        completion(.advertising(advertisingBuilder.view))
+                        let createAdvertisingScreenVC = self.createAdvertisingScreenVC(
+                            urlAdvertising:  urlAdvertising
+                        )
+                        completion(.advertising(createAdvertisingScreenVC))
                         self.subscribeClose()
                     }
                 case .error(let error):
@@ -71,40 +106,12 @@ final public class AdvertisingFeature {
     
     private func executeAppsFlyer(completion: @escaping Closure<String?>) {
         appsFlyerService.installCompletion = { install in
+            guard let install = install else { return }
             switch install {
+                case .nonOrganic:
+                    completion(nil)
                 case .organic:
                     completion(nil)
-                case .nonOrganic(let parameters):
-                    completion(parameters)
-                default:
-                    completion(nil)
-            }
-        }
-    }
-    
-    public func presentAdvertising(completion: @escaping Closure<PresentScreen>){
-        self.executeAppsFlyer { [weak self] parameters in
-            guard let self = self else { return }
-            guard let parameters = parameters else {
-                completion(.game)
-                return
-            }
-            self.getURLAdvertising { advertisingURL in
-                switch advertisingURL {
-                    case .advertising(let urlAdvertising):
-                        DispatchQueue.main.async {
-                            let advertisingBuilder = AdvertisingScreenViewControllerBuilder.create()
-                            self.advertisingViewModel = advertisingBuilder.viewModel
-                            let urlAdvertising = urlAdvertising + parameters
-                            self.advertisingViewModel?.state = .createViewProperties(urlAdvertising)
-                            completion(.advertising(advertisingBuilder.view))
-                            self.subscribeClose()
-                        }
-                       
-                    case .error(let error):
-                        print(error)
-                        completion(.game)
-                }
             }
         }
     }
