@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AdvertisingScreenViewController" customModule="BannerAdvertising">
             <connections>
+                <outlet property="urlLabel" destination="tU5-No-198" id="UNL-HX-ddH"/>
                 <outlet property="view" destination="kns-3F-tW8" id="vD6-1t-ccu"/>
                 <outlet property="webView" destination="AL5-9U-Hfm" id="9NY-yK-EVQ"/>
             </connections>
@@ -27,7 +28,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="814"/>
                             <subviews>
                                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrE-9A-Tv2">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <textAttributes key="titleTextAttributes">
                                         <color key="textColor" systemColor="linkColor"/>
@@ -46,8 +47,14 @@
                                         </navigationItem>
                                     </items>
                                 </navigationBar>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tU5-No-198">
+                                    <rect key="frame" x="0.0" y="85" width="414" height="0.0"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AL5-9U-Hfm">
-                                    <rect key="frame" x="0.0" y="44" width="414" height="726"/>
+                                    <rect key="frame" x="0.0" y="85" width="414" height="685"/>
                                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <wkWebViewConfiguration key="configuration">
                                         <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>

@@ -23,23 +23,26 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     
     //MARK: - Outlets
     @IBOutlet weak private var webView: WKWebView!
+    @IBOutlet weak private var urlLabel: UILabel!
     
     public func update(with viewProperties: ViewProperties?) {
         self.viewProperties = viewProperties
-        setupURL()
+        setupWebViewURL()
+        setUrlLabel()
     }
     
     public func create(with viewProperties: ViewProperties?) {
         self.viewProperties = viewProperties
         setup()
-        setupURL()
+        setupWebViewURL()
+        setUrlLabel()
     }
     
     private func setup() {
         self.webView.navigationDelegate = viewProperties?.delegate
     }
     
-    private func setupURL() {
+    private func setupWebViewURL() {
         guard let urlString = viewProperties?.urlString else { return }
         guard let url = URL(string: urlString) else { return }
         let request = URLRequest(url: url)
@@ -57,6 +60,19 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     
     @IBAction func closeButton(button: UIButton){
         self.viewProperties?.closeAction.send(true)
+    }
+    
+    private func setUrlLabel(){
+        #if DEBUG
+        guard let urlString = viewProperties?.urlString else {
+            urlLabel.isHidden = true
+            return
+        }
+        urlLabel.text = urlString
+        urlLabel.isHidden = false
+        #else
+        urlLabel.isHidden = true
+        #endif
     }
     
     public init() {
