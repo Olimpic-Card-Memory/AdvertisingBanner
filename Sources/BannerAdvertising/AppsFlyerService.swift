@@ -2,7 +2,7 @@
 //  AppsFlyerService.swift
 //  
 //
-//  Created by Senior Developer on 23.01.2023.
+//  Created by Developer on 23.01.2023.
 //
 import AppsFlyerLib
 import AdvertisingAppsFlyer

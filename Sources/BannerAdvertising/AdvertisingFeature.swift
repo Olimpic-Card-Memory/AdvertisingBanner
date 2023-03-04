@@ -2,7 +2,7 @@
 //  AdvertisingFeature.swift
 //  
 //
-//  Created by Senior Developer on 07.12.2022.
+//  Created by Developer on 07.12.2022.
 //
 import Combine
 import AdvertisingAppsFlyer
@@ -97,7 +97,12 @@ final public class AdvertisingFeature {
         firestoreService.get(requestData: requestData) { result in
             switch result {
                 case .object(let object):
-                    guard let requestDataModel = object.first else { return }
+                    guard let requestDataModel = object.first,
+                          requestDataModel.isAdvertising
+                    else {
+                        completion(.error(""))
+                        return
+                    }
                     let urlAdvertising = requestDataModel.urlAdvertising
                     completion(.advertising(urlAdvertising))
                 case .error(let error):
