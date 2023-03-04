@@ -20,15 +20,20 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rpb-X5-E7C">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
+                    <color key="backgroundColor" red="0.074509803920000006" green="0.1215686275" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PE4-8y-yLw" userLabel="MainView">
                     <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RvC-Yh-2Xl" userLabel="MainStackView">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="814"/>
                             <subviews>
-                                <navigationBar contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="BrE-9A-Tv2">
+                                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrE-9A-Tv2">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <color key="backgroundColor" red="0.074509803920000006" green="0.1215686275" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="barTintColor" red="0.074509803920000006" green="0.1215686275" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <textAttributes key="titleTextAttributes">
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </textAttributes>
@@ -98,9 +103,13 @@
             <color key="backgroundColor" red="0.074509803920000006" green="0.1215686275" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="Pmi-a7-4oC" firstAttribute="bottom" secondItem="PE4-8y-yLw" secondAttribute="bottom" id="6x2-l3-sT9"/>
+                <constraint firstItem="Rpb-X5-E7C" firstAttribute="leading" secondItem="Pmi-a7-4oC" secondAttribute="leading" id="HsY-uz-RBG"/>
+                <constraint firstItem="Pmi-a7-4oC" firstAttribute="trailing" secondItem="Rpb-X5-E7C" secondAttribute="trailing" id="JQ5-JP-8sc"/>
                 <constraint firstItem="PE4-8y-yLw" firstAttribute="leading" secondItem="kns-3F-tW8" secondAttribute="leading" id="KIa-ig-V7D"/>
+                <constraint firstItem="PE4-8y-yLw" firstAttribute="top" secondItem="Rpb-X5-E7C" secondAttribute="bottom" id="LV6-7n-wEW"/>
                 <constraint firstAttribute="trailing" secondItem="PE4-8y-yLw" secondAttribute="trailing" id="W8I-Yf-lNW"/>
                 <constraint firstItem="PE4-8y-yLw" firstAttribute="top" secondItem="Pmi-a7-4oC" secondAttribute="top" id="WbB-78-zgO"/>
+                <constraint firstItem="Rpb-X5-E7C" firstAttribute="top" secondItem="kns-3F-tW8" secondAttribute="top" id="eUa-h9-lak"/>
             </constraints>
             <point key="canvasLocation" x="-730.43478260869574" y="26.785714285714285"/>
         </view>
