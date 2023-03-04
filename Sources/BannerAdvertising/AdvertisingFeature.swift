@@ -142,9 +142,15 @@ final public class RequestDataAdvertising: RequestData {
 public struct RequestDataModel: Decodable {
     
     public let urlAdvertising: String
+    public let isAdvertising: Bool
+
     
-    public init(urlAdvertising: String) {
+    public init(
+        urlAdvertising: String,
+        isAdvertising: Bool
+    ) {
         self.urlAdvertising = urlAdvertising
+        self.isAdvertising = isAdvertising
     }
 }
 
