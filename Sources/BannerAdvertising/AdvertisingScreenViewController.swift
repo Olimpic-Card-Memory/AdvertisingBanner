@@ -17,6 +17,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         let urlString: String
         let tapForward: ClosureEmpty
         let tapBack: ClosureEmpty
+        let updatePage: ClosureEmpty
         let closeAction: CurrentValueSubject<Bool, Never>
     }
     public var viewProperties: ViewProperties?
@@ -56,6 +57,10 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     
     @IBAction func tapBackButton(button: UIButton){
         self.viewProperties?.tapBack()
+    }
+    
+    @IBAction func updatePageButton(button: UIButton){
+        self.viewProperties?.updatePage()
     }
     
     @IBAction func closeButton(button: UIButton){

@@ -45,11 +45,15 @@ final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewCo
                 let tapBack: ClosureEmpty = {
                     self.advertisingWebViewDelegate.webView?.goBack()
                 }
+                let updatePage: ClosureEmpty = {
+                    self.advertisingWebViewDelegate.webView?.reload()
+                }
                 viewProperties = AdvertisingScreenViewController.ViewProperties(
                     delegate: advertisingWebViewDelegate,
                     urlString: urlString,
                     tapForward: tapForward,
                     tapBack: tapBack,
+                    updatePage: updatePage,
                     closeAction: closeAction
                 )
                 create?(viewProperties)
