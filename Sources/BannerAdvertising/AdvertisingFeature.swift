@@ -7,7 +7,7 @@
 import Combine
 import AdvertisingAppsFlyer
 import AppsFlyerLib
-import AdvertisingFirebase
+import FirebaseBackend
 import UIKit
 
 final public class AdvertisingFeature {
@@ -74,8 +74,9 @@ final public class AdvertisingFeature {
         firestoreService.get(requestData: requestData) { result in
             switch result {
                 case .object(let object):
+                    guard let requestDataModel = object.first else { return }
                     DispatchQueue.main.async {
-                        let urlAdvertising = object.urlAdvertising
+                        let urlAdvertising = requestDataModel.urlAdvertising
                         let createAdvertisingScreenVC = self.createAdvertisingScreenVC(
                             urlAdvertising:  urlAdvertising
                         )
@@ -96,7 +97,8 @@ final public class AdvertisingFeature {
         firestoreService.get(requestData: requestData) { result in
             switch result {
                 case .object(let object):
-                    let urlAdvertising = object.urlAdvertising
+                    guard let requestDataModel = object.first else { return }
+                    let urlAdvertising = requestDataModel.urlAdvertising
                     completion(.advertising(urlAdvertising))
                 case .error(let error):
                     completion(.error(error?.localizedDescription ?? ""))
@@ -132,7 +134,7 @@ final public class RequestDataAdvertising: RequestData {
     public typealias ReturnDecodable = RequestDataModel
     
     public var collectionID: String = "Advertising"
-    public var documentID  : String = "Zx8Fl8nussho5xBjXaHv"
+    public var documentID  : String? = "Zx8Fl8nussho5xBjXaHv"
     
     public init() {}
 }

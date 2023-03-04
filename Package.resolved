@@ -19,15 +19,6 @@
       }
     },
     {
-      "identity" : "advertisingfirebase",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/it-senior-developer/AdvertisingFirebase",
-      "state" : {
-        "branch" : "master",
-        "revision" : "eda58a94207ad08e37fdb2534aa867650f7bb3cc"
-      }
-    },
-    {
       "identity" : "appsflyerframework",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AppsFlyerSDK/AppsFlyerFramework.git",
@@ -52,6 +43,15 @@
       "state" : {
         "branch" : "master",
         "revision" : "6faa9c3e1f9c3eadab5c5c57318e792332192777"
+      }
+    },
+    {
+      "identity" : "firebasebackend",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/it-senior-developer/FirebaseBackend",
+      "state" : {
+        "branch" : "master",
+        "revision" : "4678596ab18c01d30d464012fbe86e5dc87e6323"
       }
     },
     {

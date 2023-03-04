@@ -17,7 +17,7 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/it-senior-developer/VVMLibrary", branch: "master"),
-        .package(url: "https://github.com/it-senior-developer/AdvertisingFirebase", branch: "master"),
+        .package(url: "https://github.com/it-senior-developer/FirebaseBackend", branch: "master"),
         .package(url: "https://github.com/it-senior-developer/AdvertisingAppsFlyer", branch: "master"),
     ],
     targets: [
@@ -27,7 +27,7 @@ let package = Package(
             name: "BannerAdvertising",
             dependencies: [
                 .product(name: "VVMLibrary", package: "VVMLibrary"),
-                .product(name: "AdvertisingFirebase", package: "AdvertisingFirebase"),
+                .product(name: "FirebaseBackend", package: "FirebaseBackend"),
                 .product(name: "AdvertisingAppsFlyer", package: "AdvertisingAppsFlyer"),
             ]),
     ]
