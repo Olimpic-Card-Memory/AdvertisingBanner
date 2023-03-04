@@ -108,8 +108,8 @@ final public class AdvertisingFeature {
         appsFlyerService.installCompletion = { install in
             guard let install = install else { return }
             switch install {
-                case .nonOrganic:
-                    completion(nil)
+                case .nonOrganic(let parameters):
+                    completion(parameters)
                 case .organic:
                     completion(nil)
             }
