@@ -27,7 +27,7 @@ final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewCo
     
     //MARK: - Main state view model
     public enum State {
-        case createViewProperties(String)
+        case createViewProperties(RequestDataModel)
         case close(Bool)
     }
     
@@ -38,7 +38,7 @@ final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewCo
     private func stateModel() {
         guard let state = self.state else { return }
         switch state {
-            case .createViewProperties(let urlString):
+            case .createViewProperties(let requestDataModel):
                 let tapForward: ClosureEmpty = {
                     self.advertisingWebViewDelegate.webView?.goForward()
                 }
@@ -50,7 +50,7 @@ final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewCo
                 }
                 viewProperties = AdvertisingScreenViewController.ViewProperties(
                     delegate: advertisingWebViewDelegate,
-                    urlString: urlString,
+                    requestDataModel: requestDataModel,
                     tapForward: tapForward,
                     tapBack: tapBack,
                     updatePage: updatePage,

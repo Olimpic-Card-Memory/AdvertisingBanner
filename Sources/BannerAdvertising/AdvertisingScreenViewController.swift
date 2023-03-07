@@ -14,7 +14,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     //MARK: - Main ViewProperties
     public struct ViewProperties {
         let delegate : AdvertisingWebViewDelegate
-        let urlString: String
+        let requestDataModel: RequestDataModel
         let tapForward: ClosureEmpty
         let tapBack: ClosureEmpty
         let updatePage: ClosureEmpty
@@ -25,11 +25,13 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     //MARK: - Outlets
     @IBOutlet weak private var webView: WKWebView!
     @IBOutlet weak private var urlLabel: UILabel!
+    @IBOutlet weak private var advertisingNavigationBar: UINavigationBar!
     
     public func update(with viewProperties: ViewProperties?) {
         self.viewProperties = viewProperties
         setupWebViewURL()
         setUrlLabel()
+        setAdvertisingTitleLabel()
     }
     
     public func create(with viewProperties: ViewProperties?) {
@@ -37,6 +39,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         setup()
         setupWebViewURL()
         setUrlLabel()
+        setAdvertisingTitleLabel()
     }
     
     private func setup() {
@@ -44,7 +47,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     }
     
     private func setupWebViewURL() {
-        guard let urlString = viewProperties?.urlString else { return }
+        guard let urlString = viewProperties?.requestDataModel.urlAdvertising else { return }
         guard let url = URL(string: urlString) else { return }
         let request = URLRequest(url: url)
         webView.load(request)
@@ -67,9 +70,16 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         self.viewProperties?.closeAction.send(true)
     }
     
+    private func setAdvertisingTitleLabel(){
+        guard let advertisingTitle = viewProperties?.requestDataModel.advertisingTitle else {
+            return
+        }
+        self.title = advertisingTitle
+    }
+    
     private func setUrlLabel(){
         #if DEBUG
-        guard let urlString = viewProperties?.urlString else {
+        guard let urlString = viewProperties?.requestDataModel.urlAdvertising else {
             urlLabel.isHidden = true
             return
         }

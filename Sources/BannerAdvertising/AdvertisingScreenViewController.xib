@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AdvertisingScreenViewController" customModule="BannerAdvertising">
             <connections>
+                <outlet property="advertisingNavigationBar" destination="BrE-9A-Tv2" id="roC-BQ-da9"/>
                 <outlet property="urlLabel" destination="tU5-No-198" id="UNL-HX-ddH"/>
                 <outlet property="view" destination="kns-3F-tW8" id="vD6-1t-ccu"/>
                 <outlet property="webView" destination="AL5-9U-Hfm" id="9NY-yK-EVQ"/>

@@ -34,11 +34,12 @@ final public class AdvertisingFeature {
         appsFlyerService.start()
     }
     
-    public func createAdvertisingScreenVC(urlAdvertising: String, parameters: String = "") -> AdvertisingScreenViewController {
+    public func createAdvertisingScreenVC(
+        with requestDataModel: RequestDataModel
+    ) -> AdvertisingScreenViewController {
         let advertisingBuilder = AdvertisingScreenViewControllerBuilder.create()
         self.advertisingViewModel = advertisingBuilder.viewModel
-        let urlAdvertising = urlAdvertising + parameters
-        self.advertisingViewModel?.state = .createViewProperties(urlAdvertising)
+        self.advertisingViewModel?.state = .createViewProperties(requestDataModel)
         return advertisingBuilder.view
     }
     
@@ -51,12 +52,10 @@ final public class AdvertisingFeature {
             }
             self.getURLAdvertising { advertisingURL in
                 switch advertisingURL {
-                    case .advertising(let urlAdvertising):
+                    case .advertising(var requestDataModel):
                         DispatchQueue.main.async {
-                            let createAdvertisingScreenVC = self.createAdvertisingScreenVC(
-                                urlAdvertising:  urlAdvertising,
-                                parameters: parameters
-                            )
+                            requestDataModel.urlAdvertising += parameters
+                            let createAdvertisingScreenVC = self.createAdvertisingScreenVC(with: requestDataModel)
                             completion(.advertising(createAdvertisingScreenVC))
                             self.subscribeClose()
                         }
@@ -76,11 +75,11 @@ final public class AdvertisingFeature {
                 case .object(let object):
                     guard let requestDataModel = object.first else { return }
                     DispatchQueue.main.async {
-                        let urlAdvertising = requestDataModel.urlAdvertising
                         let createAdvertisingScreenVC = self.createAdvertisingScreenVC(
-                            urlAdvertising:  urlAdvertising
+                            with: requestDataModel
                         )
                         completion(.advertising(createAdvertisingScreenVC))
+                        self.isClose = requestDataModel.isClose
                         self.subscribeClose()
                     }
                 case .error(let error):
@@ -97,14 +96,12 @@ final public class AdvertisingFeature {
         firestoreService.get(requestData: requestData) { result in
             switch result {
                 case .object(let object):
-                    guard let requestDataModel = object.first,
-                          requestDataModel.isAdvertising
+                    guard let requestDataModel = object.first
                     else {
                         completion(.error(""))
                         return
                     }
-                    let urlAdvertising = requestDataModel.urlAdvertising
-                    completion(.advertising(urlAdvertising))
+                    completion(.advertising(requestDataModel))
                 case .error(let error):
                     completion(.error(error?.localizedDescription ?? ""))
             }
@@ -125,7 +122,7 @@ final public class AdvertisingFeature {
     
     private func subscribeClose(){
         self.advertisingViewModel?.closeAction.sink { isClose in
-            guard isClose else { return }
+            guard isClose, self.isClose else { return }
             self.closeAction.send(isClose)
         }
         .store(in: &anyCancel)
@@ -133,39 +130,3 @@ final public class AdvertisingFeature {
     
     public init() {} 
 }
-
-final public class RequestDataAdvertising: RequestData {
-    
-    public typealias ReturnDecodable = RequestDataModel
-    
-    public var collectionID: String = "Advertising"
-    public var documentID  : String? = "FYGi1cwOd2f1pGOh1pIP"
-    
-    public init() {}
-}
-
-public struct RequestDataModel: Decodable {
-    
-    public let urlAdvertising: String
-    public let isAdvertising: Bool
-
-    
-    public init(
-        urlAdvertising: String,
-        isAdvertising: Bool
-    ) {
-        self.urlAdvertising = urlAdvertising
-        self.isAdvertising = isAdvertising
-    }
-}
-
-public enum PresentScreen {
-    case advertising(UIViewController)
-    case game
-}
-
-public enum AdvertisingURL {
-    case advertising(String)
-    case error(String)
-}
-
