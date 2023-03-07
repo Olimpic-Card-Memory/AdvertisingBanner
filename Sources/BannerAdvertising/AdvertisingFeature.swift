@@ -38,6 +38,7 @@ final public class AdvertisingFeature {
         with requestDataModel: RequestDataModel
     ) -> AdvertisingScreenViewController {
         let advertisingBuilder = AdvertisingScreenViewControllerBuilder.create()
+        self.isClose = requestDataModel.isClose
         self.advertisingViewModel = advertisingBuilder.viewModel
         self.advertisingViewModel?.state = .createViewProperties(requestDataModel)
         return advertisingBuilder.view
@@ -79,7 +80,6 @@ final public class AdvertisingFeature {
                             with: requestDataModel
                         )
                         completion(.advertising(createAdvertisingScreenVC))
-                        self.isClose = requestDataModel.isClose
                         self.subscribeClose()
                     }
                 case .error(let error):
