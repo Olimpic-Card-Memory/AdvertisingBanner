@@ -9,13 +9,13 @@ import Foundation
 
 final public class AdvertisingWebViewDelegate: NSObject, WKNavigationDelegate, WKUIDelegate {
     
-    public var didFinish: ClosureEmpty?
+    public var didFinish: Closure<Bool>?
     public var didCommit: ClosureEmpty?
     public var webView: WKWebView?
     
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.webView = webView
-        didFinish?()
+        didFinish?(true)
     }
     
     public func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {

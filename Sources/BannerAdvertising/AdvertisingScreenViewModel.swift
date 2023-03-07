@@ -53,6 +53,7 @@ final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewCo
                     requestDataModel: requestDataModel,
                     tapForward: tapForward,
                     tapBack: tapBack,
+                    didFinish: self.advertisingWebViewDelegate.didFinish,
                     updatePage: updatePage,
                     closeAction: closeAction
                 )
