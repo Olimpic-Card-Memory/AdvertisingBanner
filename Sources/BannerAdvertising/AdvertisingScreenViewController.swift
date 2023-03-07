@@ -59,7 +59,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     
     private func skeletonLoading(){
         guard let isFinish = self.viewProperties?.isFinish else { return }
-        if isFinish {
+        if !isFinish {
             webView.isSkeletonable = true
             webView.showAnimatedGradientSkeleton()
             webView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .white))
