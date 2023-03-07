@@ -18,7 +18,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         let requestDataModel: RequestDataModel
         let tapForward: ClosureEmpty
         let tapBack: ClosureEmpty
-        let didFinish: CurrentValueSubject<Bool, Never>?
+        var isFinish: Bool
         let updatePage: ClosureEmpty
         let closeAction: CurrentValueSubject<Bool, Never>
     }
@@ -32,7 +32,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     
     public func update(with viewProperties: ViewProperties?) {
         self.viewProperties = viewProperties
-        setupWebViewURL()
+        skeletonLoading()
         setUrlLabel()
         setAdvertisingTitleLabel()
     }
@@ -58,15 +58,14 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     }
     
     private func skeletonLoading(){
-        webView.isSkeletonable = true
-        webView.showAnimatedGradientSkeleton()
-        webView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .white))
-        self.viewProperties?.didFinish?.sink(receiveValue: { [weak self] isFinish in
-            guard let self = self else { return }
-            guard isFinish else { return }
-            self.webView.hideSkeleton()
-        })
-        .store(in: &anyCancel)
+        guard let isFinish = self.viewProperties?.isFinish else { return }
+        if isFinish {
+            webView.isSkeletonable = true
+            webView.showAnimatedGradientSkeleton()
+            webView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .white))
+        } else {
+            webView.hideSkeleton()
+        }
     }
     
     //MARK: - Buttons

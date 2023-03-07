@@ -48,12 +48,16 @@ final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewCo
                 let updatePage: ClosureEmpty = {
                     self.advertisingWebViewDelegate.webView?.reload()
                 }
+                self.advertisingWebViewDelegate.didFinish = { isFinish in
+                    self.viewProperties?.isFinish = isFinish
+                    self.update?(self.viewProperties)
+                }
                 viewProperties = AdvertisingScreenViewController.ViewProperties(
                     delegate: advertisingWebViewDelegate,
                     requestDataModel: requestDataModel,
                     tapForward: tapForward,
                     tapBack: tapBack,
-                    didFinish: self.advertisingWebViewDelegate.didFinish,
+                    isFinish: false,
                     updatePage: updatePage,
                     closeAction: closeAction
                 )
