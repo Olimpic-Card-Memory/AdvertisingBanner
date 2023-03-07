@@ -18,7 +18,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         let requestDataModel: RequestDataModel
         let tapForward: ClosureEmpty
         let tapBack: ClosureEmpty
-        var didFinish: Closure<Bool>?
+        let didFinish: CurrentValueSubject<Bool, Never>?
         let updatePage: ClosureEmpty
         let closeAction: CurrentValueSubject<Bool, Never>
     }
@@ -61,11 +61,12 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         webView.isSkeletonable = true
         webView.showAnimatedGradientSkeleton()
         webView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .white))
-        self.viewProperties?.didFinish = { [weak self] isFinish in
+        self.viewProperties?.didFinish?.sink(receiveValue: { [weak self] isFinish in
             guard let self = self else { return }
             guard isFinish else { return }
             self.webView.hideSkeleton()
-        }
+        })
+        .store(in: &anyCancel)
     }
     
     //MARK: - Buttons
