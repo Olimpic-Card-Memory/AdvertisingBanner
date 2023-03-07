@@ -90,7 +90,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         guard let advertisingTitle = viewProperties?.requestDataModel.advertisingTitle else {
             return
         }
-        navigationItem.title = advertisingTitle
+        advertisingNavigationBar.largeContentTitle = advertisingTitle
     }
     
     private func setUrlLabel(){
