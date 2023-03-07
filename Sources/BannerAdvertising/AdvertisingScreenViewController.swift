@@ -4,6 +4,7 @@
 //
 //  Copyright © 2022 Developer. All rights reserved.
 //
+import SkeletonView
 import Combine
 import UIKit
 import WebKit
@@ -40,6 +41,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         setupWebViewURL()
         setUrlLabel()
         setAdvertisingTitleLabel()
+        skeletonLoading()
     }
     
     private func setup() {
@@ -51,6 +53,12 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         guard let url = URL(string: urlString) else { return }
         let request = URLRequest(url: url)
         webView.load(request)
+    }
+    
+    private func skeletonLoading(){
+        webView.isSkeletonable = true
+        webView.showAnimatedGradientSkeleton()
+        webView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .white))
     }
     
     //MARK: - Buttons
