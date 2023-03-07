@@ -43,7 +43,7 @@
                                         <color key="textColor" systemColor="tintColor"/>
                                     </textAttributes>
                                     <items>
-                                        <navigationItem title="Advertising" id="bf5-rt-sxe">
+                                        <navigationItem title="Advertising" largeTitleDisplayMode="always" style="editor" id="bf5-rt-sxe">
                                             <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward" catalog="system" id="gPl-Db-OLw">
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
