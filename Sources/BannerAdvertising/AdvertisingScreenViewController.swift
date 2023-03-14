@@ -61,6 +61,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     private func skeletonLoading(){
         guard let isFinish = self.viewProperties?.isFinish else { return }
         if !isFinish {
+            activityIndicatorView.isHidden = false
             activityIndicatorView.startAnimating()
             webView.isSkeletonable = true
             webView.showAnimatedGradientSkeleton()
@@ -69,6 +70,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         } else {
             webView.hideSkeleton()
             activityIndicatorView.stopAnimating()
+            activityIndicatorView.isHidden = true
         }
     }
     
