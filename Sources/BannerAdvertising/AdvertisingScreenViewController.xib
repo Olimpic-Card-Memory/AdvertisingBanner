@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AdvertisingScreenViewController" customModule="BannerAdvertising">
             <connections>
+                <outlet property="activityIndicatorView" destination="a8w-4h-5Ei" id="SYa-wH-SuX"/>
                 <outlet property="advertisingNavigationBar" destination="BrE-9A-Tv2" id="roC-BQ-da9"/>
                 <outlet property="urlLabel" destination="tU5-No-198" id="UNL-HX-ddH"/>
                 <outlet property="view" destination="kns-3F-tW8" id="vD6-1t-ccu"/>
@@ -33,7 +34,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="814"/>
                             <subviews>
                                 <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BrE-9A-Tv2">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="388.5"/>
                                     <color key="backgroundColor" red="0.074509803920000006" green="0.1215686275" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="barTintColor" red="0.074509803920000006" green="0.1215686275" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <textAttributes key="titleTextAttributes">
@@ -60,13 +61,17 @@
                                     </items>
                                 </navigationBar>
                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tU5-No-198">
-                                    <rect key="frame" x="0.0" y="44" width="414" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="388.5" width="414" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="a8w-4h-5Ei">
+                                    <rect key="frame" x="0.0" y="388.5" width="414" height="37"/>
+                                    <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </activityIndicatorView>
                                 <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AL5-9U-Hfm">
-                                    <rect key="frame" x="0.0" y="44" width="414" height="770"/>
+                                    <rect key="frame" x="0.0" y="425.5" width="414" height="388.5"/>
                                     <color key="backgroundColor" red="0.074509803920000006" green="0.1215686275" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <wkWebViewConfiguration key="configuration">
                                         <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -93,6 +98,10 @@
                                 </toolbar>
                             </subviews>
                             <color key="backgroundColor" red="0.074509803920000006" green="0.1215686275" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="a8w-4h-5Ei" firstAttribute="centerX" secondItem="RvC-Yh-2Xl" secondAttribute="centerX" id="B7m-kJ-HwV"/>
+                                <constraint firstItem="a8w-4h-5Ei" firstAttribute="centerY" secondItem="RvC-Yh-2Xl" secondAttribute="centerY" id="oY5-07-Rdb"/>
+                            </constraints>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" red="0.074509803921568626" green="0.12156862745098039" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>

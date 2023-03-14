@@ -29,6 +29,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     @IBOutlet weak private var webView: WKWebView!
     @IBOutlet weak private var urlLabel: UILabel!
     @IBOutlet weak private var advertisingNavigationBar: UINavigationBar!
+    @IBOutlet weak private var activityIndicatorView: UIActivityIndicatorView!
     
     public func update(with viewProperties: ViewProperties?) {
         self.viewProperties = viewProperties
@@ -60,12 +61,14 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     private func skeletonLoading(){
         guard let isFinish = self.viewProperties?.isFinish else { return }
         if !isFinish {
+            activityIndicatorView.startAnimating()
             webView.isSkeletonable = true
             webView.showAnimatedGradientSkeleton()
             let baseColor = UIColor(named: "baseColor") ?? .blue
             webView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: baseColor))
         } else {
             webView.hideSkeleton()
+            activityIndicatorView.stopAnimating()
         }
     }
     
