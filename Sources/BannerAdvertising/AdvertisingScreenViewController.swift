@@ -21,6 +21,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         var isFinish: Bool
         let updatePage: ClosureEmpty
         let closeAction: CurrentValueSubject<Bool, Never>
+        var isNavBarHidden: Bool
     }
     public var viewProperties: ViewProperties?
     private var anyCancel: Set<AnyCancellable> = []
@@ -36,6 +37,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         skeletonLoading()
         setUrlLabel()
         setAdvertisingTitleLabel()
+        setNavBar()
     }
     
     public func create(with viewProperties: ViewProperties?) {
@@ -45,6 +47,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         setUrlLabel()
         setAdvertisingTitleLabel()
         skeletonLoading()
+        setNavBar()
     }
     
     private func setup() {
@@ -96,6 +99,14 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
             return
         }
         advertisingNavigationBar.items?.first?.title = titleAdvertising
+        advertisingNavigationBar.isHidden = titleAdvertising.isEmpty
+    }
+    
+    private func setNavBar(){
+        guard let isNavBarHidden = viewProperties?.isNavBarHidden else {
+            return
+        }
+        advertisingNavigationBar.isHidden = isNavBarHidden
     }
     
     private func setUrlLabel(){

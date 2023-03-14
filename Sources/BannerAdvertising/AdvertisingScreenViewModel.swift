@@ -30,6 +30,7 @@ final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewCo
         case createViewProperties(RequestDataModel)
         case close(Bool)
         case tapBack
+        case updateViewProperties
     }
     
     public var state: State? {
@@ -60,15 +61,33 @@ final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewCo
                     tapBack: tapBack,
                     isFinish: false,
                     updatePage: updatePage,
-                    closeAction: closeAction
+                    closeAction: closeAction,
+                    isNavBarHidden: false
                 )
                 create?(viewProperties)
-                
+                subscribeDelegate()
             case .close(let isClose):
                 closeAction.send(isClose)
                 
             case .tapBack:
                 self.advertisingWebViewDelegate.webView?.goBack()
+                
+            case .updateViewProperties:
+                update?(viewProperties)
+        }
+    }
+    
+    private func subscribeDelegate(){
+        self.advertisingWebViewDelegate.didFinish = { isFinish in
+            self.viewProperties?.isFinish = isFinish
+            self.state = .updateViewProperties
+        }
+        
+        self.advertisingWebViewDelegate.redirect = { response in
+            guard let urlAdvertising = self.viewProperties?.requestDataModel.urlAdvertising else { return }
+            guard let isNavBarHidden = response.url?.absoluteString.contains(urlAdvertising) else { return }
+            self.viewProperties?.isNavBarHidden = isNavBarHidden
+            self.state = .updateViewProperties
         }
     }
 }

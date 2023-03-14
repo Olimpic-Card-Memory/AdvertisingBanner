@@ -11,6 +11,7 @@ final public class AdvertisingWebViewDelegate: NSObject, WKNavigationDelegate, W
     
     public var didFinish: Closure<Bool>?
     public var didCommit: ClosureEmpty?
+    public var redirect: Closure<HTTPURLResponse>?
     public var webView: WKWebView?
     
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
@@ -25,6 +26,7 @@ final public class AdvertisingWebViewDelegate: NSObject, WKNavigationDelegate, W
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         guard let response = (navigationResponse.response as? HTTPURLResponse) else { return decisionHandler(.allow) }
+        redirect?(response)
         guard response.statusCode == 404 else { return decisionHandler(.allow) }
         decisionHandler(.allow)
     }
