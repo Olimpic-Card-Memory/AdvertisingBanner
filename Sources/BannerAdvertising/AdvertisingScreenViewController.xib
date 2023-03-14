@@ -34,7 +34,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="814"/>
                             <subviews>
                                 <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BrE-9A-Tv2">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="388.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="425.5"/>
                                     <color key="backgroundColor" red="0.074509803920000006" green="0.1215686275" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="barTintColor" red="0.074509803920000006" green="0.1215686275" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <textAttributes key="titleTextAttributes">
@@ -61,15 +61,11 @@
                                     </items>
                                 </navigationBar>
                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tU5-No-198">
-                                    <rect key="frame" x="0.0" y="388.5" width="414" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="425.5" width="414" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="a8w-4h-5Ei">
-                                    <rect key="frame" x="0.0" y="388.5" width="414" height="37"/>
-                                    <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </activityIndicatorView>
                                 <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AL5-9U-Hfm">
                                     <rect key="frame" x="0.0" y="425.5" width="414" height="388.5"/>
                                     <color key="backgroundColor" red="0.074509803920000006" green="0.1215686275" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -98,10 +94,6 @@
                                 </toolbar>
                             </subviews>
                             <color key="backgroundColor" red="0.074509803920000006" green="0.1215686275" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstItem="a8w-4h-5Ei" firstAttribute="centerX" secondItem="RvC-Yh-2Xl" secondAttribute="centerX" id="B7m-kJ-HwV"/>
-                                <constraint firstItem="a8w-4h-5Ei" firstAttribute="centerY" secondItem="RvC-Yh-2Xl" secondAttribute="centerY" id="oY5-07-Rdb"/>
-                            </constraints>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" red="0.074509803921568626" green="0.12156862745098039" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
@@ -112,11 +104,17 @@
                         <constraint firstItem="RvC-Yh-2Xl" firstAttribute="top" secondItem="PE4-8y-yLw" secondAttribute="top" id="k2b-OI-Xw1"/>
                     </constraints>
                 </view>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="a8w-4h-5Ei">
+                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                    <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Pmi-a7-4oC"/>
             <color key="backgroundColor" red="0.074509803920000006" green="0.1215686275" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="Pmi-a7-4oC" firstAttribute="bottom" secondItem="PE4-8y-yLw" secondAttribute="bottom" id="6x2-l3-sT9"/>
+                <constraint firstItem="a8w-4h-5Ei" firstAttribute="centerY" secondItem="kns-3F-tW8" secondAttribute="centerY" id="C8C-fY-Gjg"/>
+                <constraint firstItem="a8w-4h-5Ei" firstAttribute="centerX" secondItem="kns-3F-tW8" secondAttribute="centerX" id="FE6-ji-tbB"/>
                 <constraint firstItem="Rpb-X5-E7C" firstAttribute="leading" secondItem="Pmi-a7-4oC" secondAttribute="leading" id="HsY-uz-RBG"/>
                 <constraint firstItem="Pmi-a7-4oC" firstAttribute="trailing" secondItem="Rpb-X5-E7C" secondAttribute="trailing" id="JQ5-JP-8sc"/>
                 <constraint firstItem="PE4-8y-yLw" firstAttribute="leading" secondItem="kns-3F-tW8" secondAttribute="leading" id="KIa-ig-V7D"/>
