@@ -29,6 +29,7 @@ final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewCo
     public enum State {
         case createViewProperties(RequestDataModel)
         case close(Bool)
+        case tapBack
     }
     
     public var state: State? {
@@ -62,8 +63,12 @@ final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewCo
                     closeAction: closeAction
                 )
                 create?(viewProperties)
+                
             case .close(let isClose):
                 closeAction.send(isClose)
+                
+            case .tapBack:
+                self.advertisingWebViewDelegate.webView?.goBack()
         }
     }
 }

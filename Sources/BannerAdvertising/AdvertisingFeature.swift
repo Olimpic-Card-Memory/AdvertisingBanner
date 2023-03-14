@@ -122,7 +122,10 @@ final public class AdvertisingFeature {
     
     private func subscribeClose(){
         self.advertisingViewModel?.closeAction.sink { isClose in
-            guard isClose, self.isClose else { return }
+            guard isClose, self.isClose else {
+                self.advertisingViewModel?.state = .tapBack
+                return
+            }
             self.closeAction.send(isClose)
         }
         .store(in: &anyCancel)

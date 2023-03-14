@@ -12,8 +12,8 @@ final public class RequestDataAdvertising: RequestData {
     
     public typealias ReturnDecodable = RequestDataModel
     
-    public var collectionID: String = "Advertising"
-    public var documentID  : String? = "FYGi1cwOd2f1pGOh1pIP"
+    public var collectionID: String = "advertising"
+    public var documentID  : String? = "configuration"
     
     public init() {}
 }
@@ -23,17 +23,17 @@ public struct RequestDataModel: Decodable {
     public var urlAdvertising: String
     public let isAdvertising: Bool
     public let isClose: Bool
-    public let advertisingTitle: String
+    public let titleAdvertising: String
     
     public init(
         urlAdvertising: String,
-        advertisingTitle: String,
+        titleAdvertising: String,
         isAdvertising: Bool,
         isClose: Bool
     ) {
         self.urlAdvertising = urlAdvertising
         self.isAdvertising = isAdvertising
-        self.advertisingTitle = advertisingTitle
+        self.titleAdvertising = titleAdvertising
         self.isClose = isClose
     }
 }

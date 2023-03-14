@@ -87,10 +87,10 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     }
     
     private func setAdvertisingTitleLabel(){
-        guard let advertisingTitle = viewProperties?.requestDataModel.advertisingTitle else {
+        guard let titleAdvertising = viewProperties?.requestDataModel.titleAdvertising else {
             return
         }
-        advertisingNavigationBar.items?.first?.title = advertisingTitle
+        advertisingNavigationBar.items?.first?.title = titleAdvertising
     }
     
     private func setUrlLabel(){
