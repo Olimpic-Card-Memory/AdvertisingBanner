@@ -20,21 +20,38 @@ final public class RequestDataAdvertising: RequestData {
 
 public struct RequestDataModel: Decodable {
     
-    public var urlAdvertising: String
+    public var domainAdvertising: String
     public let isAdvertising: Bool
     public let isClose: Bool
     public let titleAdvertising: String
     
     public init(
-        urlAdvertising: String,
+        domainAdvertising: String,
         titleAdvertising: String,
         isAdvertising: Bool,
         isClose: Bool
     ) {
-        self.urlAdvertising = urlAdvertising
+        self.domainAdvertising = domainAdvertising
         self.isAdvertising = isAdvertising
         self.titleAdvertising = titleAdvertising
         self.isClose = isClose
+    }
+}
+
+public struct AdvertisingModel {
+    
+    public let domainAdvertising: String
+    public var urlAdvertising: String
+    public let isAdvertising: Bool
+    public let isClose: Bool
+    public let titleAdvertising: String
+    
+    public init(requestDataModel: RequestDataModel) {
+        self.urlAdvertising = ""
+        self.isAdvertising = requestDataModel.isAdvertising
+        self.titleAdvertising = requestDataModel.titleAdvertising
+        self.isClose = requestDataModel.isClose
+        self.domainAdvertising = requestDataModel.domainAdvertising
     }
 }
 

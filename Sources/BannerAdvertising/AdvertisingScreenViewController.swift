@@ -15,7 +15,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     //MARK: - Main ViewProperties
     public struct ViewProperties {
         let delegate : AdvertisingWebViewDelegate
-        let requestDataModel: RequestDataModel
+        let advertisingModel: AdvertisingModel
         let tapForward: ClosureEmpty
         let tapBack: ClosureEmpty
         var isFinish: Bool
@@ -55,7 +55,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     }
     
     private func setupWebViewURL() {
-        guard let urlString = viewProperties?.requestDataModel.urlAdvertising else { return }
+        guard let urlString = viewProperties?.advertisingModel.urlAdvertising else { return }
         guard let url = URL(string: urlString) else { return }
         let request = URLRequest(url: url)
         webView.load(request)
@@ -95,7 +95,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     }
     
     private func setAdvertisingTitleLabel(){
-        guard let titleAdvertising = viewProperties?.requestDataModel.titleAdvertising else {
+        guard let titleAdvertising = viewProperties?.advertisingModel.titleAdvertising else {
             return
         }
         advertisingNavigationBar.items?.first?.title = titleAdvertising
@@ -111,7 +111,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     
     private func setUrlLabel(){
         #if DEBUG
-        guard let urlString = viewProperties?.requestDataModel.urlAdvertising else {
+        guard let urlString = viewProperties?.advertisingModel.urlAdvertising else {
             urlLabel.isHidden = true
             return
         }

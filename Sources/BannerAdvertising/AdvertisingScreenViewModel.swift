@@ -27,7 +27,7 @@ final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewCo
     
     //MARK: - Main state view model
     public enum State {
-        case createViewProperties(RequestDataModel)
+        case createViewProperties(AdvertisingModel)
         case close(Bool)
         case tapBack
         case updateViewProperties
@@ -40,7 +40,7 @@ final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewCo
     private func stateModel() {
         guard let state = self.state else { return }
         switch state {
-            case .createViewProperties(let requestDataModel):
+            case .createViewProperties(let advertisingModel):
                 let tapForward: ClosureEmpty = {
                     self.advertisingWebViewDelegate.webView?.goForward()
                 }
@@ -56,7 +56,7 @@ final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewCo
                 }
                 viewProperties = AdvertisingScreenViewController.ViewProperties(
                     delegate: advertisingWebViewDelegate,
-                    requestDataModel: requestDataModel,
+                    advertisingModel: advertisingModel,
                     tapForward: tapForward,
                     tapBack: tapBack,
                     isFinish: false,
@@ -84,8 +84,8 @@ final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewCo
         }
         
         self.advertisingWebViewDelegate.redirect = { response in
-            guard let urlAdvertising = self.viewProperties?.requestDataModel.urlAdvertising else { return }
-            guard let isNavBarHidden = response.url?.absoluteString.contains(urlAdvertising) else { return }
+            guard let domainAdvertising = self.viewProperties?.advertisingModel.domainAdvertising else { return }
+            guard let isNavBarHidden = response.url?.absoluteString.contains(domainAdvertising) else { return }
             self.viewProperties?.isNavBarHidden = isNavBarHidden
             self.state = .updateViewProperties
         }

@@ -35,12 +35,12 @@ final public class AdvertisingFeature {
     }
     
     public func createAdvertisingScreenVC(
-        with requestDataModel: RequestDataModel
+        with advertisingModel: AdvertisingModel
     ) -> AdvertisingScreenViewController {
         let advertisingBuilder = AdvertisingScreenViewControllerBuilder.create()
-        self.isClose = requestDataModel.isClose
+        self.isClose = advertisingModel.isClose
         self.advertisingViewModel = advertisingBuilder.viewModel
-        self.advertisingViewModel?.state = .createViewProperties(requestDataModel)
+        self.advertisingViewModel?.state = .createViewProperties(advertisingModel)
         return advertisingBuilder.view
     }
     
@@ -53,10 +53,16 @@ final public class AdvertisingFeature {
             }
             self.getURLAdvertising { advertisingURL in
                 switch advertisingURL {
-                    case .advertising(var requestDataModel):
+                    case .advertising(let requestDataModel):
                         DispatchQueue.main.async {
-                            requestDataModel.urlAdvertising += parameters
-                            let createAdvertisingScreenVC = self.createAdvertisingScreenVC(with: requestDataModel)
+                            var advertisingModel = AdvertisingModel(
+                                requestDataModel: requestDataModel
+                            )
+                            advertisingModel.urlAdvertising += parameters
+                            
+                            let createAdvertisingScreenVC = self.createAdvertisingScreenVC(
+                                with: advertisingModel
+                            )
                             completion(.advertising(createAdvertisingScreenVC))
                             self.subscribeClose()
                         }
@@ -69,23 +75,19 @@ final public class AdvertisingFeature {
         }
     }
     
-    private func executeFirebase(completion: @escaping Closure<PresentScreen>) {
+    private func executeFirebase(completion: @escaping Closure<AdvertisingURL>) {
         let requestData = RequestDataAdvertising()
         firestoreService.get(requestData: requestData) { result in
             switch result {
                 case .object(let object):
                     guard let requestDataModel = object.first else { return }
                     DispatchQueue.main.async {
-                        let createAdvertisingScreenVC = self.createAdvertisingScreenVC(
-                            with: requestDataModel
-                        )
-                        completion(.advertising(createAdvertisingScreenVC))
+                        completion(.advertising(requestDataModel))
                         self.subscribeClose()
                     }
                 case .error(let error):
                     DispatchQueue.main.async {
-                        print(error?.localizedDescription ?? "")
-                        completion(.game)
+                        completion(.error(error?.localizedDescription ?? ""))
                     }
             }
         }
