@@ -78,14 +78,24 @@ final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewCo
     }
     
     private func subscribeDelegate(){
-        self.advertisingWebViewDelegate.didFinish = { isFinish in
+        self.advertisingWebViewDelegate.didFinish = { [weak self] isFinish in
+            guard let self = self else { return }
             self.viewProperties?.isFinish = isFinish
             self.state = .updateViewProperties
         }
         
-        self.advertisingWebViewDelegate.redirect = { navigationAction in
-            guard let domainAdvertising = self.viewProperties?.advertisingModel.domainAdvertising else { return }
-            guard let isNavBarHidden = navigationAction.request.url?.host?.contains(domainAdvertising) else { return }
+        self.advertisingWebViewDelegate.redirect = { [weak self] navigationAction in
+            guard let self = self else { return }
+            guard let domainAdvertising = self.viewProperties?.advertisingModel.domainAdvertising else {
+                self.viewProperties?.isNavBarHidden = false
+                self.state = .updateViewProperties
+                return
+            }
+            guard let isNavBarHidden = navigationAction.request.url?.host?.contains(domainAdvertising) else {
+                self.viewProperties?.isNavBarHidden = false
+                self.state = .updateViewProperties
+                return
+            }
             self.viewProperties?.isNavBarHidden = isNavBarHidden
             self.state = .updateViewProperties
         }
