@@ -54,6 +54,10 @@ final public class AdvertisingFeature {
             self.getURLAdvertising { advertisingURL in
                 switch advertisingURL {
                     case .advertising(let requestDataModel):
+                        guard requestDataModel.isAdvertising else {
+                            completion(.game)
+                            return
+                        }
                         DispatchQueue.main.async {
                             var advertisingModel = AdvertisingModel(
                                 requestDataModel: requestDataModel
