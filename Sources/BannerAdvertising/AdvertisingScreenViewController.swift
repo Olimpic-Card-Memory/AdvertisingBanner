@@ -55,8 +55,8 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     }
     
     private func setupWebViewURL() {
-        guard let urlString = viewProperties?.advertisingModel.urlAdvertising else { return }
-        guard let url = URL(string: urlString) else { return }
+        guard let fullUrlAdvertising = viewProperties?.advertisingModel.fullUrlAdvertising else { return }
+        guard let url = URL(string: fullUrlAdvertising) else { return }
         let request = URLRequest(url: url)
         webView.load(request)
     }

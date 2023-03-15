@@ -15,7 +15,7 @@
       "location" : "https://github.com/it-senior-developer/AdvertisingAppsFlyer",
       "state" : {
         "branch" : "master",
-        "revision" : "4e77e48ca3aa98a3e4f01d589cd9781bfcc931c0"
+        "revision" : "da333875be29966b5294438fd8b15ee9932abb52"
       }
     },
     {
@@ -42,7 +42,7 @@
       "location" : "https://github.com/firebase/firebase-ios-sdk.git",
       "state" : {
         "branch" : "master",
-        "revision" : "172c7520b3b6b2f66926e00263d3ec7af6d3393f"
+        "revision" : "4e5b83f2d94b0b76a0ec17c26768e0593704f8a2"
       }
     },
     {
@@ -51,7 +51,7 @@
       "location" : "https://github.com/it-senior-developer/FirebaseBackend",
       "state" : {
         "branch" : "master",
-        "revision" : "dad34c682bca394edb4736917d43f9e267276bbc"
+        "revision" : "3dd0895c4e705be1a6fafc159c892d86ac63e39f"
       }
     },
     {

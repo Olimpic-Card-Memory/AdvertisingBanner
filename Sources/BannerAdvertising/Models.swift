@@ -20,7 +20,8 @@ final public class RequestDataAdvertising: RequestData {
 
 public struct RequestDataModel: Decodable {
     
-    public var domainAdvertising: String
+    public let domainAdvertising: String
+    public let urlAdvertising: String
     public let isAdvertising: Bool
     public let isClose: Bool
     public let titleAdvertising: String
@@ -28,6 +29,7 @@ public struct RequestDataModel: Decodable {
     public init(
         domainAdvertising: String,
         titleAdvertising: String,
+        urlAdvertising: String,
         isAdvertising: Bool,
         isClose: Bool
     ) {
@@ -35,6 +37,7 @@ public struct RequestDataModel: Decodable {
         self.isAdvertising = isAdvertising
         self.titleAdvertising = titleAdvertising
         self.isClose = isClose
+        self.urlAdvertising = urlAdvertising
     }
 }
 
@@ -42,12 +45,16 @@ public struct AdvertisingModel {
     
     public let domainAdvertising: String
     public var urlAdvertising: String
+    public var fullUrlAdvertising: String
+    public var parametersAdvertising: String
     public let isAdvertising: Bool
     public let isClose: Bool
     public let titleAdvertising: String
     
     public init(requestDataModel: RequestDataModel) {
-        self.urlAdvertising = ""
+        self.urlAdvertising = requestDataModel.urlAdvertising
+        self.parametersAdvertising = ""
+        self.fullUrlAdvertising = ""
         self.isAdvertising = requestDataModel.isAdvertising
         self.titleAdvertising = requestDataModel.titleAdvertising
         self.isClose = requestDataModel.isClose

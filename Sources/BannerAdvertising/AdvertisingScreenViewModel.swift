@@ -83,9 +83,9 @@ final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewCo
             self.state = .updateViewProperties
         }
         
-        self.advertisingWebViewDelegate.redirect = { response in
+        self.advertisingWebViewDelegate.redirect = { navigationAction in
             guard let domainAdvertising = self.viewProperties?.advertisingModel.domainAdvertising else { return }
-            guard let isNavBarHidden = response.url?.absoluteString.contains(domainAdvertising) else { return }
+            guard let isNavBarHidden = navigationAction.request.url?.absoluteString.contains(domainAdvertising) else { return }
             self.viewProperties?.isNavBarHidden = isNavBarHidden
             self.state = .updateViewProperties
         }
