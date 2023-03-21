@@ -7,6 +7,7 @@
 import AppsFlyerLib
 import AdvertisingAppsFlyer
 import Foundation
+import Combine
 import UIKit
 
 final class AppsFlyerService {
@@ -18,6 +19,7 @@ final class AppsFlyerService {
     public var urlParameters: ((String?) -> Void)?
     public var installCompletion: ((Install?) -> Void)?
     public var completionDeepLinkResult: ((DeepLinkResult) -> Void)?
+    private var anyCancel: Set<AnyCancellable> = []
     
     public func start(){
         appsFlyer.start()
@@ -38,17 +40,9 @@ final class AppsFlyerService {
             self.urlParameters?(parameters)
         }
         
-        appsFlyer.installCompletion = { install in
+        appsFlyer.installCompletion.sink { install in
             self.installCompletion?(install)
-            switch install {
-                case .nonOrganic:
-                    print("nonOrganic")
-                case .organic:
-                    print("organic")
-                default:
-                    break
-            }
-        }
+        }.store(in: &anyCancel)
     }
     
     public func setupAppsFlyerDeepLinkDelegate(){

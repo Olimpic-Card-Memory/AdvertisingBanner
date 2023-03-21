@@ -15,7 +15,7 @@
       "location" : "https://github.com/it-senior-developer/AdvertisingAppsFlyer",
       "state" : {
         "branch" : "master",
-        "revision" : "da333875be29966b5294438fd8b15ee9932abb52"
+        "revision" : "1e07af27f78488cdf79bccb2c128a37d43e6b904"
       }
     },
     {
@@ -42,7 +42,7 @@
       "location" : "https://github.com/firebase/firebase-ios-sdk.git",
       "state" : {
         "branch" : "master",
-        "revision" : "4e5b83f2d94b0b76a0ec17c26768e0593704f8a2"
+        "revision" : "5c68128c558521a9ee684227ce657df7db652877"
       }
     },
     {
