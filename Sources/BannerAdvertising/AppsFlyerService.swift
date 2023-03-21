@@ -23,7 +23,7 @@ final class AppsFlyerService {
     public var currentInstall: Install?
     
     public func start(){
-        appsFlyer.start()
+        appsFlyer.startRequestTrackingAuthorization()
     }
     
     public func setup(){
