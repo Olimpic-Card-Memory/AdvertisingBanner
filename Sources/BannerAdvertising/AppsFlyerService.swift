@@ -17,7 +17,7 @@ final class AppsFlyerService {
     private let appID     = "1662068962"
     
     public var urlParameters: ((String?) -> Void)?
-    public var installCompletion: ((Install?) -> Void)?
+    public var installCompletion = PassthroughSubject<Install, Never>()
     public var completionDeepLinkResult: ((DeepLinkResult) -> Void)?
     private var anyCancel: Set<AnyCancellable> = []
     
@@ -40,8 +40,9 @@ final class AppsFlyerService {
             self.urlParameters?(parameters)
         }
         
-        appsFlyer.installCompletion.sink { install in
-            self.installCompletion?(install)
+        appsFlyer.installCompletion.sink { [weak self] install in
+            guard let self = self else { return }
+            self.installCompletion.send(install)
         }.store(in: &anyCancel)
     }
     
