@@ -20,6 +20,7 @@ final public class AdvertisingFeature {
     // MARK: - ViewModel
     public var advertisingViewModel: AdvertisingScreenViewModel?
     public let closeAction: CurrentValueSubject<Bool, Never> = .init(false)
+   
     
     public func setupFirebase() {
         let firebaseService = FirebaseService()
@@ -115,15 +116,23 @@ final public class AdvertisingFeature {
     }
     
     private func executeAppsFlyer(completion: @escaping Closure<String?>) {
-        appsFlyerService.installCompletion
-            .sink(receiveValue: { install in
-                switch install {
-                    case .nonOrganic(let parameters):
-                        completion(parameters)
-                    case .organic:
-                        completion(nil)
-                }
-            }).store(in: &anyCancel)
+        switch self.appsFlyerService.currentInstall {
+            case .nonOrganic(let parameters):
+                completion(parameters)
+            case .organic:
+                completion(nil)
+            default:
+                appsFlyerService.installCompletion
+                    .sink(receiveValue: { install in
+                        switch install {
+                            case .nonOrganic(let parameters):
+                                completion(parameters)
+                            case .organic:
+                                completion(nil)
+                        }
+                    })
+                    .store(in: &anyCancel)
+        }
     }
     
     private func subscribeClose(){

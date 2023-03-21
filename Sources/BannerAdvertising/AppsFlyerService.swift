@@ -15,11 +15,12 @@ final class AppsFlyerService {
     private let appsFlyer = GDAppsFlyer()
     private let devKey    = "zgnKRCbyHh8k7AcFrCzh7E"
     private let appID     = "1662068962"
+    private var anyCancel: Set<AnyCancellable> = []
     
     public var urlParameters: ((String?) -> Void)?
     public var installCompletion = PassthroughSubject<Install, Never>()
     public var completionDeepLinkResult: ((DeepLinkResult) -> Void)?
-    private var anyCancel: Set<AnyCancellable> = []
+    public var currentInstall: Install?
     
     public func start(){
         appsFlyer.start()
@@ -42,6 +43,7 @@ final class AppsFlyerService {
         
         appsFlyer.installCompletion.sink { [weak self] install in
             guard let self = self else { return }
+            self.currentInstall = install
             self.installCompletion.send(install)
         }.store(in: &anyCancel)
     }
