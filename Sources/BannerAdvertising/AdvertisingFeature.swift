@@ -63,7 +63,7 @@ final public class AdvertisingFeature {
                             var advertisingModel = AdvertisingModel(
                                 requestDataModel: requestDataModel
                             )
-                            advertisingModel.fullUrlAdvertising = (advertisingModel.urlAdvertising + parameters)
+                            advertisingModel.fullUrlAdvertising = (advertisingModel.urlAdvertising + "?" + parameters)
                             
                             let createAdvertisingScreenVC = self.createAdvertisingScreenVC(
                                 with: advertisingModel
