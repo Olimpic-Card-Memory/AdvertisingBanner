@@ -33,5 +33,6 @@ final public class AdvertisingWebViewDelegate: NSObject, WKNavigationDelegate, W
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
         redirect?(navigationAction)
         decisionHandler(.allow)
+        print(navigationAction.request.url?.absoluteString ?? "", "absoluteString")
     }
 }
