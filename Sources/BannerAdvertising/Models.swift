@@ -4,7 +4,6 @@
 //
 //  Created by Senior Developer on 07.03.2023.
 //
-
 import UIKit
 import FirebaseBackend
 
@@ -20,45 +19,44 @@ final public class RequestDataAdvertising: RequestData {
 
 public struct RequestDataModel: Decodable {
     
-    public let domainAdvertising: String
-    public let urlAdvertising: String
+    public let schemeAdvertising: String
+    public let hostAdvertising: String
+    public let pathAdvertising: String
+    public let titleAdvertising: String
     public let isAdvertising: Bool
     public let isClose: Bool
-    public let titleAdvertising: String
     
     public init(
-        domainAdvertising: String,
+        schemeAdvertising: String,
+        hostAdvertising: String,
+        pathAdvertising: String,
         titleAdvertising: String,
-        urlAdvertising: String,
         isAdvertising: Bool,
         isClose: Bool
     ) {
-        self.domainAdvertising = domainAdvertising
-        self.isAdvertising = isAdvertising
+        self.schemeAdvertising = schemeAdvertising
+        self.hostAdvertising = hostAdvertising
+        self.pathAdvertising = pathAdvertising
         self.titleAdvertising = titleAdvertising
+        self.isAdvertising = isAdvertising
         self.isClose = isClose
-        self.urlAdvertising = urlAdvertising
     }
 }
 
 public struct AdvertisingModel {
     
-    public let domainAdvertising: String
-    public var urlAdvertising: String
-    public var fullUrlAdvertising: String
-    public var parametersAdvertising: String
+    public let hostAdvertising: String
+    public var urlAdvertising: URL?
     public let isAdvertising: Bool
     public let isClose: Bool
     public let titleAdvertising: String
     
     public init(requestDataModel: RequestDataModel) {
-        self.urlAdvertising = requestDataModel.urlAdvertising
-        self.parametersAdvertising = ""
-        self.fullUrlAdvertising = ""
+        self.hostAdvertising = requestDataModel.hostAdvertising
+        self.urlAdvertising = nil
         self.isAdvertising = requestDataModel.isAdvertising
         self.titleAdvertising = requestDataModel.titleAdvertising
         self.isClose = requestDataModel.isClose
-        self.domainAdvertising = requestDataModel.domainAdvertising
     }
 }
 

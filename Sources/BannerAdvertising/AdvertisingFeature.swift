@@ -20,7 +20,7 @@ final public class AdvertisingFeature {
     // MARK: - ViewModel
     public var advertisingViewModel: AdvertisingScreenViewModel?
     public let closeAction: CurrentValueSubject<Bool, Never> = .init(false)
-   
+    
     
     public func setupFirebase() {
         let firebaseService = FirebaseService()
@@ -63,7 +63,10 @@ final public class AdvertisingFeature {
                             var advertisingModel = AdvertisingModel(
                                 requestDataModel: requestDataModel
                             )
-                            advertisingModel.fullUrlAdvertising = (advertisingModel.urlAdvertising + "?" + parameters)
+                            advertisingModel.urlAdvertising = URL.create(
+                                with: requestDataModel,
+                                parameters: parameters
+                            )
                             
                             let createAdvertisingScreenVC = self.createAdvertisingScreenVC(
                                 with: advertisingModel
@@ -115,7 +118,7 @@ final public class AdvertisingFeature {
         }
     }
     
-    private func executeAppsFlyer(completion: @escaping Closure<String?>) {
+    private func executeAppsFlyer(completion: @escaping Closure<[String: String]?>) {
         switch self.appsFlyerService.currentInstall {
             case .nonOrganic(let parameters):
                 completion(parameters)
@@ -146,5 +149,5 @@ final public class AdvertisingFeature {
         .store(in: &anyCancel)
     }
     
-    public init() {} 
+    public init() {}
 }

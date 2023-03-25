@@ -55,9 +55,8 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     }
     
     private func setupWebViewURL() {
-        guard let fullUrlAdvertising = viewProperties?.advertisingModel.fullUrlAdvertising else { return }
-        guard let url = URL(string: fullUrlAdvertising) else { return }
-        let request = URLRequest(url: url)
+        guard let urlAdvertising = viewProperties?.advertisingModel.urlAdvertising else { return }
+        let request = URLRequest(url: urlAdvertising)
         webView.load(request)
     }
     
@@ -111,11 +110,11 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     
     private func setUrlLabel(){
         #if DEBUG
-        guard let urlString = viewProperties?.advertisingModel.urlAdvertising else {
+        guard let urlAdvertising = viewProperties?.advertisingModel.urlAdvertising else {
             urlLabel.isHidden = true
             return
         }
-        urlLabel.text = urlString
+        urlLabel.text = urlAdvertising.absoluteString
         urlLabel.isHidden = false
         #else
         urlLabel.isHidden = true
