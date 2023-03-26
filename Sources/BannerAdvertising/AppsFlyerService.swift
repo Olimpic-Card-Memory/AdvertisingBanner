@@ -13,13 +13,22 @@ import UIKit
 final class AppsFlyerService {
     
     private let appsFlyer = GDAppsFlyer()
-    private let devKey    = "zgnKRCbyHh8k7AcFrCzh7E"
-    private let appID     = "1662068962"
     private var anyCancel: Set<AnyCancellable> = []
     
     public var installCompletion = PassthroughSubject<Install, Never>()
     public var completionDeepLinkResult: ((DeepLinkResult) -> Void)?
     public var currentInstall: Install?
+    
+    private let devKey: String
+    private let appID : String
+    
+    init(
+        devKey: String,
+        appID: String
+    ) {
+        self.devKey = devKey
+        self.appID = appID
+    }
     
     public func start(){
         appsFlyer.startRequestTrackingAuthorization()
