@@ -68,25 +68,30 @@ final public class AdvertisingFeature {
                         return
                     }
                     self.executeAppsFlyer { parameters in
-                        var advertisingModel = AdvertisingModel(
-                            requestDataModel: requestDataModel
-                        )
                         
-                        advertisingModel.urlAdvertising = URL.create(
-                            with: requestDataModel,
-                            parameters: parameters
-                        )
-                        
-                        let createAdvertisingScreenVC = self.createAdvertisingScreenVC(
-                            with: advertisingModel
-                        )
-                        completion(.advertising(createAdvertisingScreenVC))
-                        self.subscribeClose()
+                        DispatchQueue.main.async {
+                            
+                            var advertisingModel = AdvertisingModel(
+                                requestDataModel: requestDataModel
+                            )
+                            advertisingModel.urlAdvertising = URL.create(
+                                with: requestDataModel,
+                                parameters: parameters
+                            )
+                            
+                            let createAdvertisingScreenVC = self.createAdvertisingScreenVC(
+                                with: advertisingModel
+                            )
+                            completion(.advertising(createAdvertisingScreenVC))
+                            self.subscribeClose()
+                        }
                     }
                     
                 case .error(let error):
                     print(error)
-                    completion(.game)
+                    DispatchQueue.main.async {
+                        completion(.game)
+                    }
             }
         }
     }
