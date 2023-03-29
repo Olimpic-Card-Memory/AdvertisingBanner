@@ -35,4 +35,13 @@ final public class AdvertisingWebViewDelegate: NSObject, WKNavigationDelegate, W
         decisionHandler(.allow)
         print(navigationAction.request.url?.absoluteString ?? "", "absoluteString")
     }
+    
+    public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        if let frame = navigationAction.targetFrame,
+           frame.isMainFrame {
+            return nil
+        }
+        webView.load(navigationAction.request)
+        return nil
+    }
 }
