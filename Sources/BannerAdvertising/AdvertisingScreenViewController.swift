@@ -56,6 +56,8 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     
     private func setupWebViewURL() {
         guard let urlAdvertising = viewProperties?.advertisingModel.urlAdvertising else { return }
+        webView.configuration.preferences.javaScriptEnabled = true
+        webView.configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
         let request = URLRequest(url: urlAdvertising)
         webView.load(request)
     }
