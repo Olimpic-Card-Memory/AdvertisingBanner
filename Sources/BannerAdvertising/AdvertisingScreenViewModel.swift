@@ -16,13 +16,15 @@ final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewCo
     public let closeAction: CurrentValueSubject<Bool, Never> = .init(false)
     
     // MARK: - private properties -
-    private let advertisingWebViewDelegate: AdvertisingWebViewDelegate
-   
+    private let advertisingNavigationDelegate: AdvertisingNavigationDelegate
+    private let advertisingUIDelegate: AdvertisingUIDelegate
     
     init(
-        advertisingWebViewDelegate: AdvertisingWebViewDelegate
+        advertisingNavigationDelegate: AdvertisingNavigationDelegate,
+        advertisingUIDelegate: AdvertisingUIDelegate
     ) {
-        self.advertisingWebViewDelegate = advertisingWebViewDelegate
+        self.advertisingNavigationDelegate = advertisingNavigationDelegate
+        self.advertisingUIDelegate = advertisingUIDelegate
     }
     
     //MARK: - Main state view model
@@ -42,20 +44,21 @@ final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewCo
         switch state {
             case .createViewProperties(let advertisingModel):
                 let tapForward: ClosureEmpty = {
-                    self.advertisingWebViewDelegate.webView?.goForward()
+                    self.advertisingNavigationDelegate.webView?.goForward()
                 }
                 let tapBack: ClosureEmpty = {
-                    self.advertisingWebViewDelegate.webView?.goBack()
+                    self.advertisingNavigationDelegate.webView?.goBack()
                 }
                 let updatePage: ClosureEmpty = {
-                    self.advertisingWebViewDelegate.webView?.reload()
+                    self.advertisingNavigationDelegate.webView?.reload()
                 }
-                self.advertisingWebViewDelegate.didFinish = { isFinish in
+                self.advertisingNavigationDelegate.didFinish = { isFinish in
                     self.viewProperties?.isFinish = isFinish
                     self.update?(self.viewProperties)
                 }
                 viewProperties = AdvertisingScreenViewController.ViewProperties(
-                    delegate: advertisingWebViewDelegate,
+                    advertisingNavigationDelegate: advertisingNavigationDelegate,
+                    advertisingUIDelegate: advertisingUIDelegate,
                     advertisingModel: advertisingModel,
                     tapForward: tapForward,
                     tapBack: tapBack,
@@ -70,7 +73,7 @@ final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewCo
                 closeAction.send(isClose)
                 
             case .tapBack:
-                self.advertisingWebViewDelegate.webView?.goBack()
+                self.advertisingNavigationDelegate.webView?.goBack()
                 
             case .updateViewProperties:
                 update?(viewProperties)
@@ -78,13 +81,13 @@ final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewCo
     }
     
     private func subscribeDelegate(){
-        self.advertisingWebViewDelegate.didFinish = { [weak self] isFinish in
+        self.advertisingNavigationDelegate.didFinish = { [weak self] isFinish in
             guard let self = self else { return }
             self.viewProperties?.isFinish = isFinish
             self.state = .updateViewProperties
         }
         
-        self.advertisingWebViewDelegate.redirect = { [weak self] navigationAction in
+        self.advertisingNavigationDelegate.redirect = { [weak self] navigationAction in
             guard let self = self else { return }
             guard let hostAdvertising = self.viewProperties?.advertisingModel.hostAdvertising else {
                 self.viewProperties?.isNavBarHidden = false

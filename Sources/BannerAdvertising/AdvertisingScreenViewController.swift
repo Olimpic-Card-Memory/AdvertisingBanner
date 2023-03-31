@@ -14,7 +14,8 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     
     //MARK: - Main ViewProperties
     public struct ViewProperties {
-        let delegate : AdvertisingWebViewDelegate
+        let advertisingNavigationDelegate: AdvertisingNavigationDelegate
+        let advertisingUIDelegate: AdvertisingUIDelegate
         let advertisingModel: AdvertisingModel
         let tapForward: ClosureEmpty
         let tapBack: ClosureEmpty
@@ -51,7 +52,8 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     }
     
     private func setup() {
-        self.webView.navigationDelegate = viewProperties?.delegate
+        self.webView.navigationDelegate = viewProperties?.advertisingNavigationDelegate
+        self.webView.uiDelegate = viewProperties?.advertisingUIDelegate
     }
     
     private func setupWebViewURL() {
