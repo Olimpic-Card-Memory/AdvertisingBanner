@@ -1,41 +1,38 @@
 //
-//  AdvertisingScreenBuilder.swift
-//  GDAdvertising
-//
-//  Copyright © 2022 Developer. All rights reserved.
+//  Created by Developer on 07.12.2022.
 //
 import UIKit
-import VVMLibrary
+import Architecture
 
 final public class AdvertisingScreenViewControllerBuilder: BuilderProtocol {
     
     public typealias V  = AdvertisingScreenViewController
-    public typealias VM = AdvertisingScreenViewModel
+    public typealias VM = AdvertisingScreenViewManager
     
-    public var view     : AdvertisingScreenViewController
-    public var viewModel: AdvertisingScreenViewModel
+    public var view: AdvertisingScreenViewController
+    public var viewManager: AdvertisingScreenViewManager
     
     public static func create() -> AdvertisingScreenViewControllerBuilder {
         let viewController = AdvertisingScreenViewController()
-        let viewModel      = AdvertisingScreenViewModel(
+        let viewManager    = AdvertisingScreenViewManager(
             advertisingNavigationDelegate: AdvertisingNavigationDelegate(),
             advertisingUIDelegate: AdvertisingUIDelegate()
         )
         viewController.loadViewIfNeeded()
-        viewModel.bind(with: viewController)
+        viewManager.bind(with: viewController)
         let selfBuilder = AdvertisingScreenViewControllerBuilder(
             with: viewController,
-            with: viewModel
+            with: viewManager
         )
         return selfBuilder
     }
     
     private init(
         with viewController: AdvertisingScreenViewController,
-        with viewModel: AdvertisingScreenViewModel
+        with viewManager: AdvertisingScreenViewManager
     ) {
-        self.view      = viewController
-        self.viewModel = viewModel
+        self.view = viewController
+        self.viewManager = viewManager
     }
 }
 

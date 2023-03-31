@@ -1,14 +1,11 @@
 //
-//  AdvertisingFeature.swift
-//  
-//
 //  Created by Developer on 07.12.2022.
 //
 import Combine
-import AdvertisingAppsFlyer
+import AppFlyerFramework
 import AppsFlyerLib
-import FirebaseBackend
 import UIKit
+import FirestoreFirebase
 
 final public class AdvertisingFeature {
     
@@ -20,7 +17,7 @@ final public class AdvertisingFeature {
     private var anyCancel: Set<AnyCancellable> = []
     private var isClose = true
     
-    public var advertisingViewModel: AdvertisingScreenViewModel?
+    public var advertisingScreenViewManager: AdvertisingScreenViewManager?
     public let closeAction: CurrentValueSubject<Bool, Never> = .init(false)
     
     private let devKey: String
@@ -35,8 +32,8 @@ final public class AdvertisingFeature {
     }
     
     public func setupFirebase() {
-        let firebaseService = FirebaseService()
-        firebaseService.setup()
+        let firebaseManager = FirebaseManager()
+        firebaseManager.setup()
     }
     
     public func setupAppsFlyer() {
@@ -52,13 +49,13 @@ final public class AdvertisingFeature {
     ) -> AdvertisingScreenViewController {
         let advertisingBuilder = AdvertisingScreenViewControllerBuilder.create()
         self.isClose = advertisingModel.isClose
-        self.advertisingViewModel = advertisingBuilder.viewModel
-        self.advertisingViewModel?.state = .createViewProperties(advertisingModel)
+        self.advertisingScreenViewManager = advertisingBuilder.viewManager
+        self.advertisingScreenViewManager?.state = .createViewProperties(advertisingModel)
         return advertisingBuilder.view
     }
     
-    public func presentAdvertising(completion: @escaping Closure<PresentScreen>){
-        self.getURLAdvertising { [weak self] advertisingURL in
+    public func presentAdvertising(requestData: some RequestData, completion: @escaping Closure<PresentScreen>){
+        self.getURLAdvertising(requestData: requestData) { [weak self] advertisingURL in
             guard let self = self else { return }
             
             switch advertisingURL {
@@ -96,12 +93,11 @@ final public class AdvertisingFeature {
         }
     }
     
-    private func getURLAdvertising(completion: @escaping Closure<AdvertisingURL>) {
-        let requestData = RequestDataAdvertising()
+    private func getURLAdvertising(requestData: some RequestData, completion: @escaping Closure<AdvertisingURL>) {
         firestoreService.get(requestData: requestData) { result in
             switch result {
                 case .object(let object):
-                    guard let requestDataModel = object.first
+                    guard let requestDataModel = object.first as? RequestDataModel
                     else {
                         completion(.error(""))
                         return
@@ -134,9 +130,9 @@ final public class AdvertisingFeature {
     }
     
     private func subscribeClose(){
-        self.advertisingViewModel?.closeAction.sink { isClose in
+        self.advertisingScreenViewManager?.closeAction.sink { isClose in
             guard isClose, self.isClose else {
-                self.advertisingViewModel?.state = .tapBack
+                self.advertisingScreenViewManager?.state = .tapBack
                 return
             }
             self.closeAction.send(isClose)

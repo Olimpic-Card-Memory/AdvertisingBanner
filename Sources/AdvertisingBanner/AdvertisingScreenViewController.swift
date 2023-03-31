@@ -1,14 +1,11 @@
 //
-//  AdvertisingScreenViewController.swift
-//  GDAdvertising
-//
-//  Copyright © 2022 Developer. All rights reserved.
+//  Created by Developer on 07.12.2022.
 //
 import SkeletonView
 import Combine
 import UIKit
 import WebKit
-import VVMLibrary
+import Architecture
 
 final public class AdvertisingScreenViewController: UIViewController, ViewProtocol {
     

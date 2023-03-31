@@ -1,7 +1,4 @@
 //
-//  AdvertisingWebViewDelegate.swift
-//  
-//
 //  Created by Developer on 07.12.2022.
 //
 import WebKit

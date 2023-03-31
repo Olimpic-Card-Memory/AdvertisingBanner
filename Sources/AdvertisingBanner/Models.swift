@@ -1,21 +1,8 @@
 //
-//  File.swift
-//  
-//
-//  Created by Senior Developer on 07.03.2023.
+//  Created by Developer on 07.12.2022.
 //
 import UIKit
-import FirebaseBackend
-
-final public class RequestDataAdvertising: RequestData {
-    
-    public typealias ReturnDecodable = RequestDataModel
-    
-    public var collectionID: String = "advertising"
-    public var documentID  : String? = "configuration"
-    
-    public init() {}
-}
+import FirestoreFirebase
 
 public struct RequestDataModel: Decodable {
     

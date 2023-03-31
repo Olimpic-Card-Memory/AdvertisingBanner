@@ -1,18 +1,15 @@
 //
-//  AppsFlyerService.swift
-//  
-//
-//  Created by Developer on 23.01.2023.
+//  Created by Developer on 07.12.2022.
 //
 import AppsFlyerLib
-import AdvertisingAppsFlyer
+import AppFlyerFramework
 import Foundation
 import Combine
 import UIKit
 
 final class AppsFlyerService {
     
-    private let appsFlyer = GDAppsFlyer()
+    private let appsFlyer = AppыFlyerManager()
     private var anyCancel: Set<AnyCancellable> = []
     
     public var installCompletion = PassthroughSubject<Install, Never>()

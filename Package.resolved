@@ -10,12 +10,12 @@
       }
     },
     {
-      "identity" : "advertisingappsflyer",
+      "identity" : "appflyerframework",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/it-senior-developer/AdvertisingAppsFlyer",
+      "location" : "https://github.com/AppsFlyer-org/AppFlyerFramework",
       "state" : {
         "branch" : "master",
-        "revision" : "ade5f9b55393089e8f59deaa78f2f6d1f94384bd"
+        "revision" : "de99aeda85ec4d274ce6c82aec18f53c914ad807"
       }
     },
     {
@@ -25,6 +25,15 @@
       "state" : {
         "revision" : "fd2d4e50107280229c77ebfaeb0519ad7e7af83f",
         "version" : "6.10.0"
+      }
+    },
+    {
+      "identity" : "architecture",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Architecture-org/Architecture",
+      "state" : {
+        "branch" : "master",
+        "revision" : "06acc287565ab9b766272e8167f188da5b846737"
       }
     },
     {
@@ -46,12 +55,12 @@
       }
     },
     {
-      "identity" : "firebasebackend",
+      "identity" : "firestorefirebase",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/it-senior-developer/FirebaseBackend",
+      "location" : "https://github.com/Firebase-com/FirestoreFirebase",
       "state" : {
         "branch" : "master",
-        "revision" : "3dd0895c4e705be1a6fafc159c892d86ac63e39f"
+        "revision" : "f06b2bd59c6f919f79ed83c9a297003f2b2755ac"
       }
     },
     {
@@ -142,15 +151,6 @@
       "state" : {
         "revision" : "0af9125c4eae12a4973fb66574c53a54962a9e1e",
         "version" : "1.21.0"
-      }
-    },
-    {
-      "identity" : "vvmlibrary",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/it-senior-developer/VVMLibrary",
-      "state" : {
-        "branch" : "master",
-        "revision" : "e3d970253ca899ee0f12b85b18043b6f11b91f00"
       }
     }
   ],

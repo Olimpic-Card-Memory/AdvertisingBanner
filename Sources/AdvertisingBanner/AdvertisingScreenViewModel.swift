@@ -1,14 +1,11 @@
 //
-//  AdvertisingScreenViewModel.swift
-//  GDAdvertising
-//
-//  Copyright © 2022 Developer. All rights reserved.
+//  Created by Developer on 07.12.2022.
 //
 import Combine
 import Foundation
-import VVMLibrary
+import Architecture
 
-final public class AdvertisingScreenViewModel: ViewModel<AdvertisingScreenViewController> {
+final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenViewController> {
     
     var viewProperties: AdvertisingScreenViewController.ViewProperties?
     
