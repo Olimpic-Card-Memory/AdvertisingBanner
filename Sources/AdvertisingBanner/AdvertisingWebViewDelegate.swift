@@ -52,9 +52,8 @@ final public class AdvertisingNavigationDelegate: NSObject, WKNavigationDelegate
         if #available(iOS 14.5, *) {
             decisionHandler(.download, preferences)
         } else {
-            // Fallback on earlier versions
+            decisionHandler(.allow, preferences)
         }
-        decisionHandler(.allow, preferences)
     }
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
