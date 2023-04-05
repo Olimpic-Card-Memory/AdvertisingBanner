@@ -128,6 +128,13 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         UIPasteboard.general.string = urlLabel.text
     }
     
+    // Enable detection of shake motion
+    public override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            UIPasteboard.general.string = urlLabel.text
+        }
+    }
+    
     public init() {
         super.init(nibName: String(describing: Self.self), bundle: Bundle.module)
     }
