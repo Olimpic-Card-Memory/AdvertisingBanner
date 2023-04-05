@@ -68,6 +68,11 @@ final public class AdvertisingFeature {
                         
                         DispatchQueue.main.async {
                             
+                            guard let parameters = parameters else {
+                                completion(.game)
+                                return
+                            }
+                            
                             var advertisingModel = AdvertisingModel(
                                 requestDataModel: requestDataModel
                             )

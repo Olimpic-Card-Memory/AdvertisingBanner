@@ -12,13 +12,13 @@ public extension URL {
     
     static func create(
         with requestDataModel: RequestDataModel,
-        parameters: [String: String]? = nil
+        parameters: [String: String]
     ) -> URL? {
         var components = URLComponents()
         components.scheme     = requestDataModel.schemeAdvertising
         components.host       = requestDataModel.hostAdvertising
         components.path       = requestDataModel.pathAdvertising
-        components.queryItems = parameters?.createQueryItems()
+        components.queryItems = parameters.createQueryItems()
         return components.url
     }
 }

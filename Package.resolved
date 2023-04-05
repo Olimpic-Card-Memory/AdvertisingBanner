@@ -15,7 +15,7 @@
       "location" : "https://github.com/AppsFlyer-org/AppFlyerFramework",
       "state" : {
         "branch" : "master",
-        "revision" : "de99aeda85ec4d274ce6c82aec18f53c914ad807"
+        "revision" : "67f0678c558327a005039cfb86cf822e7f39527f"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AppsFlyerSDK/AppsFlyerFramework.git",
       "state" : {
-        "revision" : "fd2d4e50107280229c77ebfaeb0519ad7e7af83f",
-        "version" : "6.10.0"
+        "revision" : "096dfa446caae0b92d6dd00486a6178a6ffd9ad9",
+        "version" : "6.10.1"
       }
     },
     {
@@ -50,8 +50,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk.git",
       "state" : {
-        "branch" : "master",
-        "revision" : "9613e1e536016b54475d3ae9fb1b05267ba02d77"
+        "revision" : "76de51f0e2be35ecb6ce05ed1ad0a73669b05a11",
+        "version" : "10.7.0"
       }
     },
     {
@@ -60,7 +60,7 @@
       "location" : "https://github.com/Firebase-com/FirestoreFirebase",
       "state" : {
         "branch" : "master",
-        "revision" : "f06b2bd59c6f919f79ed83c9a297003f2b2755ac"
+        "revision" : "22c1a0d051fc70ce2d2416d362185266c5fa5e45"
       }
     },
     {
@@ -77,8 +77,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleDataTransport.git",
       "state" : {
-        "revision" : "f6b558e3f801f2cac336b04f615ce111fa9ddaa0",
-        "version" : "9.2.1"
+        "revision" : "cc7265b8e3906304e6e81f32c1662a94bbae2357",
+        "version" : "9.2.2"
       }
     },
     {
@@ -86,8 +86,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleUtilities.git",
       "state" : {
-        "revision" : "0543562f85620b5b7c510c6bcbef75b562a5127b",
-        "version" : "7.11.0"
+        "revision" : "871d43135925cde39ef7421d8723ce47edfdcc39",
+        "version" : "7.11.1"
       }
     },
     {
