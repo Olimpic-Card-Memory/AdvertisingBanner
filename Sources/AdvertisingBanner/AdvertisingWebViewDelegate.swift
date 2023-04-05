@@ -49,11 +49,7 @@ final public class AdvertisingNavigationDelegate: NSObject, WKNavigationDelegate
     }
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, preferences: WKWebpagePreferences, decisionHandler: @escaping (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
-        if #available(iOS 14.5, *) {
-            decisionHandler(.download, preferences)
-        } else {
-            decisionHandler(.allow, preferences)
-        }
+        decisionHandler(.allow, preferences)
     }
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
