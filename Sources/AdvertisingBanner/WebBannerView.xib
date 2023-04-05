@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WebBannerViewController" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="kns-3F-tW8" customClass="WebBannerView" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="kns-3F-tW8" customClass="WebBannerView" customModule="AdvertisingBanner">
             <rect key="frame" x="0.0" y="0.0" width="470" height="204"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>

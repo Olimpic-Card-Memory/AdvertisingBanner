@@ -33,7 +33,7 @@ public extension Dictionary where Iterator.Element == (key: String, value: Strin
 public extension UIView {
     
     static func loadNib() -> Self {
-        let nib = Bundle.main.loadNibNamed(String(describing: Self.self), owner: nil, options: nil)?.first
+        let nib = Bundle.module.loadNibNamed(String(describing: Self.self), owner: nil, options: nil)?.first
         return nib as! Self
     }
 }
