@@ -117,5 +117,6 @@ final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenVi
             $0.edges.equalToSuperview()
         }
         self.webBannerViewManager = webBannerViewBuilder.viewManager
+        self.webBannerViewManager?.state = .presentBanner(false)
     }
 }
