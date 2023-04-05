@@ -61,3 +61,7 @@ public enum AdvertisingURL {
     case advertising(RequestDataModel)
     case error(String)
 }
+
+public enum BannerURL: String, CaseIterable {
+    case rules
+}
