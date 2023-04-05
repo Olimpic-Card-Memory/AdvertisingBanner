@@ -27,6 +27,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     //MARK: - Outlets
     @IBOutlet weak private var webView: WKWebView!
     @IBOutlet weak private var urlLabel: UILabel!
+    @IBOutlet weak private var labelView: UIView!
     @IBOutlet weak private var advertisingNavigationBar: UINavigationBar!
     @IBOutlet weak private var activityIndicatorView: UIActivityIndicatorView!
     
@@ -112,14 +113,19 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     private func setUrlLabel(){
         #if DEBUG
         guard let urlAdvertising = viewProperties?.advertisingModel.urlAdvertising else {
-            urlLabel.isHidden = true
+            labelView.isHidden = true
             return
         }
         urlLabel.text = urlAdvertising.absoluteString
-        urlLabel.isHidden = false
+        labelView.isHidden = false
         #else
-        urlLabel.isHidden = true
+        labelView.isHidden = true
         #endif
+    }
+    
+    //MARK: -
+    @IBAction func copyButton(button: UIButton){
+        UIPasteboard.general.string = urlLabel.text
     }
     
     public init() {
