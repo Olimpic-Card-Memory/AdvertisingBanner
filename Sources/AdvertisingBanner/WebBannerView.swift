@@ -21,6 +21,7 @@ final class WebBannerView: UIView, ViewProtocol {
         self.viewProperties = viewProperties
         setup()
         setupWebViewURL()
+        presentBanner()
     }
     
     func update(with viewProperties: ViewProperties?) {
