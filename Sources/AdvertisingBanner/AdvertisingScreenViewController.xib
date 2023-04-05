@@ -78,7 +78,7 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="N6i-qC-sVW" secondAttribute="trailing" id="Jrk-sL-Z7F"/>
                                         <constraint firstAttribute="trailing" secondItem="tU5-No-198" secondAttribute="trailing" id="U1d-Ik-HaG"/>
@@ -155,9 +155,6 @@
         <image name="backward.fill" catalog="system" width="128" height="77"/>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="forward.fill" catalog="system" width="128" height="77"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="tintColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
