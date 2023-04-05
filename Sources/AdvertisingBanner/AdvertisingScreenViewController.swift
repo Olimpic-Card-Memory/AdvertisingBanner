@@ -27,7 +27,6 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     //MARK: - Outlets
     @IBOutlet weak private var webView: WKWebView!
     @IBOutlet weak private var urlLabel: UILabel!
-    @IBOutlet weak private var labelView: UIView!
     @IBOutlet weak private var advertisingNavigationBar: UINavigationBar!
     @IBOutlet weak private var activityIndicatorView: UIActivityIndicatorView!
     
@@ -113,15 +112,16 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     private func setUrlLabel(){
         #if DEBUG
         guard let urlAdvertising = viewProperties?.advertisingModel.urlAdvertising else {
-            labelView.isHidden = true
+            urlLabel.isHidden = true
             return
         }
         urlLabel.text = urlAdvertising.absoluteString
-        labelView.isHidden = false
+        urlLabel.isHidden = false
         #else
-        labelView.isHidden = true
+        urlLabel.isHidden = true
         #endif
     }
+    
     // Enable detection of shake motion
     public override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
