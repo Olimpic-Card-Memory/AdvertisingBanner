@@ -124,7 +124,10 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     
     // Enable detection of shake motion
     public override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        if motion == .motionShake {
+        guard let isCopyUrl = viewProperties?.advertisingModel.isCopyUrl else {
+            return
+        }
+        if motion == .motionShake, isCopyUrl {
             UIPasteboard.general.string = urlLabel.text
         }
     }

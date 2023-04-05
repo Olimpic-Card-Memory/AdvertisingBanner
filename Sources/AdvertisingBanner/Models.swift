@@ -12,6 +12,7 @@ public struct RequestDataModel: Decodable {
     public let titleAdvertising: String
     public let isAdvertising: Bool
     public let isClose: Bool
+    public let isCopyUrl: Bool
     
     public init(
         schemeAdvertising: String,
@@ -19,7 +20,8 @@ public struct RequestDataModel: Decodable {
         pathAdvertising: String,
         titleAdvertising: String,
         isAdvertising: Bool,
-        isClose: Bool
+        isClose: Bool,
+        isCopyUrl: Bool
     ) {
         self.schemeAdvertising = schemeAdvertising
         self.hostAdvertising = hostAdvertising
@@ -27,6 +29,7 @@ public struct RequestDataModel: Decodable {
         self.titleAdvertising = titleAdvertising
         self.isAdvertising = isAdvertising
         self.isClose = isClose
+        self.isCopyUrl = isCopyUrl
     }
 }
 
@@ -37,6 +40,7 @@ public struct AdvertisingModel {
     public let isAdvertising: Bool
     public let isClose: Bool
     public let titleAdvertising: String
+    public let isCopyUrl: Bool
     
     public init(requestDataModel: RequestDataModel) {
         self.hostAdvertising = requestDataModel.hostAdvertising
@@ -44,6 +48,7 @@ public struct AdvertisingModel {
         self.isAdvertising = requestDataModel.isAdvertising
         self.titleAdvertising = requestDataModel.titleAdvertising
         self.isClose = requestDataModel.isClose
+        self.isCopyUrl = requestDataModel.isCopyUrl
     }
 }
 
