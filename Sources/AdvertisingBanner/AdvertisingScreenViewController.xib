@@ -108,10 +108,6 @@
                     <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
                     <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </activityIndicatorView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4N7-C9-J2r" userLabel="BannerContainerView">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Pmi-a7-4oC"/>
             <color key="backgroundColor" red="0.074509803920000006" green="0.1215686275" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -120,16 +116,12 @@
                 <constraint firstItem="a8w-4h-5Ei" firstAttribute="centerY" secondItem="kns-3F-tW8" secondAttribute="centerY" id="C8C-fY-Gjg"/>
                 <constraint firstItem="a8w-4h-5Ei" firstAttribute="centerX" secondItem="kns-3F-tW8" secondAttribute="centerX" id="FE6-ji-tbB"/>
                 <constraint firstItem="Rpb-X5-E7C" firstAttribute="leading" secondItem="Pmi-a7-4oC" secondAttribute="leading" id="HsY-uz-RBG"/>
-                <constraint firstAttribute="trailing" secondItem="4N7-C9-J2r" secondAttribute="trailing" id="JDJ-8l-1mE"/>
                 <constraint firstItem="Pmi-a7-4oC" firstAttribute="trailing" secondItem="Rpb-X5-E7C" secondAttribute="trailing" id="JQ5-JP-8sc"/>
                 <constraint firstItem="PE4-8y-yLw" firstAttribute="leading" secondItem="kns-3F-tW8" secondAttribute="leading" id="KIa-ig-V7D"/>
                 <constraint firstItem="PE4-8y-yLw" firstAttribute="top" secondItem="Rpb-X5-E7C" secondAttribute="bottom" id="LV6-7n-wEW"/>
                 <constraint firstAttribute="trailing" secondItem="PE4-8y-yLw" secondAttribute="trailing" id="W8I-Yf-lNW"/>
                 <constraint firstItem="PE4-8y-yLw" firstAttribute="top" secondItem="Pmi-a7-4oC" secondAttribute="top" id="WbB-78-zgO"/>
-                <constraint firstAttribute="bottom" secondItem="4N7-C9-J2r" secondAttribute="bottom" id="cbN-sB-aSg"/>
-                <constraint firstItem="4N7-C9-J2r" firstAttribute="leading" secondItem="kns-3F-tW8" secondAttribute="leading" id="co3-O8-Fnb"/>
                 <constraint firstItem="Rpb-X5-E7C" firstAttribute="top" secondItem="kns-3F-tW8" secondAttribute="top" id="eUa-h9-lak"/>
-                <constraint firstItem="4N7-C9-J2r" firstAttribute="top" secondItem="kns-3F-tW8" secondAttribute="top" id="g0R-eF-NP8"/>
             </constraints>
             <point key="canvasLocation" x="-730.43478260869574" y="26.785714285714285"/>
         </view>
@@ -139,9 +131,6 @@
         <image name="backward.fill" catalog="system" width="128" height="77"/>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="forward.fill" catalog="system" width="128" height="77"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="tintColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
