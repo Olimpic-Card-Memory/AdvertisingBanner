@@ -16,10 +16,11 @@ final public class AdvertisingFeature {
     )
     private var anyCancel: Set<AnyCancellable> = []
     private var isClose = true
+    private var parameters: [String: String] = [:]
     
     public var advertisingScreenViewManager: AdvertisingScreenViewManager?
     public let closeAction: CurrentValueSubject<Bool, Never> = .init(false)
-    
+
     private let devKey: String
     private let appID : String
     
@@ -54,6 +55,12 @@ final public class AdvertisingFeature {
         return advertisingBuilder.view
     }
     
+    public func updateParameters(with parameters: [String: String]){
+        parameters.forEach { key, value in
+            self.parameters.updateValue(value, forKey: key)
+        }
+    }
+    
     public func presentAdvertising(requestData: some RequestData, completion: @escaping Closure<PresentScreen>){
         self.getURLAdvertising(requestData: requestData) { [weak self] advertisingURL in
             guard let self = self else { return }
@@ -76,9 +83,10 @@ final public class AdvertisingFeature {
                             var advertisingModel = AdvertisingModel(
                                 requestDataModel: requestDataModel
                             )
+                            self.updateParameters(with: parameters)
                             advertisingModel.urlAdvertising = URL.create(
                                 with: requestDataModel,
-                                parameters: parameters
+                                parameters: self.parameters
                             )
                             
                             let createAdvertisingScreenVC = self.createAdvertisingScreenVC(
