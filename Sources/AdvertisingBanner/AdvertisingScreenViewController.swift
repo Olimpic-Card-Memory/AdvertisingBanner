@@ -122,12 +122,6 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         labelView.isHidden = true
         #endif
     }
-    
-    //MARK: -
-    @IBAction func copyButton(button: UIButton){
-        UIPasteboard.general.string = urlLabel.text
-    }
-    
     // Enable detection of shake motion
     public override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
