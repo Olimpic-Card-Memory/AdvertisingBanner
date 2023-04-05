@@ -112,10 +112,10 @@ final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenVi
     private func addAndCreateBannerView(with containerView: UIView) {
         let webBannerViewBuilder = WebBannerViewBuilder.build()
         let webBannerView = webBannerViewBuilder.view
- //       containerView.addSubview(webBannerView)
-//        webBannerView.snp.makeConstraints {
-//            $0.edges.equalToSuperview()
-//        }
+        containerView.addSubview(webBannerView)
+        webBannerView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
         self.webBannerViewManager = webBannerViewBuilder.viewManager
     }
 }
