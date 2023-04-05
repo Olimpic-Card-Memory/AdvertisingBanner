@@ -14,7 +14,10 @@ final class WebBannerViewBuilder: BuilderProtocol {
     
     public static func build() -> WebBannerViewBuilder {
         let view        = WebBannerView.loadNib()
-        let viewManager = WebBannerViewManager()
+        let viewManager = WebBannerViewManager(
+            advertisingNavigationDelegate: AdvertisingNavigationDelegate(),
+            advertisingUIDelegate: AdvertisingUIDelegate()
+        )
         viewManager.bind(with: view)
         let selfBuilder = WebBannerViewBuilder(
             with: view,

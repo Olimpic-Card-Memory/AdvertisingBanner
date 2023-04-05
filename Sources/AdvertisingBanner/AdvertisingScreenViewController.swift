@@ -37,7 +37,6 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         setUrlLabel()
         setAdvertisingTitleLabel()
         setNavBar()
-        presentBanner()
     }
     
     public func create(with viewProperties: ViewProperties?) {
