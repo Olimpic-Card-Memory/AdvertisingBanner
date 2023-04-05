@@ -19,7 +19,8 @@ let package = Package(
         .package(url: "https://github.com/Architecture-org/Architecture", branch: "master"),
         .package(url: "https://github.com/Firebase-com/FirestoreFirebase", branch: "master"),
         .package(url: "https://github.com/AppsFlyer-org/AppFlyerFramework", branch: "master"),
-        .package(url: "https://github.com/Juanpe/SkeletonView.git", from: "1.7.0")
+        .package(url: "https://github.com/SnapKit/SnapKit.git", .upToNextMajor(from: "5.0.1")),
+        .package(url: "https://github.com/Juanpe/SkeletonView.git", from: "1.7.0"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -27,6 +28,7 @@ let package = Package(
         .target(
             name: "AdvertisingBanner",
             dependencies: [
+                .product(name: "SnapKit", package: "SnapKit"),
                 .product(name: "Architecture", package: "Architecture"),
                 .product(name: "FirestoreFirebase", package: "FirestoreFirebase"),
                 .product(name: "AppFlyerFramework", package: "AppFlyerFramework"),

@@ -30,3 +30,10 @@ public extension Dictionary where Iterator.Element == (key: String, value: Strin
         return result
     }
 }
+public extension UIView {
+    
+    static func loadNib() -> Self {
+        let nib = Bundle.main.loadNibNamed(String(describing: Self.self), owner: nil, options: nil)?.first
+        return nib as! Self
+    }
+}

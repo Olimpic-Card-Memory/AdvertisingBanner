@@ -2,7 +2,8 @@
 //  Created by Developer on 07.12.2022.
 //
 import Combine
-import Foundation
+import UIKit
+import SnapKit
 import Architecture
 
 final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenViewController> {
@@ -11,6 +12,8 @@ final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenVi
     
     // MARK: - public properties -
     public let closeAction: CurrentValueSubject<Bool, Never> = .init(false)
+    
+    private var webBannerViewManager: WebBannerViewManager?
     
     // MARK: - private properties -
     private let advertisingNavigationDelegate: AdvertisingNavigationDelegate
@@ -49,6 +52,10 @@ final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenVi
                 let updatePage: ClosureEmpty = {
                     self.advertisingNavigationDelegate.webView?.reload()
                 }
+                self.advertisingNavigationDelegate.openBanner = { url in
+                    guard let url = url else { return }
+                    self.webBannerViewManager?.state = .createViewProperties(url)
+                }
                 self.advertisingNavigationDelegate.didFinish = { isFinish in
                     self.viewProperties?.isFinish = isFinish
                     self.update?(self.viewProperties)
@@ -62,7 +69,8 @@ final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenVi
                     isFinish: false,
                     updatePage: updatePage,
                     closeAction: closeAction,
-                    isNavBarHidden: false
+                    isNavBarHidden: false,
+                    addAndCreateBannerView: addAndCreateBannerView
                 )
                 create?(viewProperties)
                 subscribeDelegate()
@@ -99,5 +107,15 @@ final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenVi
             self.viewProperties?.isNavBarHidden = isNavBarHidden
             self.state = .updateViewProperties
         }
+    }
+    
+    private func addAndCreateBannerView(with containerView: UIView) {
+        let webBannerViewBuilder = WebBannerViewBuilder.build()
+        let webBannerView = webBannerViewBuilder.view
+        containerView.addSubview(webBannerView)
+        webBannerView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        self.webBannerViewManager = webBannerViewBuilder.viewManager
     }
 }

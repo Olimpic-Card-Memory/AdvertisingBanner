@@ -35,6 +35,7 @@ final public class AdvertisingNavigationDelegate: NSObject, WKNavigationDelegate
     
     public var didFinish: Closure<Bool>?
     public var didCommit: ClosureEmpty?
+    public var openBanner: Closure<URL?>?
     public var redirect: Closure<WKNavigationAction>?
     public var webView: WKWebView?
     
@@ -49,6 +50,7 @@ final public class AdvertisingNavigationDelegate: NSObject, WKNavigationDelegate
     }
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, preferences: WKWebpagePreferences, decisionHandler: @escaping (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
+        self.openBanner?(navigationAction.request.url)
         decisionHandler(.allow, preferences)
     }
     
@@ -60,5 +62,4 @@ final public class AdvertisingNavigationDelegate: NSObject, WKNavigationDelegate
     public func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         decisionHandler(.allow)
     }
-
 }
