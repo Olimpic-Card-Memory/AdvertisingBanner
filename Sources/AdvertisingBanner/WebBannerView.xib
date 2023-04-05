@@ -23,7 +23,7 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ILf-Jc-euB">
                                     <rect key="frame" x="426" y="0.0" width="44" height="44"/>
-                                    <color key="backgroundColor" name="baseColor"/>
+                                    <color key="backgroundColor" red="0.074509803920000006" green="0.1215686275" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="44" id="Tzd-lS-jjy"/>
                                     </constraints>
@@ -37,7 +37,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" name="baseColor"/>
+                            <color key="backgroundColor" red="0.074509803920000006" green="0.1215686275" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="ILf-Jc-euB" secondAttribute="bottom" id="2nG-nO-Q2h"/>
                                 <constraint firstAttribute="height" constant="44" id="Dec-zT-d4i"/>
@@ -58,7 +58,7 @@
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Pmi-a7-4oC"/>
-            <color key="backgroundColor" name="baseColor"/>
+            <color key="backgroundColor" red="0.074509803920000006" green="0.1215686275" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="uEz-Ln-j6G" firstAttribute="trailing" secondItem="Pmi-a7-4oC" secondAttribute="trailing" id="6gK-NT-KPg"/>
                 <constraint firstItem="uEz-Ln-j6G" firstAttribute="leading" secondItem="Pmi-a7-4oC" secondAttribute="leading" id="FuO-MI-V1O"/>
