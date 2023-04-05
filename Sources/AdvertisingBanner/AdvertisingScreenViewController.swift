@@ -68,12 +68,11 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         if !isFinish {
             activityIndicatorView.isHidden = false
             activityIndicatorView.startAnimating()
-            webView.isSkeletonable = true
-            webView.showAnimatedGradientSkeleton()
-            let baseColor = UIColor(named: "baseColor") ?? .blue
-            webView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: baseColor))
+//            webView.isSkeletonable = true
+//            let baseColor = UIColor(named: "baseColor") ?? .blue
+//            webView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: baseColor))
         } else {
-            webView.hideSkeleton()
+            //webView.hideSkeleton()
             activityIndicatorView.stopAnimating()
             activityIndicatorView.isHidden = true
         }
