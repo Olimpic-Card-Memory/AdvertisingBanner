@@ -15,7 +15,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uEz-Ln-j6G">
-                    <rect key="frame" x="0.0" y="0.0" width="470" height="204"/>
+                    <rect key="frame" x="0.0" y="48" width="470" height="156"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iDK-ed-EJ6">
                             <rect key="frame" x="0.0" y="0.0" width="470" height="44"/>
@@ -25,8 +25,8 @@
                                     <constraints>
                                         <constraint firstAttribute="width" constant="44" id="Tzd-lS-jjy"/>
                                     </constraints>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" image="clear" catalog="system"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" image="clear" catalog="system"/>
                                     <connections>
                                         <action selector="closeButtonWithButton:" destination="kns-3F-tW8" eventType="touchUpInside" id="KfJ-Vo-adT"/>
                                     </connections>
@@ -41,7 +41,7 @@
                             </constraints>
                         </view>
                         <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7WH-TQ-vaU">
-                            <rect key="frame" x="0.0" y="44" width="470" height="160"/>
+                            <rect key="frame" x="0.0" y="44" width="470" height="112"/>
                             <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <wkWebViewConfiguration key="configuration">
                                 <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -56,7 +56,7 @@
             <constraints>
                 <constraint firstItem="uEz-Ln-j6G" firstAttribute="trailing" secondItem="Pmi-a7-4oC" secondAttribute="trailing" id="6gK-NT-KPg"/>
                 <constraint firstItem="uEz-Ln-j6G" firstAttribute="leading" secondItem="Pmi-a7-4oC" secondAttribute="leading" id="FuO-MI-V1O"/>
-                <constraint firstItem="uEz-Ln-j6G" firstAttribute="top" secondItem="kns-3F-tW8" secondAttribute="top" id="bdU-La-HUp"/>
+                <constraint firstItem="uEz-Ln-j6G" firstAttribute="top" secondItem="Pmi-a7-4oC" secondAttribute="top" id="bdU-La-HUp"/>
                 <constraint firstAttribute="bottom" secondItem="uEz-Ln-j6G" secondAttribute="bottom" id="utm-AI-Z0e"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
