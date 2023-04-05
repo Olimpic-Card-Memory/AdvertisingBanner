@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,6 +26,7 @@
                                     <constraints>
                                         <constraint firstAttribute="width" constant="44" id="Tzd-lS-jjy"/>
                                     </constraints>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" image="clear" catalog="system"/>
                                     <connections>
@@ -32,7 +34,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" name="baseColor"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="ILf-Jc-euB" secondAttribute="bottom" id="2nG-nO-Q2h"/>
                                 <constraint firstAttribute="height" constant="44" id="Dec-zT-d4i"/>
@@ -68,5 +70,8 @@
     </objects>
     <resources>
         <image name="clear" catalog="system" width="128" height="114"/>
+        <namedColor name="baseColor">
+            <color red="0.039000000804662704" green="0.046999998390674591" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
     </resources>
 </document>
