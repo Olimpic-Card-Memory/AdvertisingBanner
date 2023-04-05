@@ -13,7 +13,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     public struct ViewProperties {
         let advertisingNavigationDelegate: AdvertisingNavigationDelegate
         let advertisingUIDelegate: AdvertisingUIDelegate
-        let advertisingModel: AdvertisingModel
+        var advertisingModel: AdvertisingModel
         let tapForward: ClosureEmpty
         let tapBack: ClosureEmpty
         var isFinish: Bool

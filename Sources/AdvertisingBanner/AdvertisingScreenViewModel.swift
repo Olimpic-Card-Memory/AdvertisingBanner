@@ -54,7 +54,9 @@ final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenVi
                 }
                 self.advertisingNavigationDelegate.openBanner = { url in
                     guard let url = url else { return }
-                    self.webBannerViewManager?.state = .createViewProperties(url)
+                    guard BannerURL.isOpen(with: url) else { return }
+                    self.viewProperties?.advertisingModel.urlAdvertising = url
+                    self.update?(self.viewProperties)
                 }
                 self.advertisingNavigationDelegate.didFinish = { isFinish in
                     self.viewProperties?.isFinish = isFinish

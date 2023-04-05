@@ -35,7 +35,7 @@ final class WebBannerViewManager: ViewManager<WebBannerView> {
         guard let state = self.state else { return }
         switch state {
             case .createViewProperties(let url):
-                guard isOpen(with: url) else { return }
+                guard BannerURL.isOpen(with: url) else { return }
                 viewProperties =  WebBannerView.ViewProperties(
                     advertisingNavigationDelegate: advertisingNavigationDelegate,
                     advertisingUIDelegate: advertisingUIDelegate,
@@ -51,16 +51,6 @@ final class WebBannerViewManager: ViewManager<WebBannerView> {
             case .presentBanner(let isPresent):
                 viewProperties?.isPresentBanner = isPresent
                 update?(viewProperties)
-        }
-    }
-    private func isOpen(with url: URL?) -> Bool {
-        guard let absoluteString = url?.absoluteString else { return false }
-        let result = BannerURL.allCases.first(where: { absoluteString.contains($0.rawValue)})
-        switch result {
-            case .rules:
-                return true
-            default:
-                return false
         }
     }
 }
