@@ -29,6 +29,15 @@ final public class AdvertisingUIDelegate: NSObject, WKUIDelegate {
     public func webViewDidClose(_ webView: WKWebView) {
         
     }
+    
+    public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        if let frame = navigationAction.targetFrame,
+           frame.isMainFrame {
+            return nil
+        }
+        webView.load(navigationAction.request)
+        return nil
+    }
 }
 
 final public class AdvertisingNavigationDelegate: NSObject, WKNavigationDelegate {
