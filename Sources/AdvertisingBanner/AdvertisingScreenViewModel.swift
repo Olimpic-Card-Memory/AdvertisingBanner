@@ -16,7 +16,6 @@ final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenVi
     public let closeAction: CurrentValueSubject<Bool, Never> = .init(false)
     
     private var webBannerViewManager: WebBannerViewManager?
-    private var isPresentAlert = false
     
     // MARK: - private properties -
     private let advertisingNavigationDelegate: AdvertisingNavigationDelegate
@@ -133,7 +132,6 @@ final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenVi
         let bannerURL = BannerURL.isOpenApp(with: url)
         switch bannerURL {
             case .tg:
-                guard self.isPresentAlert else { return }
                 alertService.options(
                     title: "Telegramm",
                     message: "Вы пользуетесь Telegramm?",
@@ -144,9 +142,7 @@ final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenVi
                         } else {
                             self.openURL.open(with: .urlList(.telegramApp))
                         }
-                        self.isPresentAlert = false
                     }
-                self.isPresentAlert = true
             default:
                 break
         }
