@@ -179,6 +179,15 @@
         "revision" : "0af9125c4eae12a4973fb66574c53a54962a9e1e",
         "version" : "1.21.0"
       }
+    },
+    {
+      "identity" : "userdefaultsstandard",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/UserDefaultsStandard/UserDefaultsStandard",
+      "state" : {
+        "branch" : "master",
+        "revision" : "2d9646be2821764d66ed648e9a3ca22c897e0e93"
+      }
     }
   ],
   "version" : 2

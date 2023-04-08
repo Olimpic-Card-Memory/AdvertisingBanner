@@ -16,6 +16,7 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
+        .package(url: "https://github.com/UserDefaultsStandard/UserDefaultsStandard", branch: "master"),
         .package(url: "https://github.com/AlertService/AlertService", branch: "master"),
         .package(url: "https://github.com/Architecture-org/Architecture", branch: "master"),
         .package(url: "https://github.com/Firebase-com/FirestoreFirebase", branch: "master"),
@@ -30,6 +31,7 @@ let package = Package(
         .target(
             name: "AdvertisingBanner",
             dependencies: [
+                .product(name: "UserDefaultsStandard", package: "UserDefaultsStandard"),
                 .product(name: "AlertService", package: "AlertService"),
                 .product(name: "OpenURL", package: "OpenURL"),
                 .product(name: "SnapKit", package: "SnapKit"),

@@ -7,6 +7,7 @@ import SnapKit
 import OpenURL
 import Architecture
 import AlertService
+import UserDefaultsStandard
 
 final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenViewController> {
     
@@ -132,16 +133,24 @@ final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenVi
         let bannerURL = BannerURL.isOpenApp(with: url)
         switch bannerURL {
             case .tg:
+                let isOpen: Bool? = UserDefaultsStandard.shared.get(key: .isTelegramOpen)
+                guard let url = url else { return }
+                
+                guard let isOpen = isOpen, !isOpen else {
+                    self.openURL.open(with: .telegram(url))
+                    return
+                }
+               
                 alertService.options(
                     title: "Telegramm",
                     message: "Вы пользуетесь Telegramm?",
                     options: .InstallTG){ index in
                         if index == 0 {
-                            guard let url = url else { return }
                             self.openURL.open(with: .telegram(url))
                         } else {
                             self.openURL.open(with: .urlList(.telegramApp))
                         }
+                        UserDefaultsStandard.shared.save(key: .isTelegramOpen, value: true)
                     }
             default:
                 break
