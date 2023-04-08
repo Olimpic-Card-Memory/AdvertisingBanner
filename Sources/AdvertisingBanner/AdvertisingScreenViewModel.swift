@@ -6,6 +6,7 @@ import UIKit
 import SnapKit
 import OpenURL
 import Architecture
+import AlertService
 
 final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenViewController> {
     
@@ -20,14 +21,17 @@ final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenVi
     private let advertisingNavigationDelegate: AdvertisingNavigationDelegate
     private let advertisingUIDelegate: AdvertisingUIDelegate
     private let openURL: OpenURL
+    private let alertService: AlertService
     
     init(
         advertisingNavigationDelegate: AdvertisingNavigationDelegate,
         openURL: OpenURL,
+        alertService: AlertService,
         advertisingUIDelegate: AdvertisingUIDelegate
     ) {
         self.advertisingNavigationDelegate = advertisingNavigationDelegate
         self.openURL = openURL
+        self.alertService = alertService
         self.advertisingUIDelegate = advertisingUIDelegate
     }
     

@@ -92,3 +92,5 @@ public enum BannerURL: String, CaseIterable {
         }
     }
 }
+//tg://resolve?domain=olymp_casino_bot
+//https://t.me/olymp_casino_bot

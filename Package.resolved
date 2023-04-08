@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "alertservice",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AlertService/AlertService",
+      "state" : {
+        "branch" : "master",
+        "revision" : "d2e5bb848ba58c44fb6c5bcabc6b0516e4d02205"
+      }
+    },
+    {
       "identity" : "appflyerframework",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AppsFlyer-org/AppFlyerFramework",
@@ -132,7 +141,7 @@
       "location" : "https://github.com/URLsOpen/OpenURL",
       "state" : {
         "branch" : "master",
-        "revision" : "d3165ccff3934380943793aa3bb6689893fe7d8b"
+        "revision" : "b323518e284ce64aaf768e0c1d42267b7c206ec9"
       }
     },
     {

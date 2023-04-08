@@ -4,6 +4,7 @@
 import UIKit
 import Architecture
 import OpenURL
+import AlertService
 
 final public class AdvertisingScreenViewControllerBuilder: BuilderProtocol {
     
@@ -18,6 +19,7 @@ final public class AdvertisingScreenViewControllerBuilder: BuilderProtocol {
         let viewManager    = AdvertisingScreenViewManager(
             advertisingNavigationDelegate: AdvertisingNavigationDelegate(),
             openURL: OpenURL(),
+            alertService: AlertService(),
             advertisingUIDelegate: AdvertisingUIDelegate()
         )
         viewController.loadViewIfNeeded()
