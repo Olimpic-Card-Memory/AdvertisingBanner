@@ -3,6 +3,7 @@
 //
 import UIKit
 import Architecture
+import OpenURL
 
 final public class AdvertisingScreenViewControllerBuilder: BuilderProtocol {
     
@@ -16,6 +17,7 @@ final public class AdvertisingScreenViewControllerBuilder: BuilderProtocol {
         let viewController = AdvertisingScreenViewController()
         let viewManager    = AdvertisingScreenViewManager(
             advertisingNavigationDelegate: AdvertisingNavigationDelegate(),
+            openURL: OpenURL(),
             advertisingUIDelegate: AdvertisingUIDelegate()
         )
         viewController.loadViewIfNeeded()

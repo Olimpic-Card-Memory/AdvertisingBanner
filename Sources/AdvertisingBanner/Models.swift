@@ -64,6 +64,7 @@ public enum AdvertisingURL {
 
 public enum BannerURL: String, CaseIterable {
     case rules
+    case tg = "tg://"
     
     static func isOpen(with url: URL?) -> Bool {
         guard let absoluteString = url?.absoluteString else { return false }
@@ -71,8 +72,23 @@ public enum BannerURL: String, CaseIterable {
         switch result {
             case .rules:
                 return true
+            case .tg:
+                return true
             default:
                 return false
+        }
+    }
+    
+    static func isOpenApp(with url: URL?) -> BannerURL? {
+        guard let absoluteString = url?.absoluteString else { return nil }
+        let result = BannerURL.allCases.first(where: { absoluteString.contains($0.rawValue)})
+        switch result {
+            case .rules:
+                return .rules
+            case .tg:
+                return .tg
+            default:
+                return nil
         }
     }
 }

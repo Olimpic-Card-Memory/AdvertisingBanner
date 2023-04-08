@@ -4,6 +4,7 @@
 import Combine
 import UIKit
 import SnapKit
+import OpenURL
 import Architecture
 
 final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenViewController> {
@@ -18,12 +19,15 @@ final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenVi
     // MARK: - private properties -
     private let advertisingNavigationDelegate: AdvertisingNavigationDelegate
     private let advertisingUIDelegate: AdvertisingUIDelegate
+    private let openURL: OpenURL
     
     init(
         advertisingNavigationDelegate: AdvertisingNavigationDelegate,
+        openURL: OpenURL,
         advertisingUIDelegate: AdvertisingUIDelegate
     ) {
         self.advertisingNavigationDelegate = advertisingNavigationDelegate
+        self.openURL = openURL
         self.advertisingUIDelegate = advertisingUIDelegate
     }
     
@@ -53,12 +57,7 @@ final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenVi
                     self.advertisingNavigationDelegate.webView?.reload()
                 }
                 self.advertisingNavigationDelegate.openBanner = { url in
-                    guard let url = url else { return }
-//                    guard BannerURL.isOpen(with: url) else { return }
-//                    self.viewProperties?.advertisingModel.urlAdvertising = url
-//                    self.update?(self.viewProperties)
-                    
-                    self.webBannerViewManager?.state = .createViewProperties(url)
+                    self.openURL(with: url)
                 }
                 self.advertisingNavigationDelegate.didFinish = { isFinish in
                     self.viewProperties?.isFinish = isFinish
@@ -122,5 +121,16 @@ final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenVi
         }
         self.webBannerViewManager = webBannerViewBuilder.viewManager
         self.webBannerViewManager?.state = .presentBanner(false)
+    }
+    
+    private func openURL(with url: URL?){
+        guard BannerURL.isOpen(with: url) else { return }
+        let bannerURL = BannerURL.isOpenApp(with: url)
+        switch bannerURL {
+            case .tg:
+                openURL.open(with: .urlList(.telegramApp))
+            default:
+                break
+        }
     }
 }

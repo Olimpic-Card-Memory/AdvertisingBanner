@@ -127,6 +127,15 @@
       }
     },
     {
+      "identity" : "openurl",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/URLsOpen/OpenURL",
+      "state" : {
+        "branch" : "master",
+        "revision" : "d3165ccff3934380943793aa3bb6689893fe7d8b"
+      }
+    },
+    {
       "identity" : "promises",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/promises.git",

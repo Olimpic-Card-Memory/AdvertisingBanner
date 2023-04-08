@@ -20,6 +20,7 @@ let package = Package(
         .package(url: "https://github.com/Firebase-com/FirestoreFirebase", branch: "master"),
         .package(url: "https://github.com/AppsFlyer-org/AppFlyerFramework", branch: "master"),
         .package(url: "https://github.com/SnapKit/SnapKit.git", .upToNextMajor(from: "5.0.1")),
+        .package(url: "https://github.com/URLsOpen/OpenURL", branch: "master"),
         .package(url: "https://github.com/Juanpe/SkeletonView.git", from: "1.7.0"),
     ],
     targets: [
@@ -28,6 +29,7 @@ let package = Package(
         .target(
             name: "AdvertisingBanner",
             dependencies: [
+                .product(name: "OpenURL", package: "OpenURL"),
                 .product(name: "SnapKit", package: "SnapKit"),
                 .product(name: "Architecture", package: "Architecture"),
                 .product(name: "FirestoreFirebase", package: "FirestoreFirebase"),
