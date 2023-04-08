@@ -139,10 +139,8 @@ final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenVi
                     message: "Вы пользуетесь Telegramm?",
                     options: .InstallTG){ index in
                         if index == 0 {
-                            self.openURL.open(
-                                with: .string(url?.absoluteString ?? "",
-                                              isDeletePrecent: false)
-                            )
+                            guard let url = url else { return }
+                            self.openURL.open(with: .telegram(url))
                         } else {
                             self.openURL.open(with: .urlList(.telegramApp))
                         }

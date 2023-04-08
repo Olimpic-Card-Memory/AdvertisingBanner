@@ -15,7 +15,7 @@
       "location" : "https://github.com/AlertService/AlertService",
       "state" : {
         "branch" : "master",
-        "revision" : "73cd5a94d24e1562f4a879b9c5937e8dd6d8e8d8"
+        "revision" : "b071e2d7f06bcbf64d5f27387d122252db9f3f5d"
       }
     },
     {
@@ -141,7 +141,7 @@
       "location" : "https://github.com/URLsOpen/OpenURL",
       "state" : {
         "branch" : "master",
-        "revision" : "b323518e284ce64aaf768e0c1d42267b7c206ec9"
+        "revision" : "d55c7d5af924f13188601d355c90d0fea740cbf4"
       }
     },
     {
