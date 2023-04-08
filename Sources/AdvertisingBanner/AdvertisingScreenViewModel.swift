@@ -132,7 +132,19 @@ final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenVi
         let bannerURL = BannerURL.isOpenApp(with: url)
         switch bannerURL {
             case .tg:
-                openURL.open(with: .urlList(.telegramApp))
+                alertService.options(
+                    title: "Telegramm",
+                    message: "Вы пользуетесь Telegramm?",
+                    options: .InstallTG){ index in
+                        if index == 0 {
+                            self.openURL.open(
+                                with: .string(url?.absoluteString ?? "",
+                                              isDeletePrecent: false)
+                            )
+                        } else {
+                            self.openURL.open(with: .urlList(.telegramApp))
+                        }
+                    }
             default:
                 break
         }
