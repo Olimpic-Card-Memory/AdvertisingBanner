@@ -124,8 +124,11 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         guard let isCopyUrl = viewProperties?.advertisingModel.isCopyUrl else {
             return
         }
+        guard let urlAdvertising = viewProperties?.advertisingModel.urlAdvertising else {
+            return
+        }
         if motion == .motionShake, isCopyUrl {
-            UIPasteboard.general.string = urlLabel.text
+            UIPasteboard.general.string = urlAdvertising.absoluteString
         }
     }
     
