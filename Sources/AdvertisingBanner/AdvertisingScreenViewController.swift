@@ -59,6 +59,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         guard let urlAdvertising = viewProperties?.advertisingModel.urlAdvertising else { return }
         webView.configuration.preferences.javaScriptEnabled = true
         webView.configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
+        webView.configuration.mediaTypesRequiringUserActionForPlayback = .all
         let request = URLRequest(url: urlAdvertising)
         webView.load(request)
     }
