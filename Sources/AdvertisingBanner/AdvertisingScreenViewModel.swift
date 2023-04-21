@@ -152,6 +152,7 @@ final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenVi
                         }
                         UserDefaultsStandard.shared.save(key: .isTelegramOpen, value: true)
                     }
+               
             default:
                 break
         }
