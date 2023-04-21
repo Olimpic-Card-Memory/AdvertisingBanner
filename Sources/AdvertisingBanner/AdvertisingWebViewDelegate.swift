@@ -30,14 +30,14 @@ final public class AdvertisingUIDelegate: NSObject, WKUIDelegate {
         
     }
     
-//    public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-//        if let frame = navigationAction.targetFrame,
-//           frame.isMainFrame {
-//            return nil
-//        }
-//        webView.load(navigationAction.request)
-//        return nil
-//    }
+    public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        if let frame = navigationAction.targetFrame,
+           frame.isMainFrame {
+            return nil
+        }
+        webView.load(navigationAction.request)
+        return nil
+    }
 }
 
 final public class AdvertisingNavigationDelegate: NSObject, WKNavigationDelegate {
@@ -59,7 +59,7 @@ final public class AdvertisingNavigationDelegate: NSObject, WKNavigationDelegate
     }
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, preferences: WKWebpagePreferences, decisionHandler: @escaping (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
-        //self.openBanner?(navigationAction.request.url)
+        self.openBanner?(navigationAction.request.url)
         decisionHandler(.allow, preferences)
     }
     
