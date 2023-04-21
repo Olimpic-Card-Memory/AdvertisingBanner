@@ -60,15 +60,17 @@ final public class AdvertisingNavigationDelegate: NSObject, WKNavigationDelegate
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, preferences: WKWebpagePreferences, decisionHandler: @escaping (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
         self.openBanner?(navigationAction.request.url)
-        decisionHandler(.cancel, preferences)
+        print(navigationAction)
+        print(preferences)
+        decisionHandler(.allow, preferences)
     }
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         redirect?(navigationAction)
-        decisionHandler(.cancel)
+        decisionHandler(.allow)
     }
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
-        decisionHandler(.cancel)
+        decisionHandler(.allow)
     }
 }
