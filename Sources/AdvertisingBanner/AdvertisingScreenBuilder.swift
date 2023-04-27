@@ -16,12 +16,7 @@ final public class AdvertisingScreenViewControllerBuilder: BuilderProtocol {
     
     public static func create() -> AdvertisingScreenViewControllerBuilder {
         let viewController = AdvertisingScreenViewController()
-        let viewManager    = AdvertisingScreenViewManager(
-            advertisingNavigationDelegate: AdvertisingNavigationDelegate(),
-            openURL: OpenURL(),
-            alertService: AlertService(),
-            advertisingUIDelegate: AdvertisingUIDelegate()
-        )
+        let viewManager    = AdvertisingScreenViewManager()
         viewController.loadViewIfNeeded()
         viewManager.bind(with: viewController)
         let selfBuilder = AdvertisingScreenViewControllerBuilder(
