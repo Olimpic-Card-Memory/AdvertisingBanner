@@ -9,9 +9,10 @@ import UIKit
 
 final class AppsFlyerService {
     
-    private let appsFlyer = AppыFlyerManager()
+    private let appsFlyerManager = AppsFlyerManager()
     private var anyCancel: Set<AnyCancellable> = []
     
+    public var appsFlayerInstall: Install?
     public var installCompletion = PassthroughSubject<Install, Never>()
     public var completionDeepLinkResult: ((DeepLinkResult) -> Void)?
     
@@ -27,28 +28,29 @@ final class AppsFlyerService {
     }
     
     public func start(){
-        appsFlyer.startRequestTrackingAuthorization()
+        appsFlyerManager.startRequestTrackingAuthorization()
     }
     
     public func setup(){
         setupParseAppsFlyerData()
         setupAppsFlyerDeepLinkDelegate()
-        appsFlyer.setDebag(isDebug: true)
-        appsFlyer.setup(
+        appsFlyerManager.setDebag(isDebug: true)
+        appsFlyerManager.setup(
             appID : appID,
             devKey: devKey
         )
     }
     
     public func setupParseAppsFlyerData(){
-        appsFlyer.installCompletion.sink { [weak self] install in
+        appsFlyerManager.installCompletion.sink { [weak self] install in
             guard let self = self else { return }
+            self.appsFlayerInstall = install
             self.installCompletion.send(install)
         }.store(in: &anyCancel)
     }
     
     public func setupAppsFlyerDeepLinkDelegate(){
-        appsFlyer.completionDeepLinkResult = { deepLinkResult in
+        appsFlyerManager.completionDeepLinkResult = { deepLinkResult in
             self.completionDeepLinkResult?(deepLinkResult)
         }
     }
