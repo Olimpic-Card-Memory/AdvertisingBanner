@@ -140,19 +140,15 @@ final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenVi
                     self.openURL.open(with: .telegram(url))
                     return
                 }
-               
-                alertService.options(
-                    title: "Telegramm",
-                    message: "Вы пользуетесь Telegramm?",
-                    options: .InstallTG){ index in
-                        if index == 0 {
-                            self.openURL.open(with: .telegram(url))
-                        } else {
-                            self.openURL.open(with: .urlList(.telegramApp))
-                        }
-                        UserDefaultsStandard.shared.save(key: .isTelegramOpen, value: true)
+                alertService.options(title: "Telegramm", message: "Вы пользуетесь Telegramm?", options: TelegramAlert()){ index in
+                    if index == 0 {
+                        self.openURL.open(with: .telegram(url))
+                    } else {
+                        self.openURL.open(with: .urlList(.telegramApp))
                     }
-               
+                    UserDefaultsStandard.shared.save(key: .isTelegramOpen, value: true)
+                }
+                
             default:
                 break
         }

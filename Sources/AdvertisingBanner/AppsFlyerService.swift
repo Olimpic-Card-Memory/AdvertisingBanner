@@ -14,7 +14,6 @@ final class AppsFlyerService {
     
     public var installCompletion = PassthroughSubject<Install, Never>()
     public var completionDeepLinkResult: ((DeepLinkResult) -> Void)?
-    public var currentInstall: Install?
     
     private let devKey: String
     private let appID : String
@@ -44,7 +43,6 @@ final class AppsFlyerService {
     public func setupParseAppsFlyerData(){
         appsFlyer.installCompletion.sink { [weak self] install in
             guard let self = self else { return }
-            self.currentInstall = install
             self.installCompletion.send(install)
         }.store(in: &anyCancel)
     }

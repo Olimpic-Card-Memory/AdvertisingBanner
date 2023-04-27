@@ -110,7 +110,7 @@ final public class AdvertisingFeature {
         firestoreService.get(requestData: requestData) { result in
             switch result {
                 case .object(let object):
-                    guard let requestDataModel = object.first as? RequestDataModel
+                    guard let requestDataModel = object?.first as? RequestDataModel
                     else {
                         completion(.error(""))
                         return
@@ -123,23 +123,16 @@ final public class AdvertisingFeature {
     }
     
     private func executeAppsFlyer(completion: @escaping Closure<[String: String]?>) {
-        switch self.appsFlyerService.currentInstall {
-            case .nonOrganic(let parameters):
-                completion(parameters)
-            case .organic:
-                completion(nil)
-            default:
-                appsFlyerService.installCompletion
-                    .sink(receiveValue: { install in
-                        switch install {
-                            case .nonOrganic(let parameters):
-                                completion(parameters)
-                            case .organic:
-                                completion(nil)
-                        }
-                    })
-                    .store(in: &anyCancel)
-        }
+        appsFlyerService.installCompletion
+            .sink(receiveValue: { install in
+                switch install {
+                    case .nonOrganic(let parameters):
+                        completion(parameters)
+                    case .organic:
+                        completion(nil)
+                }
+            })
+            .store(in: &anyCancel)
     }
     
     private func subscribeClose(){

@@ -3,6 +3,7 @@
 //
 import UIKit
 import FirestoreFirebase
+import AlertService
 
 public struct RequestDataModel: Decodable {
     
@@ -92,5 +93,8 @@ public enum BannerURL: String, CaseIterable {
         }
     }
 }
-//tg://resolve?domain=olymp_casino_bot
-//https://t.me/olymp_casino_bot
+
+struct TelegramAlert: AlertButtonOptionsoble {
+    var buttonsCount: Int = 2
+    var buttonsText: Array<String> = ["Да", "Нет"]
+}
