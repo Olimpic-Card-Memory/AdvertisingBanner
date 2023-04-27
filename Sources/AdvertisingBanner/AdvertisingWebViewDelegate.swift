@@ -48,6 +48,14 @@ final public class AdvertisingNavigationDelegate: NSObject, WKNavigationDelegate
     public var redirect: Closure<WKNavigationAction>?
     public var webView: WKWebView?
     
+    public override init() {
+        self.didFinish = nil
+        self.didCommit = nil
+        self.openBanner = nil
+        self.redirect = nil
+        self.webView = nil
+    }
+    
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.webView = webView
         didFinish?(true)
