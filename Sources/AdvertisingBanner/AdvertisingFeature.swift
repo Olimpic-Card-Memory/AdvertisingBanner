@@ -20,6 +20,7 @@ final public class AdvertisingFeature {
     
     public var advertisingScreenViewManager: AdvertisingScreenViewManager?
     public let closeAction: CurrentValueSubject<Bool, Never> = .init(false)
+    public var isFirstLaunch = true
 
     private let devKey: String
     private let appID : String
@@ -42,6 +43,7 @@ final public class AdvertisingFeature {
     }
     
     public func startAppsFlyer() {
+        guard self.isFirstLaunch else { return }
         appsFlyerService.start()
     }
     
@@ -72,7 +74,7 @@ final public class AdvertisingFeature {
                         return
                     }
                     self.executeAppsFlyer { parameters in
-                        
+                        guard self.isFirstLaunch else { return }
                         DispatchQueue.main.async {
                             
                             guard let parameters = parameters else {
@@ -94,6 +96,7 @@ final public class AdvertisingFeature {
                             )
                             completion(.advertising(createAdvertisingScreenVC))
                             self.subscribeClose()
+                            self.isFirstLaunch = false
                         }
                     }
                     
