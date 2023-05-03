@@ -4,6 +4,7 @@
 import SkeletonView
 import Combine
 import UIKit
+import SnapKit
 import WebKit
 import Architecture
 
@@ -57,9 +58,19 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     
     private func setupWebViewURL() {
         guard let urlAdvertising = viewProperties?.advertisingModel.urlAdvertising else { return }
-        let request = URLRequest(url: urlAdvertising)
-        webView.configuration.allowsInlineMediaPlayback = true
-        webView.load(request)
+        let urlRequest = URLRequest(url: urlAdvertising)
+        let configuration = WKWebViewConfiguration()
+        configuration.allowsInlineMediaPlayback = true
+        configuration.mediaTypesRequiringUserActionForPlayback = []
+        let configurationWKWebView = WKWebView(
+            frame: .zero,
+            configuration: configuration
+        )
+        self.webView.addSubview(configurationWKWebView)
+        configurationWKWebView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        configurationWKWebView.load(urlRequest)
     }
     
     private func skeletonLoading(){
