@@ -126,16 +126,25 @@ final public class AdvertisingFeature {
     }
     
     private func executeAppsFlyer(completion: @escaping Closure<[String: String]?>) {
-        self.appsFlyerService.installCompletion
-            .sink(receiveValue: { install in
-                switch install {
-                    case .nonOrganic(let parameters):
-                        completion(parameters)
-                    case .organic:
-                        completion(nil)
-                }
-            })
-            .store(in: &anyCancel)
+        if let installGet = self.appsFlyerService.installGet {
+            switch installGet {
+                case .nonOrganic(let parameters):
+                    completion(parameters)
+                case .organic:
+                    completion(nil)
+            }
+        } else {
+            self.appsFlyerService.installCompletion
+                .sink(receiveValue: { install in
+                    switch install {
+                        case .nonOrganic(let parameters):
+                            completion(parameters)
+                        case .organic:
+                            completion(nil)
+                    }
+                })
+                .store(in: &anyCancel)
+        }
     }
     
     private func subscribeClose(){
