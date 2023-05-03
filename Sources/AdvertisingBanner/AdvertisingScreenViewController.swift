@@ -4,7 +4,6 @@
 import SkeletonView
 import Combine
 import UIKit
-import SnapKit
 import WebKit
 import Architecture
 
@@ -42,7 +41,6 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     
     public func create(with viewProperties: ViewProperties?) {
         self.viewProperties = viewProperties
-        setup()
         setupWebViewURL()
         setUrlLabel()
         setAdvertisingTitleLabel()
@@ -51,9 +49,9 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         viewProperties?.addAndCreateBannerView(self.view)
     }
     
-    private func setup() {
-        self.webView.navigationDelegate = viewProperties?.advertisingNavigationDelegate
-        self.webView.uiDelegate = viewProperties?.advertisingUIDelegate
+    private func setup(with webView: WKWebView) {
+        webView.navigationDelegate = viewProperties?.advertisingNavigationDelegate
+        webView.uiDelegate = viewProperties?.advertisingUIDelegate
     }
     
     private func setupWebViewURL() {
@@ -67,6 +65,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
             configuration: configuration
         )
         self.webView.addSubview(configurationWKWebView)
+        self.setup(with: configurationWKWebView)
         configurationWKWebView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
