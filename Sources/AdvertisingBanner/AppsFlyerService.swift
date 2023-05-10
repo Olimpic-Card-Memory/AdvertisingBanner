@@ -31,7 +31,7 @@ final class AppsFlyerService {
     }
     
     public func start(isIDFA: Bool){
-        appsFlyerManager.startRequestTrackingAuthorization()
+        appsFlyerManager.startRequestTrackingAuthorization(isIDFA: isIDFA)
     }
     
     public func setup(){
