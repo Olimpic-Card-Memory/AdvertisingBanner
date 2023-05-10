@@ -24,7 +24,7 @@
       "location" : "https://github.com/AppsFlyer-org/AppFlyerFramework",
       "state" : {
         "branch" : "master",
-        "revision" : "59c89a1d697bed47615cab8aecac689b7f76c2b1"
+        "revision" : "7b0003e3aa14d0033d9659eae3c6de8361f6d699"
       }
     },
     {
@@ -60,7 +60,7 @@
       "location" : "https://github.com/Firebase-com/FirestoreFirebase",
       "state" : {
         "branch" : "master",
-        "revision" : "f8dcae4d0e543d9adfb512fffdf0a600998ba84a"
+        "revision" : "7032b19df60c0c729ac6b1da4b83b94d8e82fcad"
       }
     },
     {
@@ -77,8 +77,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleDataTransport.git",
       "state" : {
-        "revision" : "cc7265b8e3906304e6e81f32c1662a94bbae2357",
-        "version" : "9.2.2"
+        "revision" : "7874c1b48cbffd086ce8a052c4be873a78613775",
+        "version" : "9.2.3"
       }
     },
     {

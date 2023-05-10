@@ -30,7 +30,7 @@ final class AppsFlyerService {
         self.appID = appID
     }
     
-    public func start(){
+    public func start(isIDFA: Bool){
         appsFlyerManager.startRequestTrackingAuthorization()
     }
     

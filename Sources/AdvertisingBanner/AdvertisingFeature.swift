@@ -10,6 +10,7 @@ import FirestoreFirebase
 final public class AdvertisingFeature {
     
     private lazy var firestoreService = FirestoreService()
+    private lazy var remoteService = RemoteService()
     private lazy var appsFlyerService = AppsFlyerService(
         devKey: self.devKey,
         appID: self.appID
@@ -44,7 +45,9 @@ final public class AdvertisingFeature {
     
     public func startAppsFlyer() {
         guard self.isFirstLaunch else { return }
-        appsFlyerService.start()
+        self.remoteService.getBoolValue(key: "isIDFA") { [weak self] isIDFA in
+            self?.appsFlyerService.start(isIDFA: isIDFA)
+        }
     }
     
     public func createAdvertisingScreenVC(
