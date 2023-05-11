@@ -5,7 +5,7 @@ import UIKit
 import FirestoreFirebase
 import AlertService
 
-public struct RequestDataModel: Decodable {
+public struct RequestDataModel: Codable {
     
     public let schemeAdvertising: String
     public let hostAdvertising: String
