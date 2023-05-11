@@ -77,7 +77,6 @@ final public class AdvertisingFeature {
                         return
                     }
                     self.executeAppsFlyer { parameters in
-                        guard self.isFirstLaunch else { return }
                         DispatchQueue.main.async {
                             
                             guard let parameters = parameters else {
