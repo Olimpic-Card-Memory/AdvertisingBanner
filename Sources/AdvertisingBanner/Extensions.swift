@@ -15,15 +15,9 @@ public extension URL {
         parameters: [String: String]
     ) -> URL? {
         var components = URLComponents()
-        #if DEBUG
-        components.host = requestDataModel.devHostAdvertising
-        #elseif RELEASE
-        components.host = requestDataModel.prodHostAdvertising
-        #else
-        components.host = requestDataModel.devHostAdvertising
-        #endif
-        components.scheme = requestDataModel.schemeAdvertising
-        components.path = requestDataModel.pathAdvertising
+        components.scheme     = requestDataModel.schemeAdvertising
+        components.host       = requestDataModel.hostAdvertising
+        components.path       = requestDataModel.pathAdvertising
         components.queryItems = parameters.createQueryItems()
         return components.url
     }

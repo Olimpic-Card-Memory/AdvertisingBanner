@@ -8,39 +8,63 @@ import AlertService
 public struct RequestDataModel: Codable {
     
     public let schemeAdvertising: String
-    public let prodHostAdvertising: String
-    public let devHostAdvertising: String
+    public let hostAdvertising: String
     public let pathAdvertising: String
     public let titleAdvertising: String
     public let isAdvertising: Bool
     public let isClose: Bool
     public let isCopyUrl: Bool
     
-    public init(
-        schemeAdvertising: String,
-        prodHostAdvertising: String,
-        devHostAdvertising: String,
-        pathAdvertising: String,
-        titleAdvertising: String,
-        isAdvertising: Bool,
-        isClose: Bool,
-        isCopyUrl: Bool
-    ) {
-        self.schemeAdvertising = schemeAdvertising
-        self.prodHostAdvertising = prodHostAdvertising
-        self.devHostAdvertising = devHostAdvertising
-        self.pathAdvertising = pathAdvertising
-        self.titleAdvertising = titleAdvertising
-        self.isAdvertising = isAdvertising
-        self.isClose = isClose
-        self.isCopyUrl = isCopyUrl
+    enum CodingKeys: String, CodingKey {
+        
+        case schemeAdvertising
+        case devHostAdvertising
+        case prodHostAdvertising
+        case pathAdvertising
+        case titleAdvertising
+        case isAdvertising
+        case isClose
+        case isCopyUrl
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        #if DEBUG
+        self.hostAdvertising = try values.decode(String.self, forKey: .devHostAdvertising)
+        #elseif RELEASE
+        self.hostAdvertising = try values.decode(String.self, forKey: .prodHostAdvertising)
+        #else
+        self.hostAdvertising = try values.decode(String.self, forKey: .devHostAdvertising)
+        #endif
+        self.schemeAdvertising = try values.decode(String.self, forKey: .schemeAdvertising)
+        self.pathAdvertising = try values.decode(String.self, forKey: .pathAdvertising)
+        self.titleAdvertising = try values.decode(String.self, forKey: .titleAdvertising)
+        self.isAdvertising = try values.decode(Bool.self, forKey: .isAdvertising)
+        self.isClose = try values.decode(Bool.self, forKey: .isClose)
+        self.isCopyUrl = try values.decode(Bool.self, forKey: .isCopyUrl)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        #if DEBUG
+        try container.encode(hostAdvertising, forKey: .devHostAdvertising)
+        #elseif RELEASE
+        try container.encode(hostAdvertising, forKey: .prodHostAdvertising)
+        #else
+        try container.encode(hostAdvertising, forKey: .devHostAdvertising)
+        #endif
+        try container.encode(schemeAdvertising, forKey: .schemeAdvertising)
+        try container.encode(pathAdvertising, forKey: .pathAdvertising)
+        try container.encode(titleAdvertising, forKey: .titleAdvertising)
+        try container.encode(isAdvertising, forKey: .isAdvertising)
+        try container.encode(isClose, forKey: .isClose)
+        try container.encode(isCopyUrl, forKey: .isCopyUrl)
     }
 }
 
 public struct AdvertisingModel {
     
-    public let prodHostAdvertising: String
-    public let devHostAdvertising: String
+    public let hostAdvertising: String
     public var urlAdvertising: URL?
     public let isAdvertising: Bool
     public let isClose: Bool
@@ -48,8 +72,7 @@ public struct AdvertisingModel {
     public let isCopyUrl: Bool
     
     public init(requestDataModel: RequestDataModel) {
-        self.devHostAdvertising = requestDataModel.devHostAdvertising
-        self.prodHostAdvertising = requestDataModel.prodHostAdvertising
+        self.hostAdvertising = requestDataModel.hostAdvertising
         self.urlAdvertising = nil
         self.isAdvertising = requestDataModel.isAdvertising
         self.titleAdvertising = requestDataModel.titleAdvertising
