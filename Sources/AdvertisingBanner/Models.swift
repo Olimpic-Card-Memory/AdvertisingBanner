@@ -27,6 +27,24 @@ public struct RequestDataModel: Codable {
         case isCopyUrl
     }
     
+    public init(
+        schemeAdvertising: String,
+        hostAdvertising: String,
+        pathAdvertising: String,
+        titleAdvertising: String,
+        isAdvertising: Bool,
+        isClose: Bool,
+        isCopyUrl: Bool
+    ) {
+        self.schemeAdvertising = schemeAdvertising
+        self.hostAdvertising = hostAdvertising
+        self.pathAdvertising = pathAdvertising
+        self.titleAdvertising = titleAdvertising
+        self.isAdvertising = isAdvertising
+        self.isClose = isClose
+        self.isCopyUrl = isCopyUrl
+    }
+    
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         #if DEBUG
