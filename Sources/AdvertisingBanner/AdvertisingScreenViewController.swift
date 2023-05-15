@@ -65,6 +65,9 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
             frame: .zero,
             configuration: configuration
         )
+        self.configurationWKWebView.contentMode = .scaleAspectFit
+        self.configurationWKWebView.autoresizingMask = .flexibleHeight
+        self.configurationWKWebView.autoresizingMask = .flexibleHeight
         self.webView.addSubview(configurationWKWebView)
         self.setup()
         self.configurationWKWebView.snp.makeConstraints {
@@ -131,9 +134,8 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     
     // MARK: - Override
     public override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        let reload = "<header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=no'></header><body style='margin: 0px; padding: 0px; width:100%; height:100%;'>"
         coordinator.animate(alongsideTransition: nil, completion: {_ in
-            self.configurationWKWebView.evaluateJavaScript(reload, completionHandler: nil)
+            //self.configurationWKWebView?.evaluateJavaScript("location.reload();", completionHandler: nil)
         })
     }
     
