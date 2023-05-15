@@ -132,7 +132,8 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     // MARK: - Override
     public override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animate(alongsideTransition: nil, completion: {_ in
-            self.configurationWKWebView.evaluateJavaScript("location.reload();", completionHandler: nil)
+            //self.configurationWKWebView.evaluateJavaScript("location.reload();", completionHandler: nil)
+            self.configurationWKWebView.reloadInputViews()
         })
     }
     
