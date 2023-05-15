@@ -24,6 +24,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     }
     public var viewProperties: ViewProperties?
     private var anyCancel: Set<AnyCancellable> = []
+    private var configurationWKWebView: WKWebView!
     
     //MARK: - Outlets
     @IBOutlet weak private var webView: WKWebView!
@@ -49,9 +50,9 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         viewProperties?.addAndCreateBannerView(self.view)
     }
     
-    private func setup(with webView: WKWebView) {
-        webView.navigationDelegate = viewProperties?.advertisingNavigationDelegate
-        webView.uiDelegate = viewProperties?.advertisingUIDelegate
+    private func setup() {
+        self.configurationWKWebView.navigationDelegate = viewProperties?.advertisingNavigationDelegate
+        self.configurationWKWebView.uiDelegate = viewProperties?.advertisingUIDelegate
     }
     
     private func setupWebViewURL() {
@@ -60,13 +61,13 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         let configuration = WKWebViewConfiguration()
         configuration.allowsInlineMediaPlayback = true
         configuration.mediaTypesRequiringUserActionForPlayback = []
-        let configurationWKWebView = WKWebView(
+        self.configurationWKWebView = WKWebView(
             frame: .zero,
             configuration: configuration
         )
         self.webView.addSubview(configurationWKWebView)
-        self.setup(with: configurationWKWebView)
-        configurationWKWebView.snp.makeConstraints {
+        self.setup()
+        self.configurationWKWebView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         configurationWKWebView.load(urlRequest)
@@ -126,6 +127,13 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         #else
         urlLabel.isHidden = true
         #endif
+    }
+    
+    // MARK: - Override
+    public override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: nil, completion: {_ in
+            self.configurationWKWebView.evaluateJavaScript("location.reload();", completionHandler: nil)
+        })
     }
     
     // Enable detection of shake motion
