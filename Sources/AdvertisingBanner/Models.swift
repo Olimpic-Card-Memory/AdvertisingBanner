@@ -8,7 +8,8 @@ import AlertService
 public struct RequestDataModel: Codable {
     
     public let schemeAdvertising: String
-    public let hostAdvertising: String
+    public let prodHostAdvertising: String
+    public let devHostAdvertising: String
     public let pathAdvertising: String
     public let titleAdvertising: String
     public let isAdvertising: Bool
@@ -17,7 +18,8 @@ public struct RequestDataModel: Codable {
     
     public init(
         schemeAdvertising: String,
-        hostAdvertising: String,
+        prodHostAdvertising: String,
+        devHostAdvertising: String,
         pathAdvertising: String,
         titleAdvertising: String,
         isAdvertising: Bool,
@@ -25,7 +27,8 @@ public struct RequestDataModel: Codable {
         isCopyUrl: Bool
     ) {
         self.schemeAdvertising = schemeAdvertising
-        self.hostAdvertising = hostAdvertising
+        self.prodHostAdvertising = prodHostAdvertising
+        self.devHostAdvertising = devHostAdvertising
         self.pathAdvertising = pathAdvertising
         self.titleAdvertising = titleAdvertising
         self.isAdvertising = isAdvertising
@@ -36,7 +39,8 @@ public struct RequestDataModel: Codable {
 
 public struct AdvertisingModel {
     
-    public let hostAdvertising: String
+    public let prodHostAdvertising: String
+    public let devHostAdvertising: String
     public var urlAdvertising: URL?
     public let isAdvertising: Bool
     public let isClose: Bool
@@ -44,7 +48,8 @@ public struct AdvertisingModel {
     public let isCopyUrl: Bool
     
     public init(requestDataModel: RequestDataModel) {
-        self.hostAdvertising = requestDataModel.hostAdvertising
+        self.devHostAdvertising = requestDataModel.devHostAdvertising
+        self.prodHostAdvertising = requestDataModel.prodHostAdvertising
         self.urlAdvertising = nil
         self.isAdvertising = requestDataModel.isAdvertising
         self.titleAdvertising = requestDataModel.titleAdvertising
