@@ -90,7 +90,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     private func tapHome(){
         if let url = URL(string: self.urlAdvertising) {
             let urlRequest = URLRequest(url: url)
-            configurationWKWebView.load(urlRequest)
+            configurationWKWebView?.load(urlRequest)
         } else {
             alertService.default(title: "Ошибка", message: "Ошибка обнавления")
         }
@@ -106,7 +106,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     }
     
     @IBAction func updatePageButton(button: UIButton){
-        configurationWKWebView.reload()
+        configurationWKWebView?.reload()
     }
     
     @IBAction func closeButton(button: UIButton){
