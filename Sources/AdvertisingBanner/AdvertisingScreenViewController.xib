@@ -48,7 +48,7 @@
                                             <barButtonItem key="leftBarButtonItem" title="Item" image="house.fill" catalog="system" id="gPl-Db-OLw">
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
-                                                    <action selector="closeButtonWithButton:" destination="-1" id="M9Q-a5-USk"/>
+                                                    <action selector="tapBackButtonWithButton:" destination="-1" id="MTu-O3-smJ"/>
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem key="rightBarButtonItem" image="arrow.clockwise" catalog="system" id="KZx-lO-aqj">
@@ -77,11 +77,7 @@
                                 <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cbx-WT-adX">
                                     <rect key="frame" x="0.0" y="848" width="414" height="0.0"/>
                                     <items>
-                                        <barButtonItem title="Item" image="backward.fill" catalog="system" id="7Jy-cv-mxH">
-                                            <connections>
-                                                <action selector="tapBackButtonWithButton:" destination="-1" id="bNJ-ty-bWL"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <barButtonItem title="Item" image="backward.fill" catalog="system" id="7Jy-cv-mxH"/>
                                         <barButtonItem style="plain" systemItem="flexibleSpace" id="uA0-dw-Nkh"/>
                                         <barButtonItem id="rj9-42-0aZ"/>
                                         <barButtonItem style="plain" systemItem="flexibleSpace" id="VtC-Uw-9CT"/>
