@@ -5,6 +5,7 @@ import SkeletonView
 import Combine
 import UIKit
 import WebKit
+import AlertService
 import Architecture
 
 final public class AdvertisingScreenViewController: UIViewController, ViewProtocol {
@@ -25,7 +26,8 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     public var viewProperties: ViewProperties?
     private var anyCancel: Set<AnyCancellable> = []
     private var configurationWKWebView: WKWebView!
-    
+    private var urlAdvertising: String = ""
+    private let alertService = AlertService()
     //MARK: - Outlets
     @IBOutlet weak private var webView: WKWebView!
     @IBOutlet weak private var urlLabel: UILabel!
@@ -48,6 +50,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         skeletonLoading()
         setNavBar()
         viewProperties?.addAndCreateBannerView(self.view)
+        self.urlAdvertising = viewProperties?.advertisingModel.urlAdvertising?.absoluteString ?? ""
     }
     
     private func setup() {
@@ -85,9 +88,12 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     }
     
     private func tapHome(){
-        guard let urlAdvertising = viewProperties?.advertisingModel.urlAdvertising else { return }
-        let urlRequest = URLRequest(url: urlAdvertising)
-        configurationWKWebView.load(urlRequest)
+        if let url = URL(string: self.urlAdvertising) {
+            let urlRequest = URLRequest(url: url)
+            configurationWKWebView.load(urlRequest)
+        } else {
+            alertService.default(title: "Ошибка", message: "Ошибка обнавления")
+        }
     }
     
     //MARK: - Buttons
@@ -100,7 +106,7 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
     }
     
     @IBAction func updatePageButton(button: UIButton){
-        self.viewProperties?.updatePage()
+        configurationWKWebView.reload()
     }
     
     @IBAction func closeButton(button: UIButton){
