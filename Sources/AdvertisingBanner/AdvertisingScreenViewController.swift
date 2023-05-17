@@ -84,13 +84,19 @@ final public class AdvertisingScreenViewController: UIViewController, ViewProtoc
         }
     }
     
+    private func tapHome(){
+        guard let urlAdvertising = viewProperties?.advertisingModel.urlAdvertising else { return }
+        let urlRequest = URLRequest(url: urlAdvertising)
+        configurationWKWebView.load(urlRequest)
+    }
+    
     //MARK: - Buttons
     @IBAction func tapForwardButton(button: UIButton){
         self.viewProperties?.tapForward()
     }
     
     @IBAction func tapBackButton(button: UIButton){
-        self.viewProperties?.tapBack()
+        self.tapHome()
     }
     
     @IBAction func updatePageButton(button: UIButton){

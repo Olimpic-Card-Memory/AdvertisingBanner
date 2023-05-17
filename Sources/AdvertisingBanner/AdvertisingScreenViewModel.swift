@@ -24,18 +24,6 @@ final public class AdvertisingScreenViewManager: ViewManager<AdvertisingScreenVi
     private let openURL = OpenURL()
     private let alertService = AlertService()
     
-//    init(
-//        advertisingNavigationDelegate: AdvertisingNavigationDelegate,
-//        openURL: OpenURL,
-//        alertService: AlertService,
-//        advertisingUIDelegate: AdvertisingUIDelegate
-//    ) {
-//        self.advertisingNavigationDelegate = advertisingNavigationDelegate
-//        self.openURL = openURL
-//        self.alertService = alertService
-//        self.advertisingUIDelegate = advertisingUIDelegate
-//    }
-//
     //MARK: - Main state view model
     public enum State {
         case createViewProperties(AdvertisingModel)
