@@ -128,7 +128,7 @@ final public class AdvertisingFeature {
     }
     
     private func executeAppsFlyer(completion: @escaping Closure<[String: String]?>) {
-        if let installGet = self.appsFlyerService.installGet {
+        if let installGet = self.appsFlyerService.appsFlayerInstall {
             switch installGet {
                 case .nonOrganic(let parameters):
                     completion(parameters)

@@ -15,9 +15,6 @@ final class AppsFlyerService {
     public var appsFlayerInstall: Install?
     public var installCompletion = PassthroughSubject<Install, Never>()
     public var completionDeepLinkResult: ((DeepLinkResult) -> Void)?
-    public var installGet: Install? {
-        self.appsFlyerManager.parseAppsFlyerData.installGet
-    }
     
     private let devKey: String
     private let appID : String
@@ -31,7 +28,7 @@ final class AppsFlyerService {
     }
     
     public func start(isIDFA: Bool){
-        appsFlyerManager.startRequestTrackingAuthorization(isIDFA: isIDFA)
+        appsFlyerManager.startWithDeeplink()
     }
     
     public func setup(){
