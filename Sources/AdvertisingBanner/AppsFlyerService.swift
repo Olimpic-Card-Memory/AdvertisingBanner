@@ -37,7 +37,6 @@ final class AppsFlyerService {
     public func setup(){
         setupParseAppsFlyerData()
         setupAppsFlyerDeepLinkDelegate()
-        appsFlyerManager.setDebag(isDebug: true)
         appsFlyerManager.setup(
             appID : appID,
             devKey: devKey
