@@ -128,9 +128,14 @@ final public class AdvertisingFeature {
     }
     
     private func executeAppsFlyer(completion: @escaping Closure<[String: String]?>) {
+        guard !UserDefaults.standard.bool(forKey: "nonOrganic") else {
+            completion([:])
+            return
+        }
         if let installGet = self.appsFlyerService.appsFlayerInstall {
             switch installGet {
                 case .nonOrganic(let parameters):
+                    UserDefaults.standard.set(true, forKey: "nonOrganic")
                     completion(parameters)
                 case .organic:
                     completion(nil)
@@ -140,6 +145,7 @@ final public class AdvertisingFeature {
                 .sink(receiveValue: { install in
                     switch install {
                         case .nonOrganic(let parameters):
+                            UserDefaults.standard.set(true, forKey: "nonOrganic")
                             completion(parameters)
                         case .organic:
                             completion(nil)
