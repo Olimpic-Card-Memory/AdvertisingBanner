@@ -162,17 +162,18 @@ final public class AdvertisingFeature {
                     }
                 } else {
                     self.appsFlyerService.installCompletion
-                        .sink(receiveValue: { install in
+                        .sink(receiveValue: { [weak self] install in
                             switch install {
                                 case .nonOrganic(let parameters):
-                                    self.saveParameters(with: parameters)
-                                    self.saveInstal(with: .nonOrganic)
+                                    self?.saveParameters(with: parameters)
+                                    self?.saveInstal(with: .nonOrganic)
                                     completion(parameters)
                                 case .organic:
-                                    self.saveParameters()
-                                    self.saveInstal(with: .organic)
+                                    self?.saveParameters()
+                                    self?.saveInstal(with: .organic)
                                     completion(nil)
                             }
+                            self?.anyCancel.removeAll()
                         })
                         .store(in: &anyCancel)
                 }
