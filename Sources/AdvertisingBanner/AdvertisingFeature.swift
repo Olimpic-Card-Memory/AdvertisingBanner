@@ -87,7 +87,7 @@ final public class AdvertisingFeature {
                             var advertisingModel = AdvertisingModel(
                                 requestDataModel: requestDataModel
                             )
-                            self.updateParameters(with: parameters)
+                            
                             advertisingModel.urlAdvertising = URL.create(
                                 with: requestDataModel,
                                 parameters: self.parameters
@@ -127,17 +127,19 @@ final public class AdvertisingFeature {
         }
     }
     
-    private func saveParameters(with parameters: [String: String]){
-        UserDefaults.standard.set(parameters, forKey: "nonOrganic")
+    private func saveParameters(with parameters: [String: String]? = nil){
+        let parameters = parameters ?? ["":""]
+        UserDefaults.standard.set(parameters, forKey: "parameters")
     }
     
     private func executeAppsFlyer(completion: @escaping Closure<[String: String]?>) {
-        if let parameters = UserDefaults.standard.dictionary(forKey: "nonOrganic") as? [String : String] {
+        if let parameters = UserDefaults.standard.dictionary(forKey: "parameters") as? [String : String] {
             completion(parameters)
         } else {
             if let installGet = self.appsFlyerService.appsFlayerInstall {
                 switch installGet {
                     case .nonOrganic(let parameters):
+                        self.saveParameters(with: parameters)
                         completion(parameters)
                     case .organic:
                         completion(nil)
@@ -147,8 +149,10 @@ final public class AdvertisingFeature {
                     .sink(receiveValue: { install in
                         switch install {
                             case .nonOrganic(let parameters):
+                                self.saveParameters(with: parameters)
                                 completion(parameters)
                             case .organic:
+                                self.saveParameters()
                                 completion(nil)
                         }
                     })
