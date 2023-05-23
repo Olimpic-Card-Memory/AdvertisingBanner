@@ -83,7 +83,7 @@ final public class AdvertisingFeature {
                                 completion(.game)
                                 return
                             }
-                            
+                            self.saveParameters(with: parameters)
                             var advertisingModel = AdvertisingModel(
                                 requestDataModel: requestDataModel
                             )
@@ -127,31 +127,33 @@ final public class AdvertisingFeature {
         }
     }
     
+    private func saveParameters(with parameters: [String: String]){
+        UserDefaults.standard.set(parameters, forKey: "nonOrganic")
+    }
+    
     private func executeAppsFlyer(completion: @escaping Closure<[String: String]?>) {
-        guard !UserDefaults.standard.bool(forKey: "nonOrganic") else {
-            completion([:])
-            return
-        }
-        if let installGet = self.appsFlyerService.appsFlayerInstall {
-            switch installGet {
-                case .nonOrganic(let parameters):
-                    UserDefaults.standard.set(true, forKey: "nonOrganic")
-                    completion(parameters)
-                case .organic:
-                    completion(nil)
-            }
+        if let parameters = UserDefaults.standard.dictionary(forKey: "nonOrganic") as? [String : String] {
+            completion(parameters)
         } else {
-            self.appsFlyerService.installCompletion
-                .sink(receiveValue: { install in
-                    switch install {
-                        case .nonOrganic(let parameters):
-                            UserDefaults.standard.set(true, forKey: "nonOrganic")
-                            completion(parameters)
-                        case .organic:
-                            completion(nil)
-                    }
-                })
-                .store(in: &anyCancel)
+            if let installGet = self.appsFlyerService.appsFlayerInstall {
+                switch installGet {
+                    case .nonOrganic(let parameters):
+                        completion(parameters)
+                    case .organic:
+                        completion(nil)
+                }
+            } else {
+                self.appsFlyerService.installCompletion
+                    .sink(receiveValue: { install in
+                        switch install {
+                            case .nonOrganic(let parameters):
+                                completion(parameters)
+                            case .organic:
+                                completion(nil)
+                        }
+                    })
+                    .store(in: &anyCancel)
+            }
         }
     }
     
