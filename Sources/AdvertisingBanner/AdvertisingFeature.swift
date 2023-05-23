@@ -142,6 +142,7 @@ final public class AdvertisingFeature {
                         self.saveParameters(with: parameters)
                         completion(parameters)
                     case .organic:
+                        self.saveParameters()
                         completion(nil)
                 }
             } else {
