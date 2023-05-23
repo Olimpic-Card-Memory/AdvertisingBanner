@@ -133,11 +133,11 @@ final public class AdvertisingFeature {
     }
     
     private func saveInstal(with afStatus: AfStatus){
-        UserDefaults.standard.set(afStatus.rawValue, forKey: "isNonOrganic")
+        UserDefaults.standard.set(afStatus.rawValue, forKey: "AfStatus")
     }
     
     private func executeAppsFlyer(completion: @escaping Closure<[String: String]?>) {
-        let afStatusRawValue = UserDefaults.standard.string(forKey: "isNonOrganic") ?? "none"
+        let afStatusRawValue = UserDefaults.standard.string(forKey: "AfStatus") ?? "none"
         let afStatus = AfStatus(rawValue: afStatusRawValue)
         switch afStatus {
             case .organic:
@@ -146,7 +146,7 @@ final public class AdvertisingFeature {
                 if let parameters = UserDefaults.standard.dictionary(forKey: "parameters") as? [String : String] {
                     completion(parameters)
                 } else {
-                    completion([:])
+                    completion(["":""])
                 }
             default:
                 if let installGet = self.appsFlyerService.appsFlayerInstall {
