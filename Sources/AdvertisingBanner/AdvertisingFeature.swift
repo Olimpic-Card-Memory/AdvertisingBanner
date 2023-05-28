@@ -45,7 +45,7 @@ final public class AdvertisingFeature {
     
     public func startAppsFlyer() {
         guard self.isFirstLaunch else { return }
-        self.remoteService.getBoolValue(key: "isIDFA") { [weak self] isIDFA in
+        self.remoteService.getBoolValue(key: Constants.IDFAKey) { [weak self] isIDFA in
             self?.appsFlyerService.start(isIDFA: isIDFA)
         }
     }
@@ -129,21 +129,21 @@ final public class AdvertisingFeature {
     
     private func saveParameters(with parameters: [String: String]? = nil){
         let parameters = parameters
-        UserDefaults.standard.set(parameters, forKey: "parameters")
+        UserDefaults.standard.set(parameters, forKey: Constants.parametersKey)
     }
     
     private func saveInstal(with afStatus: AfStatus){
-        UserDefaults.standard.set(afStatus.rawValue, forKey: "AfStatus")
+        UserDefaults.standard.set(afStatus.rawValue, forKey: Constants.afStatusKey)
     }
     
     private func executeAppsFlyer(completion: @escaping Closure<[String: String]?>) {
-        let afStatusRawValue = UserDefaults.standard.string(forKey: "AfStatus") ?? "none"
+        let afStatusRawValue = UserDefaults.standard.string(forKey: Constants.afStatusKey) ?? "none"
         let afStatus = AfStatus(rawValue: afStatusRawValue)
         switch afStatus {
             case .organic:
                 completion(nil)
             case .nonOrganic:
-                if let parameters = UserDefaults.standard.dictionary(forKey: "parameters") as? [String : String] {
+                if let parameters = UserDefaults.standard.dictionary(forKey: Constants.parametersKey) as? [String : String] {
                     completion(parameters)
                 } else {
                     completion(["":""])
@@ -190,4 +190,9 @@ final public class AdvertisingFeature {
         }
         .store(in: &anyCancel)
     }
+}
+private struct Constants {
+    static let parametersKey = "parameters"
+    static let afStatusKey = "AfStatus"
+    static let IDFAKey = "IDFA"
 }
